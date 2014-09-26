@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Your App Name">
+    <Require feature="rpc"/>
+    <Require feature="views"/>
+  </ModulePrefs>
+  <Content type="html">
+    <![CDATA[
+	<script src="//hangoutsapi.talkgadget.google.com/hangouts/_/api/hangout.js?v=1.1"></script>
+    
+	<link rel="stylesheet" href="https://raw.github.com/1wheel/hangout-boardgames/master/footer.css" />	
+	<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reversi</title>
+	<script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/gapiWrapper.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/reversi.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/dots.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/checkers.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/fourInARow.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/backgammon.js"></script>
+
+
+<img src="http://www.roadtolarissa.com/boardgames/assets/dice/1.png" id = "dice1" style="display:none;"/>
+<img src="http://www.roadtolarissa.com/boardgames/assets/dice/2.png" id = "dice2" style="display:none;"/>
+<img src="http://www.roadtolarissa.com/boardgames/assets/dice/3.png" id = "dice3" style="display:none;"/>
+<img src="http://www.roadtolarissa.com/boardgames/assets/dice/4.png" id = "dice4" style="display:none;"/>
+<img src="http://www.roadtolarissa.com/boardgames/assets/dice/5.png" id = "dice5" style="display:none;"/>
+<img src="http://www.roadtolarissa.com/boardgames/assets/dice/6.png" id = "dice6" style="display:none;"/>
+
+
+</head>
+
+ <div id='info'></div>
+
+<body id="body">    
+    <canvas id="board" width="400" height="400"> </canvas>
+    <script type ="text/javascript">  </script>
+
+        
+    <div id="Team0"> 
+            <li class='teamName' >
+                <nobr id='0Name'>Team 0<nobr>
+                <nobr  id=''></nobr>
+            </li>
+            <li id='0Players'></li> 
+            <li id='0Join'></li>
+   </div>
+
+    <div id="Team1"> 
+            <li class='teamName' >
+                <nobr id='1Name'>Team 1<nobr>
+                <nobr  id=''></nobr>
+            </li>
+            <li id='1Players'></li> 
+            <li id='1Join'></li>
+   </div>
+
+    <div id="Team2"> 
+            <li class='teamName' >
+                <nobr id='2Name'>Team 2<nobr>
+                <nobr  id=''></nobr>
+            </li>
+            <li id='2Players'></li> 
+            <li id='2Join'></li>
+   </div>
+            
+
+
+</body>​
+</html>
+
+
+    ]]>
+  </Content>
+</Module>

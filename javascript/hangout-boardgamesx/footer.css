@@ -1,0 +1,35 @@
+#Team2{
+ position:absolute;
+ top:430;
+ left:10px;
+ width:200px;
+}
+
+#Team0{
+ position:absolute;
+ top:430px;
+ left:180px;
+ width:200px;
+ visibility: hidden;
+}
+
+#Team1{
+ position:absolute;
+ top:430px;
+ left:300px;
+ width:200px;
+}
+
+.teamName {
+	font-size: 120%;
+
+}
+
+.currentTurn {
+	/*text-decoration: underline;*/
+	font-size: 140%;
+}
+
+ li { 
+ 	list-style: none; 
+ }
