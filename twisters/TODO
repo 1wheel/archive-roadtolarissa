@@ -1,0 +1,42 @@
+TODO
+	recenter over all map
+
+	zoomscale with bounding box to state
+
+	tool tips, are any needed? 
+		too hard to mouse over nodao
+
+	radiual
+		drag arc in a circle
+		drag arc sides to change size	
+		return range
+		show handles
+
+		label interier
+			N E S W
+			Jan Apr Jul Oct
+			0000 0600 1200 1800
+
+		direction
+		time of day
+		time of year
+
+		intial click removes first slice
+
+	bars
+		num bars
+		bar width
+		scale labels
+			correct (no f6)
+			format (1,990)
+
+	color for damage?
+
+	glowy effect?
+
+	
+
+	custom color scale
+
+	compile correctly w/ SMASH
+		fork d3
