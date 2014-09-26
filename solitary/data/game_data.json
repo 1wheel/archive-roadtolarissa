@@ -1,0 +1,270 @@
+{
+	"food": {
+		"section": "food",
+		"title": "You have a medical dietary restriction",
+		"q1": {
+			"text": "You're in the mess hall and you can't eat what you've been served. You ______.",
+			"options": {
+				"a":{
+					"text": "Eat it.",
+					"impact": {
+						"health": -5
+					}
+				},
+				"b": {
+					"text": "Leave it.",
+					"impact": {
+						"health": -5
+					}
+				}
+			}
+		},
+		"qa": {
+			"text": "You've become ill and can't leave your cell.",
+			"options": {
+				"a": {
+					"text": "Stay in your cell and ask for medical assistance.",
+					"impact": {
+						"health": -5,
+						"conformity": -5,
+						"stimulation": -5,
+						"interaction": -5
+					},
+					"result_text": "You miss count but you are taken to the infirmary.",
+					"solitary": "No. You are spared from solitary.",
+					"result_bool": "False"
+				},
+				"b": {
+					"text": "Go outside your cell to be ready for the count.",
+					"impact": {
+						"health": -5,
+						"conformity": -5
+					},
+					"result_text": "You pass out on the way to count and end up in medical with a serious health issue.",
+					"solitary": "No. You are spared from solitary.",
+					"result_bool": "False"
+				}
+			}
+		},
+		"qb": {
+			"text": "A fellow inmate asks for your portion.",
+			"options": {
+				"a": {
+					"text": "You give it to him.",
+					"impact": {
+						"conformity": -5,
+						"interaction": 5
+					},
+					"result_text": "You are written up for not eating and for 'misappropriating resources'.",
+					"solitary": "Yes. You are sent to solitary.",
+					"result_bool": "True"
+				},
+				"b": {
+					"text": "You say no.",
+					"impact": {
+						"conformity": -5,
+						"interaction": -5
+					},
+					"result_text": "The inmate tells a guard you aren't eating who questions you and calls you a 'trouble maker'. You become isolated and have a reputation that could lead to retaliation.",
+					"solitary": "Maybe. You are at risk for solitary.",
+					"result_bool": "Maybe"
+				}
+			}
+		}
+	},	
+	"book": {
+		"section": "book",
+		"title": "You want to read a book.",
+		"q1": {
+			"text": "The book cart has uninteresting books but your blockmate has offered to slip you one that you would like.",
+			"options": {
+				"a":{
+					"text": "Take it.",
+					"impact": {
+						"conformity": -5
+					}
+				},
+				"b": {
+					"text": "Wait for the book that your relative promised to send.",
+					"impact": {
+						"stimulation": -5
+					}
+				}
+			}
+		},
+		"qa": {
+			"text": "A guard finds the book, informs you that it is contraband and demands to know the owner.",
+			"options": {
+				"a": {
+					"text": "You reveal the owner.",
+					"impact": {
+						"interaction": -10
+					},
+					"result_text": "You are compliant but labeled a rat &mdash; a fight is possible.",
+					"solitary": "Maybe. You are at risk for solitary.",
+					"result_bool": "Maybe"
+				},
+				"b": {
+					"text": "You hold out.",
+					"impact": {
+						"conformity": -5
+					},
+					"result_text": "You are written up and sent to solitary. Maybe when you get out you'll have a friend.",
+					"solitary": "Yes. You are sent to solitary.",
+					"result_bool": "True"
+				}
+			}
+		},
+		"qb": {
+			"text": "Instead of the book you asked for, your relative sends you Sun Tzu's 'The Art of War', a 'validated' gang book in the state of California, labelling you as a gang member.",
+			"options": {
+				"a": {
+					"text": "Accept validation from eager C.O. It’s too much of a hassle to make an administrative challenge.",
+					"impact": {
+						"conformity": -10
+					},
+					"result_text": "You are sent to a minimum of TK if you are in a California prison.",
+					"solitary": "Yes. You are sent to solitary.",
+					"result_bool": "True"
+				},
+				"b": {
+					"text": "You challenge validation.",
+					"impact": {
+						"conformity": -5,
+						"health": -5
+					},
+					"result_text": "You protect your standing, but corrections officers see you as a trouble maker.",
+					"solitary": "Maybe. You are at risk for solitary.",
+					"result_bool": "Maybe"
+				}
+			}
+		}
+	},
+	"phone": {
+		"section": "phone",
+		"title": "You want to talk to a family member on the outside.",
+		"q1": {
+			"text": "Call him/her on the phone or write a letter.",
+			"options": {
+				"a":{
+					"text": "Write a letter; they work the night shift."
+				},
+				"b": {
+					"text": "Try him/her on the phone while he/she is sleeping; hope for best."
+				}
+			}
+		},
+		"qa": {
+			"text": "Bunkmate steals pen.",
+			"options": {
+				"a": {
+					"text": "Report him.",
+					"impact": {
+						"interaction": -5
+					},
+					"result_text": "You are in compliance, but tensions with your cellmate are high - a fight is possible.",
+					"solitary": "Maybe. You are at risk for solitary.",
+					"result_bool": "Maybe"
+				},
+				"b": {
+					"text": "Say you lost pen.",
+					"impact": {
+						"conformity": -5
+					},
+					"result_text": "Not only are you penalized for losing your pen, your bunkmate crafts a weapon and stabs another inmate. You are both found culpable.",
+					"solitary": "Yes. You are sent to solitary.",
+					"result_bool": "True"
+				}
+			}
+		},
+		"qb": {
+			"text": "End up in an argument on the phone, and phone time is up.",
+			"options": {
+				"a": {
+					"text": "Hang up.",
+					"impact": {
+						"interaction": -5
+					},
+					"result_text": "You are a model prisoner, but feeling the stress of a broken relationship.",
+					"solitary": "No. You are spared from solitary.",
+					"result_bool": "False"
+				},
+				"b": {
+					"text": "Go over time.",
+					"impact": {
+						"conformity": -5
+					},
+					"result_text": "You are reprimanded for going over time.  How you respond could send you into solitary.",
+					"solitary": "Maybe. You are at risk for solitary.",
+					"result_bool": "Maybe"
+				}
+			}
+		}
+	},	
+	"rec": {
+		"section": "rec",
+		"title": "You go to the rec yard.",
+		"q1": {
+			"text": "Your friends from the old neighborhood approach you.",
+			"options": {
+				"a":{
+					"text": "Talk to them."
+				},
+				"b": {
+					"text": "Walk away.",
+					"impact":{
+						"interaction": -5,
+						"stimulation": -5
+					}
+				}
+			}
+		},
+		"qa": {
+			"text": "They ask you to do 'an errand' for them.",
+			"options": {
+				"a": {
+					"text": "Do it.",
+					"impact": {
+						"conformity": -5
+					},
+					"result_text": "You get caught somewhere in the prison where you're not supposed to be.",
+					"solitary": "Yes. You are sent to solitary.",
+					"result_bool": "True"
+				},
+				"b": {
+					"text": "Don't do it.",
+					"impact": {
+						"interaction": -5
+					},
+					"result_text": "They say that they'll 'remember this.' You worry about future fights with the gang.",
+					"solitary": "Maybe. You are at risk for solitary.",
+					"result_bool": "Maybe"
+				}
+			}
+		},
+		"qb": {
+			"text": "Someone passes you a threatening kite (a message on string) when you get back to your cell.",
+			"options": {
+				"a": {
+					"text": "Report it.",
+					"impact": {
+						"interaction": -5,
+						"health": -5
+					},
+					"result_text": "You're feeling the stress of potential retaliation.",
+					"solitary": "No. You are spared from solitary.",
+					"result_bool": "False"
+				},
+				"b": {
+					"text": "Do nothing.",
+					"impact": {
+						"health": -5
+					},
+					"result_text": "You've avoided getting into a gang, but further isolated yourself, which you fear will lead to a confrontation.",
+					"solitary": "No. You are spared from solitary.",
+					"result_bool": "False"
+				}
+			}
+		}
+	}
+}

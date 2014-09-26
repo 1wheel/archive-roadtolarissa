@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width">
+	<title>Prison news game</title>
+
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+</head>
+<body>
+
+	<div id="game-wrapper">
+		<div id="game-splash">
+			<div id="game-title">Prison rules:<br/>Avoiding solitary confinement</div>
+			<div id="game-intro">Time in solitary in confinement isn't tied to a person's sentence. Violating prison rules, some of them minor, can result in days or weeks in solitary. Think it's easy? Navigate the four scenarios below to see if you can avoid time in the box.</div>
+			<div id="game-gallery">
+				<div class="game-level" data-level-select="food"><span class="game-level-text">You have a medical dietary restriction.</span></div>
+				<div class="game-level" data-level-select="phone"><span class="game-level-text">You want to talk to a family member on the outside.</span></div>
+				<div class="game-level" data-level-select="book"><span class="game-level-text">You want to read a book.</span></div>
+				<div class="game-level" data-level-select="rec"><span class="game-level-text">You want to exercise in the rec yard.</span></div>
+			</div>
+		</div>
+		<div id="game-level-container"></div>
+		<div id="game-level-result-modal"></div>
+	</div>
+
+	<script type="text/template" id="level-template">
+		<div class="game-back-to-splash">back</div>
+		<div class="game-level-question-container">
+			<div class="game-level-scenario"><img width="63" src="imgs/<%= section %>-section.png" /><%= title %></div>
+			<div class="game-level-prompt"><%= q1.text %></div>
+			<ul class="game-level-options">
+				<li class="game-level-option" data-level-select="a">a. <%= q1.options.a.text %></li>
+				<li class="game-level-option" data-level-select="b">b. <%= q1.options.b.text %></li>
+			</ul>
+		</div>
+		<div class="game-level-subquestion-container"></div>
+	</script>
+
+	<script type="text/template" id="subquestion-template">
+		<div class="game-level-subquestion-prompt"><%= text %></div>
+		<ul class="game-level-subquestions">
+			<li class="game-level-subquestion" data-level-select="a" data-result-text="<%= options.a.result_text %>" data-result-bool="<%= options.a.result_bool %>" data-solitary="<%= options.a.solitary %>">a. <%= options.a.text %></li>
+			<li class="game-level-subquestion" data-level-select="b" data-result-text="<%= options.b.result_text %>" data-result-bool="<%= options.b.result_bool %>" data-solitary="<%= options.b.solitary %>">b. <%= options.b.text %></li>
+		</ul>
+	</script>
+
+
+	<script type="text/template" id="result-template">
+		<div class="game-result-modal">
+			<div class="game-solitary-result"><span>Result:</span><br/><img src="imgs/result-<%= result_bool %>.png" width="80"/><br/><%= solitary %></div>
+			<div class="game-result-text"><%= result %></div>
+		</div>
+		<div class="game-back-to-splash"><span>Play again</span></div>
+	</script>
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="js/thirdparty/underscore-min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>

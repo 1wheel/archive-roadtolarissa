@@ -1,0 +1,42 @@
+#bar-wrapper{
+	position: relative;
+	margin: 20px;
+	width: 960px;
+	text-align: left;
+}
+.bar-group{
+	width: 100%;
+	margin-bottom: 50px;
+	height: 20px;
+	display: none;
+}
+.bar-label, .bar-element{
+	display: block;
+	position: relative;
+}
+.bar-label{
+	margin-bottom: 5px;
+	color: #818181;
+	/*width: 250px;*/
+}
+.bar-label span{
+	color: #fff;
+	font-size: 20px;
+}
+.bar-axis-label{
+	position: absolute;
+	right: 0;
+	bottom: -9px;
+	font-size: 10px;
+	width: 50px;
+	text-align: right;
+}
+.bar-element{
+	background-color: #eae41c;
+	width: 0%;
+	height: 100%;
+  -moz-transition: width 1.5s;
+  -webkit-transition: width 1.5s;
+  -o-transition: width 1.5s;
+  transition: width 1.5s;
+}

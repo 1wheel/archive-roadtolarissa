@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width">
+	<title>Bar animation</title>
+
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+</head>
+<body>
+
+	<div id="bar-wrapper">
+		<div id="bar-title"></div>
+		<div id="bar-fifteen-days" class="bar-group">
+			<div class="bar-label"><span>15 days</span> &mdash; The UN's torture threshold</div>
+			<div class="bar-element" data-length="15"></div>
+		</div>
+		<div id="bar-six-years" class="bar-group">
+			<div class="bar-label"><span>6.8 years</span> &mdash; NY state average</div>
+			<div class="bar-element" data-length="2483.65"></div>
+		</div>
+		<div id="bar-forty-years" class="bar-group">
+			<div class="bar-label"><span>41 years</span> &mdash; Longest time spent in solitary</div>
+			<div class="bar-element" data-length="14974.9"></div>
+		</div>
+	</div>
+
+	<script src="js/thirdparty/jquery.1.10.2.min.js"></script>
+	<script src="js/thirdparty/d3.v3.min.js"></script>
+	<script src="js/thirdparty/underscore-min.js"></script>
+	<script src="../bar-graph.js"></script>
+
+	<script>
+		drawBars();
+	</script>
+
+</body>
+</html>

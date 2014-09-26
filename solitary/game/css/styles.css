@@ -1,0 +1,173 @@
+body{
+	margin: 0;
+	background-color: #231F20;
+	color: #f0f0f0;
+	-webkit-font-smoothing: antialiased;
+	
+}
+ul{
+	list-style: none;
+	margin: 0;
+}
+li{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#game-wrapper{
+	width: 960px;
+	margin: 0 auto;
+	color: #fff;
+	font-family: Helvetica, sans-serif;
+}
+#game-splash{
+}
+#game-title{
+	font-size: 32px;
+	text-align: center;
+	margin-bottom: 8px;
+	line-height: 30px;
+}
+#game-intro{
+	font-size: 14px;
+	text-align: center;
+}
+#game-gallery{
+	width: 90%;
+	margin: 25px auto;
+}
+.game-level{
+	width: 48%;
+	border: 1px solid #ccc;
+	background-color: #666;
+	float:left;
+	height: 200px;
+	position: relative;
+}
+.game-level:hover{
+	cursor: pointer;
+	cursor: hand;
+}
+.game-level:hover .game-level-text{
+	text-decoration: underline;
+}
+.game-level-text{
+	position: absolute;
+	top: 50%;
+	text-align: center;
+	width: 100%;
+}
+#game-level-container, #game-level-result-modal{
+	display: none;
+}
+#game-level-result-modal{
+	text-align: center;
+	margin-top: 35px;
+	font-size: 24px;
+}
+#game-level-result-modal .game-back-to-splash{
+	margin-top: 15px;	
+}
+.clearfix{
+	clear: both;
+}
+.game-back-to-splash{
+	font-size: 17px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #919191;
+}
+.game-level-question-container, .game-level-subquestion-container, .game-level-prompt{
+	margin-top: 25px;
+
+}
+.game-level-scenario{
+	font-size: 32px;
+	vertical-align: top;
+}
+.game-level-prompt{
+	font-size: 18px;
+	padding: 5px;
+	display: inline-block;
+	margin-bottom: 5px;
+}
+.game-level-prompt span{
+	background-color: #f0f0f0;
+	color: #191717;
+	display: inline-block;
+}
+.game-level-subquestion-prompt{
+	margin-bottom: 5px;
+}
+.game-level-options li, .game-level-subquestions li{
+	padding: 10px;
+	/*margin-bottom: 3px;*/
+}
+.game-level-options li:hover, .game-level-subquestions li:hover{
+	background-color: #363636;
+	cursor: pointer;
+	cursor: hand;
+}
+.game-level-options li.active, .game-level-subquestions li.active{
+	color: #F7EB0B;
+	font-weight: bold;
+
+}
+.game-level-options li.active:hover, .game-level-subquestions li.active:hover{
+	cursor: default;
+	background-color: #191717;
+}
+.game-back-to-splash:hover{
+	cursor: pointer;
+	cursor: hand;
+	text-decoration: underline;
+}
+#game-level-result-modal .game-back-to-splash{
+	background-color: #f7eb0b;
+	border-radius: 50%;
+	width: 120px;
+	height: 120px;
+	color: #000;
+	margin: 10px auto;
+	position: relative;
+	text-align: left;
+}
+
+.game-solitary-result span{
+	color: #6D6D6D;
+	font-weight: bold;
+}
+#game-level-result-modal .game-back-to-splash span{
+	position: absolute;
+	top: 46%;
+	text-align: center;
+	width: 100%;
+}
+#game-level-result-modal .game-back-to-splash:hover span{
+	text-decoration: underline !important;
+}
+.game-level{
+	background-size: contain;
+}
+.game-level[data-level-select="food"]{
+	background: url(../imgs/cell.png);
+}
+
+.game-level[data-level-select="phone"]{
+	background: url(../imgs/food.png);
+}
+
+.game-level[data-level-select="book"]{
+	background: url(../imgs/phone.png);
+}
+
+.game-level[data-level-select="rec"]{
+	background: url(../imgs/book.png);
+}
+.game-result-text{
+	margin-top: 10px;
+}
+

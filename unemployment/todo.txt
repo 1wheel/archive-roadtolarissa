@@ -1,0 +1,72 @@
+todo
+	draw order based on type? would require more redraws......
+
+	function that returns color propert
+
+	highlight sexs
+		blue - male
+		red - female
+		purple - both
+		grey neither?
+
+		over all 
+			black
+
+
+	list of all lines
+
+	which lines drawn depend on properties
+
+
+	mouse over says name and exact level
+
+	TOC
+
+	label on other side
+
+	sliders for range
+
+	make graph wider
+
+	fix button colors
+		fix blue first
+
+	fix purple colors
+		what is a subset of the other?
+		check for different selections:
+			r women
+			b black
+
+
+	add red
+
+	//fix asian (no jobless for some reason?)
+
+	prevent selecting null series
+		create list of color clicks 
+
+	!make on load look at buttons
+
+	!mouse over gets x and adds %
+
+	header for page
+
+	centered key
+
+	!faq
+
+	!blog post
+
+	why doesn't this have series?
+		sex - all
+		race - black
+		age 25 
+		edu all
+
+
+
+	make text not selectable
+
+	add selector for it
+
+	peter.j.gault@gmail.com

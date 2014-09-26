@@ -1,0 +1,8599 @@
+(dp0
+S'lastDate'
+p1
+F1354927279.0
+sS'nextNum'
+p2
+V50bf5a738cce3fe52e00000b
+p3
+sS'list'
+p4
+(lp5
+(dp6
+S'date'
+p7
+VDecember 04, 2012
+p8
+sS'loc'
+p9
+V
+p10
+sS'name'
+p11
+VMichael G
+p12
+sa(dp13
+S'date'
+p14
+VNovember 23, 2012
+p15
+sS'loc'
+p16
+VNaples, FL
+p17
+sS'name'
+p18
+VDonald W
+p19
+sa(dp20
+S'date'
+p21
+VNovember 24, 2012
+p22
+sS'loc'
+p23
+VPocatello, ID
+p24
+sS'name'
+p25
+VMegan M
+p26
+sa(dp27
+g14
+VNovember 22, 2012
+p28
+sg16
+VDallas, TX
+p29
+sg18
+VDiane S
+p30
+sa(dp31
+g21
+VNovember 24, 2012
+p32
+sg23
+VWest Palm Beach, FL
+p33
+sg25
+VMaxine M
+p34
+sa(dp35
+S'date'
+p36
+VNovember 26, 2012
+p37
+sS'loc'
+p38
+g10
+sS'name'
+p39
+VBarbara I
+p40
+sa(dp41
+g36
+VNovember 26, 2012
+p42
+sg38
+VCollege Park, MD
+p43
+sg39
+VSamantha H
+p44
+sa(dp45
+g36
+VNovember 26, 2012
+p46
+sg38
+VSomerset, KY
+p47
+sg39
+VKarla C
+p48
+sa(dp49
+g21
+VNovember 24, 2012
+p50
+sg23
+VGladstone, MI
+p51
+sg25
+VMark A
+p52
+sa(dp53
+g14
+VNovember 22, 2012
+p54
+sg16
+VBrantwood, WI
+p55
+sg18
+VDietrich D
+p56
+sa(dp57
+S'date'
+p58
+VDecember 05, 2012
+p59
+sS'loc'
+p60
+g10
+sS'name'
+p61
+VJami D
+p62
+sa(dp63
+g14
+VNovember 23, 2012
+p64
+sg16
+VHuntington, TX
+p65
+sg18
+Vjerry  b
+p66
+sa(dp67
+g36
+VNovember 26, 2012
+p68
+sg38
+VEdwards, CA
+p69
+sg39
+VD  J
+p70
+sa(dp71
+S'date'
+p72
+VDecember 03, 2012
+p73
+sS'loc'
+p74
+VKew Gardens, NY
+p75
+sS'name'
+p76
+VNancy A
+p77
+sa(dp78
+g14
+VNovember 23, 2012
+p79
+sg16
+VCrooksville, OH
+p80
+sg18
+VJohn S
+p81
+sa(dp82
+g36
+VNovember 27, 2012
+p83
+sg38
+VMacon, GA
+p84
+sg39
+VJohn M
+p85
+sa(dp86
+g36
+VNovember 25, 2012
+p87
+sg38
+VSan Diego, CA
+p88
+sg39
+VMaria R
+p89
+sa(dp90
+S'date'
+p91
+VNovember 25, 2012
+p92
+sS'loc'
+p93
+VGreeley, CO
+p94
+sS'name'
+p95
+Vginger c
+p96
+sa(dp97
+g36
+VNovember 28, 2012
+p98
+sg38
+g10
+sg39
+VJen B
+p99
+sa(dp100
+g14
+VNovember 23, 2012
+p101
+sg16
+g10
+sg18
+VKristy S
+p102
+sa(dp103
+g36
+VNovember 25, 2012
+p104
+sg38
+VPortage, IN
+p105
+sg39
+Vs a
+p106
+sa(dp107
+g7
+VDecember 04, 2012
+p108
+sg9
+VMazon, IL
+p109
+sg11
+VAndrew H
+p110
+sa(dp111
+g14
+VNovember 23, 2012
+p112
+sg16
+VButler, PA
+p113
+sg18
+VConnie L
+p114
+sa(dp115
+g14
+VNovember 20, 2012
+p116
+sg16
+VGeneva, FL
+p117
+sg18
+VBeth M
+p118
+sa(dp119
+g36
+VNovember 26, 2012
+p120
+sg38
+VBoston, MA
+p121
+sg39
+Vdaniel C
+p122
+sa(dp123
+g36
+VNovember 28, 2012
+p124
+sg38
+VCoopersburg, PA
+p125
+sg39
+VArianne E
+p126
+sa(dp127
+g36
+VNovember 29, 2012
+p128
+sg38
+VWinchester, VA
+p129
+sg39
+VMariel L
+p130
+sa(dp131
+g14
+VNovember 23, 2012
+p132
+sg16
+VHouston, TX
+p133
+sg18
+VDetral J
+p134
+sa(dp135
+g36
+VNovember 25, 2012
+p136
+sg38
+VGranbury, TX
+p137
+sg39
+VCecil A
+p138
+sa(dp139
+g58
+VDecember 05, 2012
+p140
+sg60
+VBrooklandville, MD
+p141
+sg61
+VLuQuonda W
+p142
+sa(dp143
+g14
+VNovember 23, 2012
+p144
+sg16
+VBonham, TX
+p145
+sg18
+VAmber B
+p146
+sa(dp147
+S'date'
+p148
+VNovember 25, 2012
+p149
+sS'loc'
+p150
+VSalem, OR
+p151
+sS'name'
+p152
+VIsaac S
+p153
+sa(dp154
+g21
+VNovember 24, 2012
+p155
+sg23
+VSaint Petersburg, FL
+p156
+sg25
+VElla B
+p157
+sa(dp158
+g21
+VNovember 24, 2012
+p159
+sg23
+VNew Port Richey, FL
+p160
+sg25
+Vvivian d
+p161
+sa(dp162
+g21
+VNovember 24, 2012
+p163
+sg23
+VPhiladelphia, PA
+p164
+sg25
+VMary d
+p165
+sa(dp166
+g36
+VNovember 26, 2012
+p167
+sg38
+g10
+sg39
+VCassandra B
+p168
+sa(dp169
+g21
+VNovember 24, 2012
+p170
+sg23
+VPhoenix, AZ
+p171
+sg25
+VDe Ann B
+p172
+sa(dp173
+g36
+VNovember 29, 2012
+p174
+sg38
+VZephyrhills, FL
+p175
+sg39
+Vlawrence m
+p176
+sa(dp177
+g14
+VNovember 23, 2012
+p178
+sg16
+VCallahan, FL
+p179
+sg18
+VLinda J
+p180
+sa(dp181
+g36
+VDecember 01, 2012
+p182
+sg38
+VNashville, TN
+p183
+sg39
+VKrysta E
+p184
+sa(dp185
+g14
+VNovember 17, 2012
+p186
+sg16
+VWinter Haven, FL
+p187
+sg18
+VRobert P
+p188
+sa(dp189
+g14
+VNovember 22, 2012
+p190
+sg16
+VNorth Vernon, IN
+p191
+sg18
+Vbeth G
+p192
+sa(dp193
+g14
+VNovember 23, 2012
+p194
+sg16
+VCrestline, CA
+p195
+sg18
+VWendy R
+p196
+sa(dp197
+g58
+VDecember 05, 2012
+p198
+sg60
+g10
+sg61
+VJoe M
+p199
+sa(dp200
+g14
+VNovember 23, 2012
+p201
+sg16
+VSalem, OH
+p202
+sg18
+VMichael G
+p203
+sa(dp204
+g21
+VNovember 24, 2012
+p205
+sg23
+VUniontown, PA
+p206
+sg25
+VSusan D
+p207
+sa(dp208
+g36
+VNovember 28, 2012
+p209
+sg38
+VVilla Rica, GA
+p210
+sg39
+VParis S
+p211
+sa(dp212
+g36
+VNovember 27, 2012
+p213
+sg38
+VMarion, VA
+p214
+sg39
+VJames L
+p215
+sa(dp216
+g36
+VDecember 01, 2012
+p217
+sg38
+VSan Antonio, TX
+p218
+sg39
+VByron H
+p219
+sa(dp220
+g91
+VNovember 25, 2012
+p221
+sg93
+VCedar City, UT
+p222
+sg95
+VCynthia  B
+p223
+sa(dp224
+g14
+VNovember 22, 2012
+p225
+sg16
+VLowell, MA
+p226
+sg18
+VPaul G
+p227
+sa(dp228
+g7
+VDecember 04, 2012
+p229
+sg9
+VNewark, NJ
+p230
+sg11
+Vcathy c
+p231
+sa(dp232
+g14
+VNovember 21, 2012
+p233
+sg16
+VSalt Lake City, UT
+p234
+sg18
+VMark K
+p235
+sa(dp236
+g14
+VNovember 23, 2012
+p237
+sg16
+VKnob Noster, MO
+p238
+sg18
+VRichard B
+p239
+sa(dp240
+g36
+VNovember 30, 2012
+p241
+sg38
+VRichardson, TX
+p242
+sg39
+VJames C
+p243
+sa(dp244
+g21
+VNovember 25, 2012
+p245
+sg23
+VNewport, TN
+p246
+sg25
+Velizabeth r
+p247
+sa(dp248
+g58
+VDecember 05, 2012
+p249
+sg60
+VAlgonquin, IL
+p250
+sg61
+VJason C
+p251
+sa(dp252
+g148
+VNovember 25, 2012
+p253
+sg150
+g10
+sg152
+VJustin P
+p254
+sa(dp255
+g14
+VNovember 16, 2012
+p256
+sg16
+VBradyville, TN
+p257
+sg18
+VJason M
+p258
+sa(dp259
+g36
+VNovember 29, 2012
+p260
+sg38
+VBourbonnais, IL
+p261
+sg39
+VWilliam C
+p262
+sa(dp263
+g91
+VNovember 25, 2012
+p264
+sg93
+VBrooklyn, NY
+p265
+sg95
+VLisa V
+p266
+sa(dp267
+g21
+VNovember 25, 2012
+p268
+sg23
+VBolivar, MO
+p269
+sg25
+VJohn O
+p270
+sa(dp271
+g14
+VNovember 17, 2012
+p272
+sg16
+VFresno, CA
+p273
+sg18
+VCarla N
+p274
+sa(dp275
+g21
+VNovember 25, 2012
+p276
+sg23
+g10
+sg25
+VBeth C
+p277
+sa(dp278
+g14
+VNovember 23, 2012
+p279
+sg16
+VMcLouth, KS
+p280
+sg18
+VSarah K
+p281
+sa(dp282
+g21
+VNovember 24, 2012
+p283
+sg23
+VKihei, HI
+p284
+sg25
+VGary P
+p285
+sa(dp286
+g36
+VNovember 27, 2012
+p287
+sg38
+g10
+sg39
+VElizabeth M
+p288
+sa(dp289
+g21
+VNovember 24, 2012
+p290
+sg23
+VMontpelier, VT
+p291
+sg25
+VJ. T
+p292
+sa(dp293
+g36
+VNovember 29, 2012
+p294
+sg38
+VGig Harbor, WA
+p295
+sg39
+VMatthew H
+p296
+sa(dp297
+g14
+VNovember 23, 2012
+p298
+sg16
+g10
+sg18
+VDerek B
+p299
+sa(dp300
+g36
+VNovember 30, 2012
+p301
+sg38
+VOregon City, OR
+p302
+sg39
+VCarol R
+p303
+sa(dp304
+g36
+VNovember 27, 2012
+p305
+sg38
+VLas Vegas, NV
+p306
+sg39
+VKevin D
+p307
+sa(dp308
+S'date'
+p309
+VDecember 03, 2012
+p310
+sS'loc'
+p311
+VSpringfield, OH
+p312
+sS'name'
+p313
+VCathy  T
+p314
+sa(dp315
+g21
+VNovember 25, 2012
+p316
+sg23
+VBrooklyn
+p317
+sg25
+VDaquan N
+p318
+sa(dp319
+g36
+VNovember 27, 2012
+p320
+sg38
+Vjanesville, WI
+p321
+sg39
+VTroy O
+p322
+sa(dp323
+S'date'
+p324
+VDecember 05, 2012
+p325
+sS'loc'
+p326
+g10
+sS'name'
+p327
+VHaley S
+p328
+sa(dp329
+g36
+VNovember 26, 2012
+p330
+sg38
+VKingsland, GA
+p331
+sg39
+VSara C
+p332
+sa(dp333
+g21
+VNovember 25, 2012
+p334
+sg23
+g10
+sg25
+VRonald L
+p335
+sa(dp336
+g36
+VNovember 28, 2012
+p337
+sg38
+VJacksonville, IL
+p338
+sg39
+VMelissa T
+p339
+sa(dp340
+g14
+VNovember 18, 2012
+p341
+sg16
+VGlens Falls, NY
+p342
+sg18
+Vjanine t
+p343
+sa(dp344
+g36
+VNovember 26, 2012
+p345
+sg38
+Vcashmere, WA
+p346
+sg39
+Vsandra j
+p347
+sa(dp348
+g21
+VNovember 25, 2012
+p349
+sg23
+VGreensboro, NC
+p350
+sg25
+VRonikka H
+p351
+sa(dp352
+g36
+VNovember 26, 2012
+p353
+sg38
+VFort Smith, AR
+p354
+sg39
+VDavid R
+p355
+sa(dp356
+g14
+VNovember 22, 2012
+p357
+sg16
+VDayton, OH
+p358
+sg18
+VDeborah C
+p359
+sa(dp360
+g14
+VNovember 23, 2012
+p361
+sg16
+VLuling, LA
+p362
+sg18
+VLinda R
+p363
+sa(dp364
+g14
+VNovember 22, 2012
+p365
+sg16
+g10
+sg18
+VSheila R
+p366
+sa(dp367
+g21
+VNovember 24, 2012
+p368
+sg23
+VRobertsdale, AL
+p369
+sg25
+VKathryn A
+p370
+sa(dp371
+g148
+VNovember 25, 2012
+p372
+sg150
+VSan Diego, CA
+p373
+sg152
+VDavid A
+p374
+sa(dp375
+g36
+VNovember 30, 2012
+p376
+sg38
+VGolden, CO
+p377
+sg39
+VJames M
+p378
+sa(dp379
+g14
+VNovember 23, 2012
+p380
+sg16
+g10
+sg18
+Vmelissa c
+p381
+sa(dp382
+g14
+VNovember 17, 2012
+p383
+sg16
+VBluffton, SC
+p384
+sg18
+VJayne H
+p385
+sa(dp386
+g14
+VNovember 18, 2012
+p387
+sg16
+VOcala, FL
+p388
+sg18
+VPegggy N
+p389
+sa(dp390
+g14
+VNovember 23, 2012
+p391
+sg16
+VLanghorne, PA
+p392
+sg18
+VJacqueline B
+p393
+sa(dp394
+g14
+VNovember 18, 2012
+p395
+sg16
+VNorth Las Vegas, NV
+p396
+sg18
+VChristopher W
+p397
+sa(dp398
+g36
+VNovember 29, 2012
+p399
+sg38
+VBellevue, WA
+p400
+sg39
+VColin C
+p401
+sa(dp402
+g36
+VNovember 29, 2012
+p403
+sg38
+VSpring Hill, FL
+p404
+sg39
+VAnthony G
+p405
+sa(dp406
+g21
+VNovember 25, 2012
+p407
+sg23
+g10
+sg25
+VLisa C
+p408
+sa(dp409
+g21
+VNovember 24, 2012
+p410
+sg23
+VFelton, CA
+p411
+sg25
+VRudy B
+p412
+sa(dp413
+g21
+VNovember 25, 2012
+p414
+sg23
+VBuffalo, NY
+p415
+sg25
+VPamela H
+p416
+sa(dp417
+g14
+VNovember 23, 2012
+p418
+sg16
+VNovi, MI
+p419
+sg18
+VAdam T
+p420
+sa(dp421
+g21
+VNovember 24, 2012
+p422
+sg23
+VCorpus Christi, TX
+p423
+sg25
+VCraig R
+p424
+sa(dp425
+g21
+VNovember 25, 2012
+p426
+sg23
+VSanta Monica, CA
+p427
+sg25
+VVernon C
+p428
+sa(dp429
+g36
+VNovember 27, 2012
+p430
+sg38
+VLOS OSOS, CA
+p431
+sg39
+VTIM L
+p432
+sa(dp433
+g21
+VNovember 24, 2012
+p434
+sg23
+VMadison, WI
+p435
+sg25
+VChris C
+p436
+sa(dp437
+g21
+VNovember 24, 2012
+p438
+sg23
+VBridgeton, NJ
+p439
+sg25
+VCarrie C
+p440
+sa(dp441
+g14
+VNovember 22, 2012
+p442
+sg16
+g10
+sg18
+Vemma  b
+p443
+sa(dp444
+g36
+VNovember 27, 2012
+p445
+sg38
+VDecatur, IL
+p446
+sg39
+VNancy H
+p447
+sa(dp448
+g14
+VNovember 22, 2012
+p449
+sg16
+VEureka, CA
+p450
+sg18
+Vpat K
+p451
+sa(dp452
+g14
+VNovember 22, 2012
+p453
+sg16
+VRayville, LA
+p454
+sg18
+VJune S
+p455
+sa(dp456
+g58
+VDecember 05, 2012
+p457
+sg60
+VHolly Ridge, NC
+p458
+sg61
+Vmegan b
+p459
+sa(dp460
+g14
+VNovember 20, 2012
+p461
+sg16
+VDexter, ME
+p462
+sg18
+VJudy C
+p463
+sa(dp464
+g14
+VNovember 22, 2012
+p465
+sg16
+VDenton, TX
+p466
+sg18
+VRichard P
+p467
+sa(dp468
+g36
+VNovember 28, 2012
+p469
+sg38
+g10
+sg39
+Vsherrina j
+p470
+sa(dp471
+g14
+VNovember 18, 2012
+p472
+sg16
+VUnion Mills, IN
+p473
+sg18
+VDorothy S
+p474
+sa(dp475
+g91
+VNovember 25, 2012
+p476
+sg93
+VNewport, VA
+p477
+sg95
+VSandra K
+p478
+sa(dp479
+g36
+VDecember 01, 2012
+p480
+sg38
+g10
+sg39
+VLisa M
+p481
+sa(dp482
+g36
+VNovember 28, 2012
+p483
+sg38
+VRancho Cucamonga, CA
+p484
+sg39
+VAaron B
+p485
+sa(dp486
+g14
+VNovember 17, 2012
+p487
+sg16
+VEast Kingston, NH
+p488
+sg18
+VAnnette C
+p489
+sa(dp490
+g148
+VNovember 25, 2012
+p491
+sg150
+VBoulder, CO
+p492
+sg152
+VGregory L
+p493
+sa(dp494
+g14
+VNovember 23, 2012
+p495
+sg16
+VLake Jackson, TX
+p496
+sg18
+VSheri D
+p497
+sa(dp498
+g14
+VNovember 18, 2012
+p499
+sg16
+VFort Myers, FL
+p500
+sg18
+VDoug R
+p501
+sa(dp502
+S'date'
+p503
+VDecember 02, 2012
+p504
+sS'loc'
+p505
+VWindsor, NC
+p506
+sS'name'
+p507
+VTammy T
+p508
+sa(dp509
+g14
+VNovember 22, 2012
+p510
+sg16
+VPuyallup, WA
+p511
+sg18
+VDawn A
+p512
+sa(dp513
+g36
+VNovember 27, 2012
+p514
+sg38
+VBremerton, WA
+p515
+sg39
+VDeborah S
+p516
+sa(dp517
+g36
+VNovember 27, 2012
+p518
+sg38
+VGalveston, TX
+p519
+sg39
+VMelissa W
+p520
+sa(dp521
+g36
+VNovember 29, 2012
+p522
+sg38
+VPittsburgh, PA
+p523
+sg39
+Vpaula r
+p524
+sa(dp525
+g14
+VNovember 22, 2012
+p526
+sg16
+VMarlboro, NY
+p527
+sg18
+Vsusan p
+p528
+sa(dp529
+g14
+VNovember 22, 2012
+p530
+sg16
+VSan Francisco, CA
+p531
+sg18
+VAdam E
+p532
+sa(dp533
+g21
+VNovember 25, 2012
+p534
+sg23
+VEl Paso, TX
+p535
+sg25
+VElizabeth S
+p536
+sa(dp537
+g21
+VNovember 24, 2012
+p538
+sg23
+g10
+sg25
+VJacqueline J
+p539
+sa(dp540
+g14
+VNovember 22, 2012
+p541
+sg16
+VAtlanta, GA
+p542
+sg18
+VJose C
+p543
+sa(dp544
+g324
+VDecember 05, 2012
+p545
+sg326
+VRedding, CA
+p546
+sg327
+VChuck M
+p547
+sa(dp548
+g14
+VNovember 22, 2012
+p549
+sg16
+VGreenville, GA
+p550
+sg18
+VFrances  T
+p551
+sa(dp552
+g36
+VNovember 28, 2012
+p553
+sg38
+VTonasket, WA
+p554
+sg39
+VJude H
+p555
+sa(dp556
+g7
+VDecember 03, 2012
+p557
+sg9
+g10
+sg11
+VKaren D
+p558
+sa(dp559
+g36
+VNovember 27, 2012
+p560
+sg38
+VMidway Park, NC
+p561
+sg39
+Visaac a
+p562
+sa(dp563
+g21
+VNovember 24, 2012
+p564
+sg23
+VGulf Breeze, FL
+p565
+sg25
+VBrian V
+p566
+sa(dp567
+g14
+VNovember 20, 2012
+p568
+sg16
+VTucson, AZ
+p569
+sg18
+VLisa W
+p570
+sa(dp571
+g36
+VNovember 26, 2012
+p572
+sg38
+VOdessa, TX
+p573
+sg39
+Velizabeth m
+p574
+sa(dp575
+g36
+VNovember 26, 2012
+p576
+sg38
+VHonolulu, HI
+p577
+sg39
+VJames K
+p578
+sa(dp579
+g14
+VNovember 18, 2012
+p580
+sg16
+VCamden Wyoming, DE
+p581
+sg18
+Vsteven w
+p582
+sa(dp583
+g21
+VNovember 25, 2012
+p584
+sg23
+VPalo Alto, CA
+p585
+sg25
+VJo Ann M
+p586
+sa(dp587
+g7
+VDecember 04, 2012
+p588
+sg9
+VSanta Monica, CA
+p589
+sg11
+VRose D
+p590
+sa(dp591
+g36
+VNovember 28, 2012
+p592
+sg38
+VDenver, CO
+p593
+sg39
+VGARY R
+p594
+sa(dp595
+g14
+VNovember 18, 2012
+p596
+sg16
+VManchester, NH
+p597
+sg18
+VSharon C
+p598
+sa(dp599
+g14
+VNovember 16, 2012
+p600
+sg16
+g10
+sg18
+Vcarolyn h
+p601
+sa(dp602
+g36
+VDecember 02, 2012
+p603
+sg38
+VIraan, TX
+p604
+sg39
+VTravis A
+p605
+sa(dp606
+g36
+VNovember 30, 2012
+p607
+sg38
+VMamaroneck, NY
+p608
+sg39
+Vcarolyn a
+p609
+sa(dp610
+g21
+VNovember 24, 2012
+p611
+sg23
+V, NY
+p612
+sg25
+VMichael R
+p613
+sa(dp614
+g14
+VNovember 23, 2012
+p615
+sg16
+VSterling, IL
+p616
+sg18
+VDavid N
+p617
+sa(dp618
+g14
+VNovember 22, 2012
+p619
+sg16
+VCentreville, AL
+p620
+sg18
+VDerrick Brett  D
+p621
+sa(dp622
+g36
+VNovember 26, 2012
+p623
+sg38
+VCranston, RI
+p624
+sg39
+VMonica S
+p625
+sa(dp626
+g7
+VDecember 03, 2012
+p627
+sg9
+VAtlanta, GA
+p628
+sg11
+VKatherine B
+p629
+sa(dp630
+g14
+VNovember 19, 2012
+p631
+sg16
+VRaymondville, TX
+p632
+sg18
+VDonna M
+p633
+sa(dp634
+g21
+VNovember 24, 2012
+p635
+sg23
+VBellingham, WA
+p636
+sg25
+VDenise &amp; Travis H
+p637
+sa(dp638
+g14
+VNovember 23, 2012
+p639
+sg16
+VSan Diego, CA
+p640
+sg18
+Vbrenna c
+p641
+sa(dp642
+g21
+VNovember 25, 2012
+p643
+sg23
+VBellflower, MO
+p644
+sg25
+VSuzanne m
+p645
+sa(dp646
+g14
+VNovember 23, 2012
+p647
+sg16
+VBoaz, AL
+p648
+sg18
+VMichael H
+p649
+sa(dp650
+g14
+VNovember 22, 2012
+p651
+sg16
+VBridgeport, CT
+p652
+sg18
+VDavid M
+p653
+sa(dp654
+g14
+VNovember 18, 2012
+p655
+sg16
+VOxford, ME
+p656
+sg18
+VPamela C
+p657
+sa(dp658
+g36
+VNovember 27, 2012
+p659
+sg38
+VFort Lauderdale, FL
+p660
+sg39
+VANdrew H
+p661
+sa(dp662
+g14
+VNovember 23, 2012
+p663
+sg16
+VIndianapolis, IN
+p664
+sg18
+VJudith S
+p665
+sa(dp666
+S'date'
+p667
+VDecember 02, 2012
+p668
+sS'loc'
+p669
+VNaperville, IL
+p670
+sS'name'
+p671
+VMary T
+p672
+sa(dp673
+g36
+VNovember 26, 2012
+p674
+sg38
+VChattanooga, TN
+p675
+sg39
+VMichelle L
+p676
+sa(dp677
+g14
+VNovember 23, 2012
+p678
+sg16
+VRolla, MO
+p679
+sg18
+VJames H
+p680
+sa(dp681
+g36
+VNovember 28, 2012
+p682
+sg38
+g10
+sg39
+Vcharles r
+p683
+sa(dp684
+g21
+VNovember 25, 2012
+p685
+sg23
+VDallas, TX
+p686
+sg25
+VAllison K
+p687
+sa(dp688
+g36
+VNovember 27, 2012
+p689
+sg38
+VStillwater, MN
+p690
+sg39
+VAnthony V
+p691
+sa(dp692
+g36
+VNovember 25, 2012
+p693
+sg38
+VPuyallup, WA
+p694
+sg39
+VSTEVEN L
+p695
+sa(dp696
+g21
+VNovember 24, 2012
+p697
+sg23
+VFort Lauderdale, FL
+p698
+sg25
+VGrady  Y
+p699
+sa(dp700
+g14
+VNovember 16, 2012
+p701
+sg16
+VLincoln, NE
+p702
+sg18
+VKyle S
+p703
+sa(dp704
+g14
+VNovember 23, 2012
+p705
+sg16
+VHurst, TX
+p706
+sg18
+Vchristopher w
+p707
+sa(dp708
+g36
+VNovember 26, 2012
+p709
+sg38
+VAshland, OR
+p710
+sg39
+VPamela G
+p711
+sa(dp712
+g36
+VNovember 30, 2012
+p713
+sg38
+g10
+sg39
+VJohn L
+p714
+sa(dp715
+g36
+VNovember 27, 2012
+p716
+sg38
+VStatesville, NC
+p717
+sg39
+VJImmy K
+p718
+sa(dp719
+g72
+VDecember 03, 2012
+p720
+sg74
+VWaukesha, WI
+p721
+sg76
+VJeremy  C
+p722
+sa(dp723
+g14
+VNovember 22, 2012
+p724
+sg16
+VBuffalo, NY
+p725
+sg18
+VJayakumar N
+p726
+sa(dp727
+g36
+VNovember 27, 2012
+p728
+sg38
+VEugene, OR
+p729
+sg39
+VIan M
+p730
+sa(dp731
+g14
+VNovember 22, 2012
+p732
+sg16
+g10
+sg18
+VMichael P
+p733
+sa(dp734
+g36
+VNovember 28, 2012
+p735
+sg38
+VSan Francisco, CA
+p736
+sg39
+VTodd S
+p737
+sa(dp738
+g14
+VNovember 23, 2012
+p739
+sg16
+VLeeds, NY
+p740
+sg18
+VA J
+p741
+sa(dp742
+g36
+VNovember 29, 2012
+p743
+sg38
+VBenson, NC
+p744
+sg39
+VDura C
+p745
+sa(dp746
+g36
+VNovember 30, 2012
+p747
+sg38
+VNedrow, NY
+p748
+sg39
+VRichard A
+p749
+sa(dp750
+g21
+VNovember 24, 2012
+p751
+sg23
+VSacramento, CA
+p752
+sg25
+Vmika j
+p753
+sa(dp754
+g14
+VNovember 22, 2012
+p755
+sg16
+g10
+sg18
+VDeborah B
+p756
+sa(dp757
+g36
+VNovember 26, 2012
+p758
+sg38
+VNatick, MA
+p759
+sg39
+VSuzanne I
+p760
+sa(dp761
+g36
+VNovember 26, 2012
+p762
+sg38
+VWest Haven, CT
+p763
+sg39
+VAlexander Z
+p764
+sa(dp765
+g36
+VDecember 01, 2012
+p766
+sg38
+VMorgantown, WV
+p767
+sg39
+VMandi R
+p768
+sa(dp769
+g36
+VNovember 28, 2012
+p770
+sg38
+g10
+sg39
+VEric H
+p771
+sa(dp772
+g7
+VDecember 04, 2012
+p773
+sg9
+g10
+sg11
+VJeffrey A
+p774
+sa(dp775
+g14
+VNovember 18, 2012
+p776
+sg16
+g10
+sg18
+VPaul R
+p777
+sa(dp778
+g14
+VNovember 22, 2012
+p779
+sg16
+VBuckhead, GA
+p780
+sg18
+VJamie R
+p781
+sa(dp782
+g36
+VNovember 25, 2012
+p783
+sg38
+g10
+sg39
+VP G
+p784
+sa(dp785
+g14
+VNovember 17, 2012
+p786
+sg16
+VBrantwood, WI
+p787
+sg18
+VBelinda C
+p788
+sa(dp789
+g14
+VNovember 18, 2012
+p790
+sg16
+VDover Foxcroft, ME
+p791
+sg18
+VDeborah R
+p792
+sa(dp793
+g21
+VNovember 24, 2012
+p794
+sg23
+VRochester, PA
+p795
+sg25
+VAdam S
+p796
+sa(dp797
+g21
+VNovember 25, 2012
+p798
+sg23
+VVenice, CA
+p799
+sg25
+VMyla R
+p800
+sa(dp801
+g14
+VNovember 17, 2012
+p802
+sg16
+VPhiladelphia, PA
+p803
+sg18
+VStacie R
+p804
+sa(dp805
+g36
+VNovember 29, 2012
+p806
+sg38
+VCranford, NJ
+p807
+sg39
+VKATHY L
+p808
+sa(dp809
+g14
+VNovember 16, 2012
+p810
+sg16
+VBrookfield, WI
+p811
+sg18
+VCarol K
+p812
+sa(dp813
+g36
+VNovember 29, 2012
+p814
+sg38
+VChoctaw, OK
+p815
+sg39
+VEd W
+p816
+sa(dp817
+g36
+VNovember 28, 2012
+p818
+sg38
+g10
+sg39
+VAaron K
+p819
+sa(dp820
+g21
+VNovember 24, 2012
+p821
+sg23
+VAthens, AL
+p822
+sg25
+VGery M
+p823
+sa(dp824
+g14
+VNovember 22, 2012
+p825
+sg16
+VRochester, WA
+p826
+sg18
+VValerie D
+p827
+sa(dp828
+g36
+VNovember 26, 2012
+p829
+sg38
+VWindermere, FL
+p830
+sg39
+VCherry W
+p831
+sa(dp832
+g21
+VNovember 25, 2012
+p833
+sg23
+g10
+sg25
+VDavid R
+p834
+sa(dp835
+g36
+VNovember 26, 2012
+p836
+sg38
+VSaint Martinville, LA
+p837
+sg39
+VShep B
+p838
+sa(dp839
+S'date'
+p840
+VDecember 04, 2012
+p841
+sS'loc'
+p842
+VAurora, CO
+p843
+sS'name'
+p844
+VRandy H
+p845
+sa(dp846
+g14
+VNovember 23, 2012
+p847
+sg16
+VYelm, WA
+p848
+sg18
+VTrust L
+p849
+sa(dp850
+g14
+VNovember 16, 2012
+p851
+sg16
+VDexter, ME
+p852
+sg18
+VPhyllis  c
+p853
+sa(dp854
+g36
+VNovember 25, 2012
+p855
+sg38
+g10
+sg39
+VMichal H
+p856
+sa(dp857
+g7
+VDecember 04, 2012
+p858
+sg9
+g10
+sg11
+VRosemary S
+p859
+sa(dp860
+g21
+VNovember 24, 2012
+p861
+sg23
+VHampton, VA
+p862
+sg25
+VMadeline F
+p863
+sa(dp864
+g36
+VNovember 28, 2012
+p865
+sg38
+VMarietta, GA
+p866
+sg39
+VBrenda M
+p867
+sa(dp868
+S'date'
+p869
+VNovember 24, 2012
+p870
+sS'loc'
+p871
+VHonolulu, HI
+p872
+sS'name'
+p873
+VSean C
+p874
+sa(dp875
+g14
+VNovember 22, 2012
+p876
+sg16
+VStanwood, WA
+p877
+sg18
+VJanie W
+p878
+sa(dp879
+g36
+VNovember 28, 2012
+p880
+sg38
+VBeverly Hills, CA
+p881
+sg39
+VMika J
+p882
+sa(dp883
+g14
+VNovember 23, 2012
+p884
+sg16
+VAmritsar, PA
+p885
+sg18
+VPardeep  K
+p886
+sa(dp887
+g14
+VNovember 22, 2012
+p888
+sg16
+VFries, VA
+p889
+sg18
+VFred B
+p890
+sa(dp891
+g14
+VNovember 23, 2012
+p892
+sg16
+g10
+sg18
+VIbrahim N
+p893
+sa(dp894
+g14
+VNovember 22, 2012
+p895
+sg16
+VGalax, VA
+p896
+sg18
+VChristopher L
+p897
+sa(dp898
+g36
+VNovember 28, 2012
+p899
+sg38
+VHayward, CA
+p900
+sg39
+VLydia A
+p901
+sa(dp902
+g14
+VNovember 18, 2012
+p903
+sg16
+VMadison Heights, VA
+p904
+sg18
+VVickie V
+p905
+sa(dp906
+g91
+VNovember 25, 2012
+p907
+sg93
+VAshland City, TN
+p908
+sg95
+VLinn G
+p909
+sa(dp910
+g14
+VNovember 18, 2012
+p911
+sg16
+VBangor, ME
+p912
+sg18
+VTracey F
+p913
+sa(dp914
+g14
+VNovember 23, 2012
+p915
+sg16
+Vsangrur
+p916
+sg18
+Vkomal s
+p917
+sa(dp918
+g21
+VNovember 24, 2012
+p919
+sg23
+VMarietta, GA
+p920
+sg25
+VElvis J
+p921
+sa(dp922
+g36
+VNovember 30, 2012
+p923
+sg38
+VWashington, DC
+p924
+sg39
+VViktor Z
+p925
+sa(dp926
+g36
+VNovember 26, 2012
+p927
+sg38
+VMio, MI
+p928
+sg39
+VSandra G
+p929
+sa(dp930
+g21
+VNovember 25, 2012
+p931
+sg23
+VCoralville, IA
+p932
+sg25
+VEmily  D
+p933
+sa(dp934
+g21
+VNovember 24, 2012
+p935
+sg23
+VOakland, CA
+p936
+sg25
+VCharles M
+p937
+sa(dp938
+g840
+VDecember 04, 2012
+p939
+sg842
+VPrague, OK
+p940
+sg844
+VRobert H
+p941
+sa(dp942
+g14
+VNovember 22, 2012
+p943
+sg16
+VDunn, NC
+p944
+sg18
+VWilliam K
+p945
+sa(dp946
+g14
+VNovember 17, 2012
+p947
+sg16
+VLamberton, MN
+p948
+sg18
+VKathy T
+p949
+sa(dp950
+g14
+VNovember 17, 2012
+p951
+sg16
+VBoca Raton, FL
+p952
+sg18
+VMike T
+p953
+sa(dp954
+g14
+VNovember 22, 2012
+p955
+sg16
+g10
+sg18
+Vwarren w
+p956
+sa(dp957
+g14
+VNovember 23, 2012
+p958
+sg16
+VPine, CO
+p959
+sg18
+VLaurent W
+p960
+sa(dp961
+g14
+VNovember 23, 2012
+p962
+sg16
+VVicksburg, MS
+p963
+sg18
+VTim W
+p964
+sa(dp965
+g21
+VNovember 25, 2012
+p966
+sg23
+VNew York, NY
+p967
+sg25
+Vnia w
+p968
+sa(dp969
+g21
+VNovember 24, 2012
+p970
+sg23
+VLouisville, KY
+p971
+sg25
+VJimmy  p
+p972
+sa(dp973
+g21
+VNovember 24, 2012
+p974
+sg23
+VBellefonte, PA
+p975
+sg25
+VAustin R
+p976
+sa(dp977
+g14
+VNovember 16, 2012
+p978
+sg16
+VOrmond Beach, FL
+p979
+sg18
+VDevera R
+p980
+sa(dp981
+g503
+VDecember 02, 2012
+p982
+sg505
+VPortland, OR
+p983
+sg507
+VChristine  H
+p984
+sa(dp985
+g14
+VNovember 18, 2012
+p986
+sg16
+VGunnison, UT
+p987
+sg18
+VTamara A
+p988
+sa(dp989
+g36
+VNovember 28, 2012
+p990
+sg38
+VSocorro, NM
+p991
+sg39
+VDaniel P
+p992
+sa(dp993
+g14
+VNovember 17, 2012
+p994
+sg16
+VColumbus, IN
+p995
+sg18
+VJulie  R
+p996
+sa(dp997
+g14
+VNovember 17, 2012
+p998
+sg16
+VHephzibah, GA
+p999
+sg18
+VDonna Kay K
+p1000
+sa(dp1001
+g36
+VNovember 29, 2012
+p1002
+sg38
+VRosemead, CA
+p1003
+sg39
+VBetty L
+p1004
+sa(dp1005
+g21
+VNovember 25, 2012
+p1006
+sg23
+VOklahoma City, OK
+p1007
+sg25
+VDiane A
+p1008
+sa(dp1009
+g148
+VNovember 25, 2012
+p1010
+sg150
+VBrazoria, TX
+p1011
+sg152
+VSharon c
+p1012
+sa(dp1013
+g21
+VNovember 24, 2012
+p1014
+sg23
+VBaltimore, MD
+p1015
+sg25
+VThomas B
+p1016
+sa(dp1017
+g14
+VNovember 22, 2012
+p1018
+sg16
+VSomis, CA
+p1019
+sg18
+Vchristine g
+p1020
+sa(dp1021
+g36
+VDecember 01, 2012
+p1022
+sg38
+VLeague City, TX
+p1023
+sg39
+VMichaelena C
+p1024
+sa(dp1025
+g21
+VNovember 25, 2012
+p1026
+sg23
+g10
+sg25
+VAngela L
+p1027
+sa(dp1028
+g21
+VNovember 25, 2012
+p1029
+sg23
+VKansas City, MO
+p1030
+sg25
+VMark I
+p1031
+sa(dp1032
+g14
+VNovember 22, 2012
+p1033
+sg16
+VEast Haven, CT
+p1034
+sg18
+VRobert B
+p1035
+sa(dp1036
+g14
+VNovember 18, 2012
+p1037
+sg16
+VBrigham City, UT
+p1038
+sg18
+VTarsha M
+p1039
+sa(dp1040
+g14
+VNovember 16, 2012
+p1041
+sg16
+VLadoga, IN
+p1042
+sg18
+VMike H
+p1043
+sa(dp1044
+g7
+VDecember 04, 2012
+p1045
+sg9
+VOrem, UT
+p1046
+sg11
+VMatthew S
+p1047
+sa(dp1048
+g14
+VNovember 22, 2012
+p1049
+sg16
+VVista, CA
+p1050
+sg18
+VMs. Ruthe d
+p1051
+sa(dp1052
+g21
+VNovember 24, 2012
+p1053
+sg23
+VEl Paso, TX
+p1054
+sg25
+VMary  A
+p1055
+sa(dp1056
+g21
+VNovember 24, 2012
+p1057
+sg23
+g10
+sg25
+Vsarah l
+p1058
+sa(dp1059
+g36
+VNovember 26, 2012
+p1060
+sg38
+g10
+sg39
+VGlenn A
+p1061
+sa(dp1062
+g36
+VNovember 28, 2012
+p1063
+sg38
+VKokomo, IN
+p1064
+sg39
+VChad K
+p1065
+sa(dp1066
+g14
+VNovember 17, 2012
+p1067
+sg16
+VLewiston, ME
+p1068
+sg18
+VDenisa L
+p1069
+sa(dp1070
+g14
+VNovember 22, 2012
+p1071
+sg16
+g10
+sg18
+VLISA H
+p1072
+sa(dp1073
+g21
+VNovember 24, 2012
+p1074
+sg23
+VOlive Branch, MS
+p1075
+sg25
+Vdonald n
+p1076
+sa(dp1077
+g36
+VNovember 29, 2012
+p1078
+sg38
+VPort Hueneme, CA
+p1079
+sg39
+VCatheryn M D
+p1080
+sa(dp1081
+g14
+VNovember 22, 2012
+p1082
+sg16
+g10
+sg18
+VDennis P
+p1083
+sa(dp1084
+g14
+VNovember 22, 2012
+p1085
+sg16
+VWest Kingston, RI
+p1086
+sg18
+VBeverly M
+p1087
+sa(dp1088
+g36
+VNovember 30, 2012
+p1089
+sg38
+VSalinas, PR
+p1090
+sg39
+VJuan R
+p1091
+sa(dp1092
+g36
+VNovember 26, 2012
+p1093
+sg38
+VSumter, SC
+p1094
+sg39
+VAngela B
+p1095
+sa(dp1096
+g36
+VNovember 29, 2012
+p1097
+sg38
+VRichmond, VA
+p1098
+sg39
+VPatricia J
+p1099
+sa(dp1100
+g21
+VNovember 24, 2012
+p1101
+sg23
+VDallas, TX
+p1102
+sg25
+VJessie D
+p1103
+sa(dp1104
+g36
+VNovember 28, 2012
+p1105
+sg38
+VDouglas, AZ
+p1106
+sg39
+Vt. f
+p1107
+sa(dp1108
+g21
+VNovember 24, 2012
+p1109
+sg23
+VMesa, AZ
+p1110
+sg25
+VRandolph G
+p1111
+sa(dp1112
+g21
+VNovember 25, 2012
+p1113
+sg23
+VAntioch, IL
+p1114
+sg25
+VAnthony D
+p1115
+sa(dp1116
+g14
+VNovember 16, 2012
+p1117
+sg16
+VAnsonia, CT
+p1118
+sg18
+VDot F
+p1119
+sa(dp1120
+g36
+VNovember 27, 2012
+p1121
+sg38
+VKewaunee, WI
+p1122
+sg39
+VDale F
+p1123
+sa(dp1124
+g36
+VNovember 26, 2012
+p1125
+sg38
+g10
+sg39
+VReffeletta A
+p1126
+sa(dp1127
+g36
+VNovember 29, 2012
+p1128
+sg38
+VSangerville, ME
+p1129
+sg39
+VDebbie C
+p1130
+sa(dp1131
+g36
+VNovember 30, 2012
+p1132
+sg38
+VSonoma, CA
+p1133
+sg39
+VJim P
+p1134
+sa(dp1135
+g14
+VNovember 20, 2012
+p1136
+sg16
+VNew Paltz, NY
+p1137
+sg18
+VJohn N
+p1138
+sa(dp1139
+g36
+VNovember 26, 2012
+p1140
+sg38
+g10
+sg39
+VSteven E
+p1141
+sa(dp1142
+g14
+VNovember 23, 2012
+p1143
+sg16
+VBicknell, IN
+p1144
+sg18
+Vearl s
+p1145
+sa(dp1146
+g21
+VNovember 24, 2012
+p1147
+sg23
+VDublin, OH
+p1148
+sg25
+VDawn S
+p1149
+sa(dp1150
+g840
+VDecember 04, 2012
+p1151
+sg842
+VMilwaukee, WI
+p1152
+sg844
+Vallan s
+p1153
+sa(dp1154
+g14
+VNovember 23, 2012
+p1155
+sg16
+g10
+sg18
+VTim D
+p1156
+sa(dp1157
+g36
+VNovember 29, 2012
+p1158
+sg38
+VAlma, AR
+p1159
+sg39
+VPatricia M
+p1160
+sa(dp1161
+g14
+VNovember 17, 2012
+p1162
+sg16
+VCrown Point, IN
+p1163
+sg18
+VJoan S
+p1164
+sa(dp1165
+S'date'
+p1166
+VNovember 25, 2012
+p1167
+sS'loc'
+p1168
+VWinston Salem, NC
+p1169
+sS'name'
+p1170
+VKarrie S
+p1171
+sa(dp1172
+g21
+VNovember 24, 2012
+p1173
+sg23
+VLebanon, PA
+p1174
+sg25
+Vrachael b
+p1175
+sa(dp1176
+g36
+VNovember 30, 2012
+p1177
+sg38
+VZephyrhills, FL
+p1178
+sg39
+VDavid B
+p1179
+sa(dp1180
+g36
+VNovember 30, 2012
+p1181
+sg38
+VGrants Pass, OR
+p1182
+sg39
+VCheryl O
+p1183
+sa(dp1184
+g36
+VNovember 26, 2012
+p1185
+sg38
+g10
+sg39
+VEdwina W
+p1186
+sa(dp1187
+g14
+VNovember 21, 2012
+p1188
+sg16
+VHamilton, AL
+p1189
+sg18
+VCHARLOTTE U
+p1190
+sa(dp1191
+g36
+VNovember 28, 2012
+p1192
+sg38
+VCamarillo, CA
+p1193
+sg39
+VFAYE H
+p1194
+sa(dp1195
+g36
+VNovember 30, 2012
+p1196
+sg38
+VKewanee, IL
+p1197
+sg39
+VJennifer R
+p1198
+sa(dp1199
+g14
+VNovember 17, 2012
+p1200
+sg16
+VOakdale, CA
+p1201
+sg18
+VLaura Y
+p1202
+sa(dp1203
+g21
+VNovember 24, 2012
+p1204
+sg23
+VPittsburgh, PA
+p1205
+sg25
+VCaroline H
+p1206
+sa(dp1207
+g36
+VNovember 27, 2012
+p1208
+sg38
+VLakewood, CO
+p1209
+sg39
+Vchristine l
+p1210
+sa(dp1211
+g14
+VNovember 22, 2012
+p1212
+sg16
+VWinston Salem, NC
+p1213
+sg18
+VMitchell R
+p1214
+sa(dp1215
+g14
+VNovember 17, 2012
+p1216
+sg16
+VKansas City, KS
+p1217
+sg18
+VToni C
+p1218
+sa(dp1219
+g1166
+VNovember 25, 2012
+p1220
+sg1168
+VFairfield, CA
+p1221
+sg1170
+VElizabeth O
+p1222
+sa(dp1223
+g91
+VNovember 25, 2012
+p1224
+sg93
+g10
+sg95
+VCharles G
+p1225
+sa(dp1226
+g36
+VNovember 29, 2012
+p1227
+sg38
+VGranite City, IL
+p1228
+sg39
+VDaniel S
+p1229
+sa(dp1230
+g21
+VNovember 25, 2012
+p1231
+sg23
+VNorwalk, CT
+p1232
+sg25
+VBrian B
+p1233
+sa(dp1234
+g840
+VDecember 04, 2012
+p1235
+sg842
+VSaint Louis, MO
+p1236
+sg844
+VRyan T
+p1237
+sa(dp1238
+g21
+VNovember 24, 2012
+p1239
+sg23
+VWalkertown, NC
+p1240
+sg25
+VCarol  C
+p1241
+sa(dp1242
+g1166
+VNovember 25, 2012
+p1243
+sg1168
+g10
+sg1170
+Vchloe r
+p1244
+sa(dp1245
+g36
+VNovember 27, 2012
+p1246
+sg38
+VWhite Plains, NY
+p1247
+sg39
+Vstacey s
+p1248
+sa(dp1249
+g14
+VNovember 22, 2012
+p1250
+sg16
+VLynn, MA
+p1251
+sg18
+VAnn M
+p1252
+sa(dp1253
+g36
+VDecember 01, 2012
+p1254
+sg38
+VWichita, KS
+p1255
+sg39
+VDonna H
+p1256
+sa(dp1257
+g21
+VNovember 24, 2012
+p1258
+sg23
+VDerwood, MD
+p1259
+sg25
+VSandra R
+p1260
+sa(dp1261
+g7
+VDecember 04, 2012
+p1262
+sg9
+VSurprise, AZ
+p1263
+sg11
+VMeryeBeth A
+p1264
+sa(dp1265
+S'date'
+p1266
+VDecember 04, 2012
+p1267
+sS'loc'
+p1268
+VKirkland, WA
+p1269
+sS'name'
+p1270
+VWarren R
+p1271
+sa(dp1272
+g14
+VNovember 22, 2012
+p1273
+sg16
+VPortland, OR
+p1274
+sg18
+VBill W
+p1275
+sa(dp1276
+g21
+VNovember 25, 2012
+p1277
+sg23
+VDothan, AL
+p1278
+sg25
+VReuben R
+p1279
+sa(dp1280
+g14
+VNovember 23, 2012
+p1281
+sg16
+VGainesville, GA
+p1282
+sg18
+VNathan P
+p1283
+sa(dp1284
+g14
+VNovember 22, 2012
+p1285
+sg16
+g10
+sg18
+VMANPREET S
+p1286
+sa(dp1287
+g14
+VNovember 22, 2012
+p1288
+sg16
+g10
+sg18
+VAmjad C
+p1289
+sa(dp1290
+g14
+VNovember 18, 2012
+p1291
+sg16
+VWickliffe, OH
+p1292
+sg18
+VMiller H
+p1293
+sa(dp1294
+g36
+VNovember 29, 2012
+p1295
+sg38
+g10
+sg39
+VNancy H
+p1296
+sa(dp1297
+S'date'
+p1298
+VNovember 25, 2012
+p1299
+sS'loc'
+p1300
+g10
+sS'name'
+p1301
+VThomas C
+p1302
+sa(dp1303
+g21
+VNovember 24, 2012
+p1304
+sg23
+g10
+sg25
+VCrystal S
+p1305
+sa(dp1306
+g36
+VNovember 29, 2012
+p1307
+sg38
+VMarcus Hook, PA
+p1308
+sg39
+VMichael D M
+p1309
+sa(dp1310
+g324
+VDecember 05, 2012
+p1311
+sg326
+VRoseville, CA
+p1312
+sg327
+Vcheryl m
+p1313
+sa(dp1314
+g840
+VDecember 04, 2012
+p1315
+sg842
+g10
+sg844
+Vjohn s
+p1316
+sa(dp1317
+g14
+VNovember 17, 2012
+p1318
+sg16
+g10
+sg18
+VJo M
+p1319
+sa(dp1320
+g14
+VNovember 22, 2012
+p1321
+sg16
+g10
+sg18
+VSuzanne H
+p1322
+sa(dp1323
+g14
+VNovember 23, 2012
+p1324
+sg16
+VCarlton, OR
+p1325
+sg18
+VJana G
+p1326
+sa(dp1327
+g36
+VNovember 26, 2012
+p1328
+sg38
+VDallas, GA
+p1329
+sg39
+VJoel L
+p1330
+sa(dp1331
+g14
+VNovember 16, 2012
+p1332
+sg16
+VOlathe, KS
+p1333
+sg18
+VJohn B
+p1334
+sa(dp1335
+g21
+VNovember 24, 2012
+p1336
+sg23
+VAnchorage, AK
+p1337
+sg25
+VDonna G
+p1338
+sa(dp1339
+g21
+VNovember 24, 2012
+p1340
+sg23
+VTucson, AZ
+p1341
+sg25
+VSterling G
+p1342
+sa(dp1343
+g21
+VNovember 25, 2012
+p1344
+sg23
+VGrantsburg, WI
+p1345
+sg25
+VMary L
+p1346
+sa(dp1347
+g21
+VNovember 24, 2012
+p1348
+sg23
+g10
+sg25
+VJoanna H
+p1349
+sa(dp1350
+g36
+VNovember 25, 2012
+p1351
+sg38
+VSeattle, WA
+p1352
+sg39
+VJoe W
+p1353
+sa(dp1354
+g14
+VNovember 22, 2012
+p1355
+sg16
+VLakeland, FL
+p1356
+sg18
+VJoseph E
+p1357
+sa(dp1358
+g36
+VNovember 30, 2012
+p1359
+sg38
+VBerkeley, CA
+p1360
+sg39
+VUrsula A
+p1361
+sa(dp1362
+g14
+VNovember 17, 2012
+p1363
+sg16
+VDenver, CO
+p1364
+sg18
+VTERRI B
+p1365
+sa(dp1366
+g14
+VNovember 18, 2012
+p1367
+sg16
+VWickliffe, OH
+p1368
+sg18
+VWilliam D
+p1369
+sa(dp1370
+g14
+VNovember 23, 2012
+p1371
+sg16
+VLondon, OH
+p1372
+sg18
+Vpaul h
+p1373
+sa(dp1374
+g14
+VNovember 22, 2012
+p1375
+sg16
+VNew Castle, PA
+p1376
+sg18
+VRonald P
+p1377
+sa(dp1378
+g14
+VNovember 22, 2012
+p1379
+sg16
+VLula, GA
+p1380
+sg18
+VAndrew A
+p1381
+sa(dp1382
+g14
+VNovember 22, 2012
+p1383
+sg16
+VBuffalo, MN
+p1384
+sg18
+Vmelody W
+p1385
+sa(dp1386
+g58
+VDecember 05, 2012
+p1387
+sg60
+VOmaha, NE
+p1388
+sg61
+VDouglas F
+p1389
+sa(dp1390
+g36
+VNovember 28, 2012
+p1391
+sg38
+VWashington, DC
+p1392
+sg39
+Vtheodore l
+p1393
+sa(dp1394
+g14
+VNovember 17, 2012
+p1395
+sg16
+VBrantwood, WI
+p1396
+sg18
+VLoren  C
+p1397
+sa(dp1398
+g36
+VNovember 26, 2012
+p1399
+sg38
+VNorth Brunswick, NJ
+p1400
+sg39
+Vray d
+p1401
+sa(dp1402
+g36
+VNovember 28, 2012
+p1403
+sg38
+VSan Antonio, TX
+p1404
+sg39
+VJordan A
+p1405
+sa(dp1406
+g36
+VNovember 28, 2012
+p1407
+sg38
+VMesa, AZ
+p1408
+sg39
+VCarol L
+p1409
+sa(dp1410
+g21
+VNovember 24, 2012
+p1411
+sg23
+g10
+sg25
+VWilliam L
+p1412
+sa(dp1413
+g36
+VNovember 28, 2012
+p1414
+sg38
+g10
+sg39
+VGemma B
+p1415
+sa(dp1416
+g667
+VDecember 03, 2012
+p1417
+sg669
+VChicago, IL
+p1418
+sg671
+VCynthia  G
+p1419
+sa(dp1420
+g14
+VNovember 22, 2012
+p1421
+sg16
+VPhiladelphia, PA
+p1422
+sg18
+VMARY M
+p1423
+sa(dp1424
+g36
+VNovember 28, 2012
+p1425
+sg38
+VBorger, TX
+p1426
+sg39
+Vwayne r
+p1427
+sa(dp1428
+g14
+VNovember 17, 2012
+p1429
+sg16
+VHope, IN
+p1430
+sg18
+VCarol s
+p1431
+sa(dp1432
+g14
+VNovember 23, 2012
+p1433
+sg16
+VMilwaukee, WI
+p1434
+sg18
+VJoan D
+p1435
+sa(dp1436
+g21
+VNovember 24, 2012
+p1437
+sg23
+VEncino, CA
+p1438
+sg25
+VJennifer L
+p1439
+sa(dp1440
+g36
+VNovember 26, 2012
+p1441
+sg38
+VBath, PA
+p1442
+sg39
+VKathy T
+p1443
+sa(dp1444
+g21
+VNovember 25, 2012
+p1445
+sg23
+Vflorence, KY
+p1446
+sg25
+Vwayne g
+p1447
+sa(dp1448
+g36
+VNovember 27, 2012
+p1449
+sg38
+VCampbell, MO
+p1450
+sg39
+VGary B
+p1451
+sa(dp1452
+g14
+VNovember 23, 2012
+p1453
+sg16
+VPicacho, AZ
+p1454
+sg18
+VChere C
+p1455
+sa(dp1456
+g14
+VNovember 22, 2012
+p1457
+sg16
+VLaramie, WY
+p1458
+sg18
+VDan P
+p1459
+sa(dp1460
+g14
+VNovember 17, 2012
+p1461
+sg16
+VDeerfield Beach, FL
+p1462
+sg18
+Vtammy l
+p1463
+sa(dp1464
+g14
+VNovember 18, 2012
+p1465
+sg16
+VSpearfish, SD
+p1466
+sg18
+VAlecSandra B
+p1467
+sa(dp1468
+g21
+VNovember 24, 2012
+p1469
+sg23
+VNappanee, IN
+p1470
+sg25
+VKerry A
+p1471
+sa(dp1472
+g14
+VNovember 20, 2012
+p1473
+sg16
+VWarren, MI
+p1474
+sg18
+VFrank D
+p1475
+sa(dp1476
+g14
+VNovember 22, 2012
+p1477
+sg16
+VBath, NY
+p1478
+sg18
+VBryon D
+p1479
+sa(dp1480
+g14
+VNovember 17, 2012
+p1481
+sg16
+VHouston, TX
+p1482
+sg18
+VDebra P
+p1483
+sa(dp1484
+g36
+VNovember 28, 2012
+p1485
+sg38
+VOrlando, FL
+p1486
+sg39
+VLolita L
+p1487
+sa(dp1488
+g14
+VNovember 16, 2012
+p1489
+sg16
+VDuncan Falls, OH
+p1490
+sg18
+Vdawn f
+p1491
+sa(dp1492
+g14
+VNovember 16, 2012
+p1493
+sg16
+VMyrtle Beach, SC
+p1494
+sg18
+VRonald S
+p1495
+sa(dp1496
+g21
+VNovember 25, 2012
+p1497
+sg23
+VBaton Rouge, LA
+p1498
+sg25
+VKim P
+p1499
+sa(dp1500
+g14
+VNovember 18, 2012
+p1501
+sg16
+VMoorhead, MN
+p1502
+sg18
+VJennifer  K
+p1503
+sa(dp1504
+g36
+VNovember 26, 2012
+p1505
+sg38
+VNorcross, GA
+p1506
+sg39
+VMarci M
+p1507
+sa(dp1508
+g21
+VNovember 24, 2012
+p1509
+sg23
+VRidley Park, PA
+p1510
+sg25
+VStephen V
+p1511
+sa(dp1512
+g36
+VNovember 27, 2012
+p1513
+sg38
+VPearland, TX
+p1514
+sg39
+VFelipe M
+p1515
+sa(dp1516
+g503
+VDecember 02, 2012
+p1517
+sg505
+VArden, NC
+p1518
+sg507
+VKenneth P
+p1519
+sa(dp1520
+g14
+VNovember 22, 2012
+p1521
+sg16
+VSmithfield, PA
+p1522
+sg18
+VAaron W
+p1523
+sa(dp1524
+g14
+VNovember 18, 2012
+p1525
+sg16
+g10
+sg18
+VRobert F
+p1526
+sa(dp1527
+g14
+VNovember 22, 2012
+p1528
+sg16
+VLombard, IL
+p1529
+sg18
+Vrohith p
+p1530
+sa(dp1531
+g36
+VNovember 26, 2012
+p1532
+sg38
+g10
+sg39
+VMelony P
+p1533
+sa(dp1534
+g324
+VDecember 05, 2012
+p1535
+sg326
+VHazel Park, MI
+p1536
+sg327
+VNanci F
+p1537
+sa(dp1538
+g14
+VNovember 22, 2012
+p1539
+sg16
+VRiverside, CA
+p1540
+sg18
+VJim C
+p1541
+sa(dp1542
+g21
+VNovember 24, 2012
+p1543
+sg23
+g10
+sg25
+VVanessa M
+p1544
+sa(dp1545
+g36
+VNovember 29, 2012
+p1546
+sg38
+g10
+sg39
+VKurt W
+p1547
+sa(dp1548
+g14
+VNovember 23, 2012
+p1549
+sg16
+VCamano, WA
+p1550
+sg18
+VJason W
+p1551
+sa(dp1552
+g36
+VNovember 27, 2012
+p1553
+sg38
+VBoca Raton, FL
+p1554
+sg39
+VAnnette B
+p1555
+sa(dp1556
+g36
+VNovember 28, 2012
+p1557
+sg38
+VIndianapolis, IN
+p1558
+sg39
+VScott R
+p1559
+sa(dp1560
+g21
+VNovember 25, 2012
+p1561
+sg23
+VLongwood, FL
+p1562
+sg25
+VLori W
+p1563
+sa(dp1564
+g21
+VNovember 24, 2012
+p1565
+sg23
+VAustin, TX
+p1566
+sg25
+VJulian S
+p1567
+sa(dp1568
+g58
+VDecember 05, 2012
+p1569
+sg60
+VSalt Lake City, UT
+p1570
+sg61
+VDarren F
+p1571
+sa(dp1572
+g14
+VNovember 17, 2012
+p1573
+sg16
+VCherry Hill, NJ
+p1574
+sg18
+VDiane P
+p1575
+sa(dp1576
+g36
+VNovember 26, 2012
+p1577
+sg38
+VAustin, TX
+p1578
+sg39
+VEmily M
+p1579
+sa(dp1580
+g21
+VNovember 25, 2012
+p1581
+sg23
+VDallas, TX
+p1582
+sg25
+VW. P
+p1583
+sa(dp1584
+g21
+VNovember 25, 2012
+p1585
+sg23
+VLovington, NM
+p1586
+sg25
+VDanielle M
+p1587
+sa(dp1588
+g36
+VNovember 26, 2012
+p1589
+sg38
+g10
+sg39
+VEmily B
+p1590
+sa(dp1591
+g14
+VNovember 23, 2012
+p1592
+sg16
+g10
+sg18
+VMatthew B
+p1593
+sa(dp1594
+g14
+VNovember 16, 2012
+p1595
+sg16
+g10
+sg18
+VCynthia M
+p1596
+sa(dp1597
+g36
+VNovember 29, 2012
+p1598
+sg38
+g10
+sg39
+VLaura T
+p1599
+sa(dp1600
+g21
+VNovember 25, 2012
+p1601
+sg23
+VPhoenix, AZ
+p1602
+sg25
+Veric s
+p1603
+sa(dp1604
+g14
+VNovember 18, 2012
+p1605
+sg16
+VMiddletown, OH
+p1606
+sg18
+Vterry m
+p1607
+sa(dp1608
+g58
+VDecember 05, 2012
+p1609
+sg60
+VDeer River, MN
+p1610
+sg61
+VAddie S
+p1611
+sa(dp1612
+g58
+VDecember 05, 2012
+p1613
+sg60
+g10
+sg61
+VNatalia L
+p1614
+sa(dp1615
+g36
+VNovember 26, 2012
+p1616
+sg38
+VCambridge, MA
+p1617
+sg39
+VDavid D
+p1618
+sa(dp1619
+g36
+VNovember 29, 2012
+p1620
+sg38
+VHendersonville, NC
+p1621
+sg39
+VAlbert C
+p1622
+sa(dp1623
+g21
+VNovember 25, 2012
+p1624
+sg23
+VLeesburg, GA
+p1625
+sg25
+VTimothy W. H
+p1626
+sa(dp1627
+g14
+VNovember 23, 2012
+p1628
+sg16
+VEddy, TX
+p1629
+sg18
+VPamela H
+p1630
+sa(dp1631
+g14
+VNovember 18, 2012
+p1632
+sg16
+VGadsden, AL
+p1633
+sg18
+VMichelle W
+p1634
+sa(dp1635
+g14
+VNovember 23, 2012
+p1636
+sg16
+VNorfolk, VA
+p1637
+sg18
+VKathleen K
+p1638
+sa(dp1639
+g14
+VNovember 22, 2012
+p1640
+sg16
+VMableton, GA
+p1641
+sg18
+Vmikel p
+p1642
+sa(dp1643
+g36
+VNovember 26, 2012
+p1644
+sg38
+VOcala, FL
+p1645
+sg39
+VJamesRyan H
+p1646
+sa(dp1647
+g21
+VNovember 24, 2012
+p1648
+sg23
+g10
+sg25
+VDiana R
+p1649
+sa(dp1650
+g14
+VNovember 22, 2012
+p1651
+sg16
+VSioux Falls, SD
+p1652
+sg18
+VJulia P
+p1653
+sa(dp1654
+g7
+VDecember 03, 2012
+p1655
+sg9
+g10
+sg11
+VCrystal F
+p1656
+sa(dp1657
+g14
+VNovember 22, 2012
+p1658
+sg16
+VAuburn, AL
+p1659
+sg18
+VSean P
+p1660
+sa(dp1661
+g21
+VNovember 24, 2012
+p1662
+sg23
+VPort Arthur, TX
+p1663
+sg25
+VFlora G
+p1664
+sa(dp1665
+g91
+VNovember 25, 2012
+p1666
+sg93
+VSeattel, WA
+p1667
+sg95
+VJerry M
+p1668
+sa(dp1669
+g21
+VNovember 24, 2012
+p1670
+sg23
+g10
+sg25
+VKris S
+p1671
+sa(dp1672
+g14
+VNovember 21, 2012
+p1673
+sg16
+VGrand Junction, CO
+p1674
+sg18
+VLatrisa M
+p1675
+sa(dp1676
+g7
+VDecember 04, 2012
+p1677
+sg9
+VWoodstock, IL
+p1678
+sg11
+VRaymond B
+p1679
+sa(dp1680
+g14
+VNovember 16, 2012
+p1681
+sg16
+VSouth Brunswick, NC
+p1682
+sg18
+VKermit G
+p1683
+sa(dp1684
+g14
+VNovember 20, 2012
+p1685
+sg16
+VTellico Plains, TN
+p1686
+sg18
+VRenea C
+p1687
+sa(dp1688
+g7
+VDecember 04, 2012
+p1689
+sg9
+VPittsburgh, PA
+p1690
+sg11
+VRalph  B
+p1691
+sa(dp1692
+g14
+VNovember 23, 2012
+p1693
+sg16
+VAnderson, IN
+p1694
+sg18
+VMichael W
+p1695
+sa(dp1696
+g36
+VNovember 29, 2012
+p1697
+sg38
+VMonterey, CA
+p1698
+sg39
+VPeter T
+p1699
+sa(dp1700
+g21
+VNovember 24, 2012
+p1701
+sg23
+g10
+sg25
+VCindy C
+p1702
+sa(dp1703
+g14
+VNovember 23, 2012
+p1704
+sg16
+VMarietta, GA
+p1705
+sg18
+VMarci M
+p1706
+sa(dp1707
+g14
+VNovember 20, 2012
+p1708
+sg16
+g10
+sg18
+Vgetstakerized@hotmail.com S
+p1709
+sa(dp1710
+g7
+VDecember 03, 2012
+p1711
+sg9
+VAtlanta, GA
+p1712
+sg11
+VRay B
+p1713
+sa(dp1714
+g21
+VNovember 25, 2012
+p1715
+sg23
+g10
+sg25
+VCheryl R
+p1716
+sa(dp1717
+g14
+VNovember 18, 2012
+p1718
+sg16
+g10
+sg18
+VLynn W
+p1719
+sa(dp1720
+g7
+VDecember 04, 2012
+p1721
+sg9
+g10
+sg11
+VGarrick O
+p1722
+sa(dp1723
+g14
+VNovember 22, 2012
+p1724
+sg16
+VCypress, TX
+p1725
+sg18
+VCandy M
+p1726
+sa(dp1727
+g7
+VDecember 03, 2012
+p1728
+sg9
+VDayton, OH
+p1729
+sg11
+VBianca N
+p1730
+sa(dp1731
+g14
+VNovember 18, 2012
+p1732
+sg16
+VWaterloo, NY
+p1733
+sg18
+Vdennis d
+p1734
+sa(dp1735
+g14
+VNovember 18, 2012
+p1736
+sg16
+VWestland, MI
+p1737
+sg18
+Vpatricia l
+p1738
+sa(dp1739
+g840
+VDecember 04, 2012
+p1740
+sg842
+VMiddle Village, NY
+p1741
+sg844
+VM. G
+p1742
+sa(dp1743
+S'date'
+p1744
+VNovember 25, 2012
+p1745
+sS'loc'
+p1746
+VNew York, NY
+p1747
+sS'name'
+p1748
+Vshermain t
+p1749
+sa(dp1750
+g21
+VNovember 24, 2012
+p1751
+sg23
+g10
+sg25
+VRebecca B
+p1752
+sa(dp1753
+g14
+VNovember 22, 2012
+p1754
+sg16
+g10
+sg18
+VJoshua D
+p1755
+sa(dp1756
+g21
+VNovember 24, 2012
+p1757
+sg23
+g10
+sg25
+Vstephen m
+p1758
+sa(dp1759
+g14
+VNovember 23, 2012
+p1760
+sg16
+VEasley, SC
+p1761
+sg18
+VJames G
+p1762
+sa(dp1763
+g14
+VNovember 16, 2012
+p1764
+sg16
+VOneonta, AL
+p1765
+sg18
+VSuzanne S
+p1766
+sa(dp1767
+g21
+VNovember 24, 2012
+p1768
+sg23
+VAcworth, GA
+p1769
+sg25
+VAnne M
+p1770
+sa(dp1771
+g324
+VDecember 05, 2012
+p1772
+sg326
+VCheyenne, WY
+p1773
+sg327
+Vjames l
+p1774
+sa(dp1775
+g14
+VNovember 23, 2012
+p1776
+sg16
+g10
+sg18
+VE K
+p1777
+sa(dp1778
+g21
+VNovember 24, 2012
+p1779
+sg23
+g10
+sg25
+VRobin W
+p1780
+sa(dp1781
+g36
+VNovember 26, 2012
+p1782
+sg38
+VTampa, FL
+p1783
+sg39
+VDavid F
+p1784
+sa(dp1785
+g14
+VNovember 22, 2012
+p1786
+sg16
+g10
+sg18
+VCraig O
+p1787
+sa(dp1788
+g14
+VNovember 22, 2012
+p1789
+sg16
+VLebanon, OR
+p1790
+sg18
+VHarrison H
+p1791
+sa(dp1792
+g21
+VNovember 25, 2012
+p1793
+sg23
+VYoungtown, AZ
+p1794
+sg25
+VKathleen C
+p1795
+sa(dp1796
+g36
+VNovember 28, 2012
+p1797
+sg38
+VNewport News, VA
+p1798
+sg39
+Vronald e
+p1799
+sa(dp1800
+g14
+VNovember 16, 2012
+p1801
+sg16
+VScottsdale, AZ
+p1802
+sg18
+VKurt K
+p1803
+sa(dp1804
+g36
+VNovember 28, 2012
+p1805
+sg38
+g10
+sg39
+VShawn F
+p1806
+sa(dp1807
+g14
+VNovember 23, 2012
+p1808
+sg16
+VApple Valley, CA
+p1809
+sg18
+VEric D
+p1810
+sa(dp1811
+g1266
+VDecember 04, 2012
+p1812
+sg1268
+g10
+sg1270
+VDrew A
+p1813
+sa(dp1814
+g14
+VNovember 23, 2012
+p1815
+sg16
+g10
+sg18
+Vammie P
+p1816
+sa(dp1817
+g36
+VNovember 29, 2012
+p1818
+sg38
+VBethesda, MD
+p1819
+sg39
+VLarry H
+p1820
+sa(dp1821
+g36
+VNovember 27, 2012
+p1822
+sg38
+VRowlett, TX
+p1823
+sg39
+VStephen W
+p1824
+sa(dp1825
+g840
+VDecember 04, 2012
+p1826
+sg842
+VIdaho Falls, ID
+p1827
+sg844
+VVictor C
+p1828
+sa(dp1829
+g21
+VNovember 25, 2012
+p1830
+sg23
+VWashington, DC
+p1831
+sg25
+VKimberley M
+p1832
+sa(dp1833
+g14
+VNovember 17, 2012
+p1834
+sg16
+VCumberland, RI
+p1835
+sg18
+VWendy B
+p1836
+sa(dp1837
+g14
+VNovember 18, 2012
+p1838
+sg16
+VBrilliant, AL
+p1839
+sg18
+VDiane M
+p1840
+sa(dp1841
+g14
+VNovember 18, 2012
+p1842
+sg16
+VNauvoo, AL
+p1843
+sg18
+VAmy D
+p1844
+sa(dp1845
+g14
+VNovember 18, 2012
+p1846
+sg16
+VLancaster, PA
+p1847
+sg18
+VRussell L
+p1848
+sa(dp1849
+g36
+VNovember 26, 2012
+p1850
+sg38
+g10
+sg39
+VAlanna C
+p1851
+sa(dp1852
+g14
+VNovember 23, 2012
+p1853
+sg16
+VCrown Point, IN
+p1854
+sg18
+VStacey V
+p1855
+sa(dp1856
+g36
+VNovember 27, 2012
+p1857
+sg38
+VJacksonville, FL
+p1858
+sg39
+VJamie P
+p1859
+sa(dp1860
+g14
+VNovember 23, 2012
+p1861
+sg16
+VSarcoxie, MO
+p1862
+sg18
+VJennifer J
+p1863
+sa(dp1864
+g14
+VNovember 23, 2012
+p1865
+sg16
+g10
+sg18
+VRobert K
+p1866
+sa(dp1867
+g14
+VNovember 17, 2012
+p1868
+sg16
+VColumbus, IN
+p1869
+sg18
+VSandra C
+p1870
+sa(dp1871
+g21
+VNovember 24, 2012
+p1872
+sg23
+g10
+sg25
+Vmarjoyrie h
+p1873
+sa(dp1874
+g14
+VNovember 16, 2012
+p1875
+sg16
+VWabash, IN
+p1876
+sg18
+VNannette G
+p1877
+sa(dp1878
+g21
+VNovember 24, 2012
+p1879
+sg23
+VPort Matilda, PA
+p1880
+sg25
+VBrittany  A
+p1881
+sa(dp1882
+g21
+VNovember 24, 2012
+p1883
+sg23
+VMadison, WI
+p1884
+sg25
+VMichael F
+p1885
+sa(dp1886
+g14
+VNovember 22, 2012
+p1887
+sg16
+g10
+sg18
+Vwalter h
+p1888
+sa(dp1889
+g14
+VNovember 17, 2012
+p1890
+sg16
+VEnfield, CT
+p1891
+sg18
+VSally C
+p1892
+sa(dp1893
+g36
+VDecember 01, 2012
+p1894
+sg38
+VRidgewood, NY
+p1895
+sg39
+VDrew Z
+p1896
+sa(dp1897
+g36
+VNovember 26, 2012
+p1898
+sg38
+VAurora, CO
+p1899
+sg39
+VJames ella  o
+p1900
+sa(dp1901
+g21
+VNovember 24, 2012
+p1902
+sg23
+VConroe, TX
+p1903
+sg25
+VSonny L
+p1904
+sa(dp1905
+g36
+VNovember 26, 2012
+p1906
+sg38
+VLeslie, AR
+p1907
+sg39
+VAngi H
+p1908
+sa(dp1909
+g14
+VNovember 23, 2012
+p1910
+sg16
+VRohnert Park, CA
+p1911
+sg18
+VRuth W
+p1912
+sa(dp1913
+g36
+VNovember 27, 2012
+p1914
+sg38
+g10
+sg39
+VAngela M
+p1915
+sa(dp1916
+g36
+VNovember 30, 2012
+p1917
+sg38
+VWooster, OH
+p1918
+sg39
+VOlivia K
+p1919
+sa(dp1920
+g14
+VNovember 22, 2012
+p1921
+sg16
+g10
+sg18
+VJoseph C
+p1922
+sa(dp1923
+g36
+VNovember 30, 2012
+p1924
+sg38
+VDayton, OH
+p1925
+sg39
+VRebecca A
+p1926
+sa(dp1927
+g36
+VNovember 27, 2012
+p1928
+sg38
+VBon Secour, AL
+p1929
+sg39
+VWilliam M
+p1930
+sa(dp1931
+g36
+VNovember 26, 2012
+p1932
+sg38
+VAnchorage, AK
+p1933
+sg39
+VCheryl P
+p1934
+sa(dp1935
+g14
+VNovember 20, 2012
+p1936
+sg16
+VLongmont, CO
+p1937
+sg18
+VJill K
+p1938
+sa(dp1939
+g21
+VNovember 25, 2012
+p1940
+sg23
+VNaples, ID
+p1941
+sg25
+VDana W
+p1942
+sa(dp1943
+g14
+VNovember 22, 2012
+p1944
+sg16
+g10
+sg18
+VJoann M
+p1945
+sa(dp1946
+g21
+VNovember 24, 2012
+p1947
+sg23
+VLarchmont, NY
+p1948
+sg25
+VMaurice V
+p1949
+sa(dp1950
+g36
+VNovember 25, 2012
+p1951
+sg38
+VNewark, CA
+p1952
+sg39
+VAjit S
+p1953
+sa(dp1954
+g36
+VNovember 26, 2012
+p1955
+sg38
+VTucson, AZ
+p1956
+sg39
+VValerie K
+p1957
+sa(dp1958
+g14
+VNovember 18, 2012
+p1959
+sg16
+g10
+sg18
+Vmichael t
+p1960
+sa(dp1961
+g36
+VNovember 25, 2012
+p1962
+sg38
+VEdwardsville, IL
+p1963
+sg39
+Vmary k s
+p1964
+sa(dp1965
+g36
+VNovember 26, 2012
+p1966
+sg38
+VGreat Mills, MD
+p1967
+sg39
+VNora E
+p1968
+sa(dp1969
+g503
+VDecember 02, 2012
+p1970
+sg505
+VWest Salem, IL
+p1971
+sg507
+VJason W
+p1972
+sa(dp1973
+g21
+VNovember 24, 2012
+p1974
+sg23
+VGlen Cove, NY
+p1975
+sg25
+VLaura S
+p1976
+sa(dp1977
+g21
+VNovember 24, 2012
+p1978
+sg23
+VCornish Flat, NH
+p1979
+sg25
+VHeather B
+p1980
+sa(dp1981
+g36
+VNovember 29, 2012
+p1982
+sg38
+VMedford, OR
+p1983
+sg39
+VLouis S
+p1984
+sa(dp1985
+g21
+VNovember 24, 2012
+p1986
+sg23
+VMonroe, NY
+p1987
+sg25
+VSarah C
+p1988
+sa(dp1989
+g14
+VNovember 16, 2012
+p1990
+sg16
+VJupiter, FL
+p1991
+sg18
+VTheo P
+p1992
+sa(dp1993
+g36
+VNovember 27, 2012
+p1994
+sg38
+VBaltimore, MD
+p1995
+sg39
+VJanice P
+p1996
+sa(dp1997
+g36
+VNovember 27, 2012
+p1998
+sg38
+VYuma, AZ
+p1999
+sg39
+VManeesh P
+p2000
+sa(dp2001
+g14
+VNovember 23, 2012
+p2002
+sg16
+VFort Walton Beach, FL
+p2003
+sg18
+VDavid W
+p2004
+sa(dp2005
+g91
+VNovember 25, 2012
+p2006
+sg93
+VRush City, MN
+p2007
+sg95
+VFran T
+p2008
+sa(dp2009
+g36
+VNovember 26, 2012
+p2010
+sg38
+g10
+sg39
+VAnn H
+p2011
+sa(dp2012
+g21
+VNovember 24, 2012
+p2013
+sg23
+VGroton, VT
+p2014
+sg25
+VDeborah T
+p2015
+sa(dp2016
+g7
+VDecember 04, 2012
+p2017
+sg9
+VDorchester, IA
+p2018
+sg11
+VSara S
+p2019
+sa(dp2020
+g14
+VNovember 23, 2012
+p2021
+sg16
+VRochester, MI
+p2022
+sg18
+VJames C
+p2023
+sa(dp2024
+g36
+VNovember 27, 2012
+p2025
+sg38
+VMidland, TX
+p2026
+sg39
+VBrittany T
+p2027
+sa(dp2028
+g36
+VNovember 28, 2012
+p2029
+sg38
+VKalispell, MT
+p2030
+sg39
+VRichard M
+p2031
+sa(dp2032
+g14
+VNovember 18, 2012
+p2033
+sg16
+g10
+sg18
+VAlan R
+p2034
+sa(dp2035
+g36
+VNovember 29, 2012
+p2036
+sg38
+VSedgwick, KS
+p2037
+sg39
+VAllan M
+p2038
+sa(dp2039
+g14
+VNovember 16, 2012
+p2040
+sg16
+VColonial Beach, VA
+p2041
+sg18
+VWanda F
+p2042
+sa(dp2043
+g14
+VNovember 18, 2012
+p2044
+sg16
+VWausau, WI
+p2045
+sg18
+VBarbara S
+p2046
+sa(dp2047
+g503
+VDecember 02, 2012
+p2048
+sg505
+g10
+sg507
+VKim O
+p2049
+sa(dp2050
+g840
+VDecember 04, 2012
+p2051
+sg842
+VBronx, NY
+p2052
+sg844
+VViola C
+p2053
+sa(dp2054
+g14
+VNovember 23, 2012
+p2055
+sg16
+VCanton, NC
+p2056
+sg18
+VHolly B
+p2057
+sa(dp2058
+g21
+VNovember 24, 2012
+p2059
+sg23
+VMinneapolis, MN
+p2060
+sg25
+VChanning s
+p2061
+sa(dp2062
+g14
+VNovember 23, 2012
+p2063
+sg16
+VCentral City, PA
+p2064
+sg18
+Vjonathan b
+p2065
+sa(dp2066
+g14
+VNovember 18, 2012
+p2067
+sg16
+VMoncks Corner, SC
+p2068
+sg18
+VJoan H
+p2069
+sa(dp2070
+g14
+VNovember 23, 2012
+p2071
+sg16
+VPonte Vedra Beach, FL
+p2072
+sg18
+VGabriel M
+p2073
+sa(dp2074
+g7
+VDecember 04, 2012
+p2075
+sg9
+VLogan, UT
+p2076
+sg11
+VBrady E
+p2077
+sa(dp2078
+g14
+VNovember 20, 2012
+p2079
+sg16
+VRacine, WI
+p2080
+sg18
+VJoan S
+p2081
+sa(dp2082
+g14
+VNovember 17, 2012
+p2083
+sg16
+VLake Station, IN
+p2084
+sg18
+VLaura D
+p2085
+sa(dp2086
+g14
+VNovember 22, 2012
+p2087
+sg16
+VNorwood, NY
+p2088
+sg18
+VPatrick L
+p2089
+sa(dp2090
+g14
+VNovember 16, 2012
+p2091
+sg16
+VLebanon, OH
+p2092
+sg18
+VMelanie T
+p2093
+sa(dp2094
+g36
+VNovember 26, 2012
+p2095
+sg38
+g10
+sg39
+VNathan S
+p2096
+sa(dp2097
+g36
+VNovember 27, 2012
+p2098
+sg38
+g10
+sg39
+VHarold S
+p2099
+sa(dp2100
+g14
+VNovember 23, 2012
+p2101
+sg16
+VWildomar, CA
+p2102
+sg18
+VCatherine K
+p2103
+sa(dp2104
+g14
+VNovember 18, 2012
+p2105
+sg16
+VTowson, MD
+p2106
+sg18
+VDale C
+p2107
+sa(dp2108
+g21
+VNovember 24, 2012
+p2109
+sg23
+VEl Paso, TX
+p2110
+sg25
+VErick T
+p2111
+sa(dp2112
+g36
+VNovember 26, 2012
+p2113
+sg38
+VIrvine, CA
+p2114
+sg39
+VLarry W
+p2115
+sa(dp2116
+g14
+VNovember 23, 2012
+p2117
+sg16
+VHouston, TX
+p2118
+sg18
+VGlynden B
+p2119
+sa(dp2120
+g36
+VNovember 27, 2012
+p2121
+sg38
+VBrooklyn, NY
+p2122
+sg39
+VPatrick M. D
+p2123
+sa(dp2124
+g21
+VNovember 24, 2012
+p2125
+sg23
+VTaylor, MI
+p2126
+sg25
+VNikka C
+p2127
+sa(dp2128
+g21
+VNovember 25, 2012
+p2129
+sg23
+VManassas, VA
+p2130
+sg25
+VPerlita R
+p2131
+sa(dp2132
+g14
+VNovember 22, 2012
+p2133
+sg16
+VCoolidge, AZ
+p2134
+sg18
+VSteven M
+p2135
+sa(dp2136
+g36
+VNovember 26, 2012
+p2137
+sg38
+VAvondale, AZ
+p2138
+sg39
+VElizabeth T
+p2139
+sa(dp2140
+g14
+VNovember 18, 2012
+p2141
+sg16
+VColorado Springs, CO
+p2142
+sg18
+VPatrice H
+p2143
+sa(dp2144
+g36
+VNovember 26, 2012
+p2145
+sg38
+Vcongers, NY
+p2146
+sg39
+Vursula i
+p2147
+sa(dp2148
+g36
+VNovember 27, 2012
+p2149
+sg38
+VVirgie, KY
+p2150
+sg39
+VMartin N
+p2151
+sa(dp2152
+g58
+VDecember 05, 2012
+p2153
+sg60
+VOklahoma City, OK
+p2154
+sg61
+Vjames s
+p2155
+sa(dp2156
+g36
+VNovember 28, 2012
+p2157
+sg38
+V, MA
+p2158
+sg39
+VMaisha T
+p2159
+sa(dp2160
+g7
+VDecember 04, 2012
+p2161
+sg9
+VIndianapolis, IN
+p2162
+sg11
+VDorothy S
+p2163
+sa(dp2164
+g14
+VNovember 22, 2012
+p2165
+sg16
+VBonne Terre, MO
+p2166
+sg18
+VDoug W
+p2167
+sa(dp2168
+g36
+VNovember 29, 2012
+p2169
+sg38
+VCenterville, GA
+p2170
+sg39
+Vjason b
+p2171
+sa(dp2172
+g14
+VNovember 23, 2012
+p2173
+sg16
+VBartlesville, OK
+p2174
+sg18
+VMichael P
+p2175
+sa(dp2176
+g36
+VNovember 28, 2012
+p2177
+sg38
+VPlano, TX
+p2178
+sg39
+VWarren S
+p2179
+sa(dp2180
+g840
+VDecember 04, 2012
+p2181
+sg842
+VSchiller Park, IL
+p2182
+sg844
+VRobert R
+p2183
+sa(dp2184
+g14
+VNovember 22, 2012
+p2185
+sg16
+VEuclid, OH
+p2186
+sg18
+Vlena s
+p2187
+sa(dp2188
+g21
+VNovember 24, 2012
+p2189
+sg23
+VRoy, UT
+p2190
+sg25
+VMargie N
+p2191
+sa(dp2192
+g36
+VNovember 28, 2012
+p2193
+sg38
+VMonroe, GA
+p2194
+sg39
+VTina W
+p2195
+sa(dp2196
+g14
+VNovember 17, 2012
+p2197
+sg16
+g10
+sg18
+VAlbert O
+p2198
+sa(dp2199
+g36
+VNovember 26, 2012
+p2200
+sg38
+VSan Jose, CA
+p2201
+sg39
+VMatt F
+p2202
+sa(dp2203
+g21
+VNovember 24, 2012
+p2204
+sg23
+VClackamas, OR
+p2205
+sg25
+VDustin L
+p2206
+sa(dp2207
+g36
+VNovember 28, 2012
+p2208
+sg38
+VSan Angelo, TX
+p2209
+sg39
+VRobert A
+p2210
+sa(dp2211
+g14
+VNovember 22, 2012
+p2212
+sg16
+VBranch, AR
+p2213
+sg18
+VLaken M
+p2214
+sa(dp2215
+g7
+VDecember 04, 2012
+p2216
+sg9
+VMenifee, CA
+p2217
+sg11
+VBenjamin w
+p2218
+sa(dp2219
+g36
+VNovember 26, 2012
+p2220
+sg38
+VRed Oak, TX
+p2221
+sg39
+VDustyn A
+p2222
+sa(dp2223
+g21
+VNovember 24, 2012
+p2224
+sg23
+VDenton, TX
+p2225
+sg25
+VDavid S
+p2226
+sa(dp2227
+g21
+VNovember 24, 2012
+p2228
+sg23
+VEureka, MT
+p2229
+sg25
+Vbradley n
+p2230
+sa(dp2231
+g14
+VNovember 16, 2012
+p2232
+sg16
+VSoddy Daisy, TN
+p2233
+sg18
+VMelissa b
+p2234
+sa(dp2235
+g14
+VNovember 17, 2012
+p2236
+sg16
+VGeorgetown, SC
+p2237
+sg18
+VEvanna K
+p2238
+sa(dp2239
+g21
+VNovember 24, 2012
+p2240
+sg23
+VBuffalo Grove, IL
+p2241
+sg25
+VKatherine W
+p2242
+sa(dp2243
+g36
+VNovember 25, 2012
+p2244
+sg38
+VOklahoma City, OK
+p2245
+sg39
+VLeslie T
+p2246
+sa(dp2247
+g91
+VNovember 25, 2012
+p2248
+sg93
+g10
+sg95
+Vshannan s
+p2249
+sa(dp2250
+g36
+VNovember 28, 2012
+p2251
+sg38
+VSalt Lake City, UT
+p2252
+sg39
+VJeneil M
+p2253
+sa(dp2254
+g36
+VNovember 30, 2012
+p2255
+sg38
+VDistrict Heights, MD
+p2256
+sg39
+VGimmie V
+p2257
+sa(dp2258
+g14
+VNovember 23, 2012
+p2259
+sg16
+VLos Lunas, NM
+p2260
+sg18
+Vcharles c
+p2261
+sa(dp2262
+g36
+VNovember 30, 2012
+p2263
+sg38
+VEuclid, OH
+p2264
+sg39
+VJordan M
+p2265
+sa(dp2266
+g1744
+VNovember 25, 2012
+p2267
+sg1746
+VPensacola, FL
+p2268
+sg1748
+VJ Q
+p2269
+sa(dp2270
+g58
+VDecember 05, 2012
+p2271
+sg60
+g10
+sg61
+VAndrea A
+p2272
+sa(dp2273
+S'date'
+p2274
+VNovember 25, 2012
+p2275
+sS'loc'
+p2276
+VRichmond, VA
+p2277
+sS'name'
+p2278
+VThomas G
+p2279
+sa(dp2280
+g21
+VNovember 24, 2012
+p2281
+sg23
+VOoltewah, TN
+p2282
+sg25
+VAlexander I
+p2283
+sa(dp2284
+g14
+VNovember 23, 2012
+p2285
+sg16
+VArvada, CO
+p2286
+sg18
+VDianne M
+p2287
+sa(dp2288
+g21
+VNovember 24, 2012
+p2289
+sg23
+VMinneapolis, MN
+p2290
+sg25
+VJeffrey T
+p2291
+sa(dp2292
+g14
+VNovember 22, 2012
+p2293
+sg16
+VVassar, MI
+p2294
+sg18
+VKathrine C
+p2295
+sa(dp2296
+g21
+VNovember 24, 2012
+p2297
+sg23
+VDenver, CO
+p2298
+sg25
+Vsteve j
+p2299
+sa(dp2300
+g36
+VDecember 01, 2012
+p2301
+sg38
+VFredericksburg, VA
+p2302
+sg39
+VJennifer J
+p2303
+sa(dp2304
+g840
+VDecember 04, 2012
+p2305
+sg842
+VSan Diego, CA
+p2306
+sg844
+VMichael M
+p2307
+sa(dp2308
+g7
+VDecember 04, 2012
+p2309
+sg9
+g10
+sg11
+VHeather A
+p2310
+sa(dp2311
+g14
+VNovember 22, 2012
+p2312
+sg16
+VLouisburg, NC
+p2313
+sg18
+VEdith E
+p2314
+sa(dp2315
+g14
+VNovember 23, 2012
+p2316
+sg16
+VLas Vegas, NV
+p2317
+sg18
+VBill M
+p2318
+sa(dp2319
+g36
+VNovember 29, 2012
+p2320
+sg38
+VBaltimore, MD
+p2321
+sg39
+VDON Z
+p2322
+sa(dp2323
+g36
+VNovember 26, 2012
+p2324
+sg38
+VSouth Portland, ME
+p2325
+sg39
+VCHARLES R
+p2326
+sa(dp2327
+g14
+VNovember 18, 2012
+p2328
+sg16
+VWindham, ME
+p2329
+sg18
+Velizabeth s
+p2330
+sa(dp2331
+S'date'
+p2332
+VDecember 04, 2012
+p2333
+sS'loc'
+p2334
+VOklahoma City, OK
+p2335
+sS'name'
+p2336
+VLINDA  S
+p2337
+sa(dp2338
+g7
+VDecember 04, 2012
+p2339
+sg9
+VColorado Springs, CO
+p2340
+sg11
+VRyan D
+p2341
+sa(dp2342
+g58
+VDecember 05, 2012
+p2343
+sg60
+VLarkspur, CA
+p2344
+sg61
+VDebora B
+p2345
+sa(dp2346
+g21
+VNovember 25, 2012
+p2347
+sg23
+VPort Charlotte, FL
+p2348
+sg25
+Vmelita d
+p2349
+sa(dp2350
+g21
+VNovember 24, 2012
+p2351
+sg23
+VOpelika, AL
+p2352
+sg25
+VJosh S
+p2353
+sa(dp2354
+g36
+VNovember 27, 2012
+p2355
+sg38
+VClarendon, PA
+p2356
+sg39
+VBarbara L
+p2357
+sa(dp2358
+g14
+VNovember 23, 2012
+p2359
+sg16
+VLas Vegas, NV
+p2360
+sg18
+VEmelda H
+p2361
+sa(dp2362
+g36
+VNovember 26, 2012
+p2363
+sg38
+VMcIntosh, NM
+p2364
+sg39
+VLoyola C
+p2365
+sa(dp2366
+g14
+VNovember 22, 2012
+p2367
+sg16
+VMebane, NC
+p2368
+sg18
+Vwanda f
+p2369
+sa(dp2370
+g14
+VNovember 22, 2012
+p2371
+sg16
+VMendon, NY
+p2372
+sg18
+VRenee A
+p2373
+sa(dp2374
+g14
+VNovember 22, 2012
+p2375
+sg16
+g10
+sg18
+VKiranjeet K
+p2376
+sa(dp2377
+g14
+VNovember 23, 2012
+p2378
+sg16
+VBrooklyn, NY
+p2379
+sg18
+VJoseph R
+p2380
+sa(dp2381
+g36
+VNovember 25, 2012
+p2382
+sg38
+VWillimantic, CT
+p2383
+sg39
+Vbrian M
+p2384
+sa(dp2385
+g21
+VNovember 24, 2012
+p2386
+sg23
+VCommerce Township, MI
+p2387
+sg25
+Vkaiti m
+p2388
+sa(dp2389
+g667
+VDecember 02, 2012
+p2390
+sg669
+g10
+sg671
+VAndrer C
+p2391
+sa(dp2392
+g14
+VNovember 22, 2012
+p2393
+sg16
+g10
+sg18
+VMary H
+p2394
+sa(dp2395
+g21
+VNovember 24, 2012
+p2396
+sg23
+VNewburgh, NY
+p2397
+sg25
+VCathy K
+p2398
+sa(dp2399
+g21
+VNovember 25, 2012
+p2400
+sg23
+VFairfield, CT
+p2401
+sg25
+VRuth Anne B
+p2402
+sa(dp2403
+g14
+VNovember 17, 2012
+p2404
+sg16
+g10
+sg18
+VDiane S
+p2405
+sa(dp2406
+g14
+VNovember 23, 2012
+p2407
+sg16
+VWapakoneta, OH
+p2408
+sg18
+VBarbara B
+p2409
+sa(dp2410
+g14
+VNovember 17, 2012
+p2411
+sg16
+VBloomsbury, NJ
+p2412
+sg18
+VKirsten H
+p2413
+sa(dp2414
+g36
+VNovember 26, 2012
+p2415
+sg38
+VPekin, ND
+p2416
+sg39
+VMarcus B
+p2417
+sa(dp2418
+g14
+VNovember 23, 2012
+p2419
+sg16
+VSpringfield, VA
+p2420
+sg18
+VAnnette D
+p2421
+sa(dp2422
+g36
+VNovember 28, 2012
+p2423
+sg38
+VWisconsin Rapids, WI
+p2424
+sg39
+VJake C
+p2425
+sa(dp2426
+g21
+VNovember 24, 2012
+p2427
+sg23
+VCleveland, OH
+p2428
+sg25
+VAndrew H
+p2429
+sa(dp2430
+g840
+VDecember 04, 2012
+p2431
+sg842
+VCarrollton, TX
+p2432
+sg844
+VJosh F
+p2433
+sa(dp2434
+g36
+VNovember 26, 2012
+p2435
+sg38
+VPinetop, AZ
+p2436
+sg39
+VDavid A
+p2437
+sa(dp2438
+g14
+VNovember 22, 2012
+p2439
+sg16
+VPatton, PA
+p2440
+sg18
+VDonna L
+p2441
+sa(dp2442
+g14
+VNovember 16, 2012
+p2443
+sg16
+VSoddy Daisy, TN
+p2444
+sg18
+VKathy J
+p2445
+sa(dp2446
+g14
+VNovember 23, 2012
+p2447
+sg16
+VSacramento, CA
+p2448
+sg18
+VMelissa C
+p2449
+sa(dp2450
+g14
+VNovember 23, 2012
+p2451
+sg16
+VLitchfield Park, AZ
+p2452
+sg18
+VSara P
+p2453
+sa(dp2454
+g21
+VNovember 24, 2012
+p2455
+sg23
+VElk Grove, CA
+p2456
+sg25
+VWilliam E
+p2457
+sa(dp2458
+g36
+VDecember 01, 2012
+p2459
+sg38
+VGeorgetown, TX
+p2460
+sg39
+VF Peter S
+p2461
+sa(dp2462
+g14
+VNovember 18, 2012
+p2463
+sg16
+VSpokane, WA
+p2464
+sg18
+VLevi H
+p2465
+sa(dp2466
+g36
+VNovember 28, 2012
+p2467
+sg38
+VRussell, KY
+p2468
+sg39
+VKristopher H
+p2469
+sa(dp2470
+g7
+VDecember 03, 2012
+p2471
+sg9
+VNeillsville
+p2472
+sg11
+VKelly R
+p2473
+sa(dp2474
+g14
+VNovember 23, 2012
+p2475
+sg16
+VAuburn, WA
+p2476
+sg18
+VRobert A
+p2477
+sa(dp2478
+g14
+VNovember 18, 2012
+p2479
+sg16
+VWinter Haven, FL
+p2480
+sg18
+Vbonnie p
+p2481
+sa(dp2482
+g21
+VNovember 24, 2012
+p2483
+sg23
+VNewport News, VA
+p2484
+sg25
+VSarah M
+p2485
+sa(dp2486
+g36
+VNovember 28, 2012
+p2487
+sg38
+VRaleigh, NC
+p2488
+sg39
+VJohn K
+p2489
+sa(dp2490
+g21
+VNovember 24, 2012
+p2491
+sg23
+VHermitage, PA
+p2492
+sg25
+Veric m
+p2493
+sa(dp2494
+g36
+VNovember 28, 2012
+p2495
+sg38
+g10
+sg39
+VDeAnna C
+p2496
+sa(dp2497
+g840
+VDecember 04, 2012
+p2498
+sg842
+g10
+sg844
+VAndrew P
+p2499
+sa(dp2500
+g21
+VNovember 24, 2012
+p2501
+sg23
+VSpring, TX
+p2502
+sg25
+VStephen D
+p2503
+sa(dp2504
+g21
+VNovember 25, 2012
+p2505
+sg23
+VWickenburg, AZ
+p2506
+sg25
+VNeil K
+p2507
+sa(dp2508
+g36
+VNovember 29, 2012
+p2509
+sg38
+VLake Oswego, OR
+p2510
+sg39
+VDrew G
+p2511
+sa(dp2512
+g14
+VNovember 23, 2012
+p2513
+sg16
+g10
+sg18
+VKurt S
+p2514
+sa(dp2515
+g36
+VNovember 28, 2012
+p2516
+sg38
+VStuart, FL
+p2517
+sg39
+VLoraine A
+p2518
+sa(dp2519
+g36
+VNovember 27, 2012
+p2520
+sg38
+VDes Moines, IA
+p2521
+sg39
+VKae R
+p2522
+sa(dp2523
+g14
+VNovember 20, 2012
+p2524
+sg16
+VDexter, ME
+p2525
+sg18
+VPatricia P
+p2526
+sa(dp2527
+g14
+VNovember 23, 2012
+p2528
+sg16
+VVoorhees, NJ
+p2529
+sg18
+VStela Z
+p2530
+sa(dp2531
+g21
+VNovember 25, 2012
+p2532
+sg23
+g10
+sg25
+Vsarah m
+p2533
+sa(dp2534
+g36
+VNovember 26, 2012
+p2535
+sg38
+g10
+sg39
+VCaitlin G
+p2536
+sa(dp2537
+g36
+VNovember 28, 2012
+p2538
+sg38
+g10
+sg39
+Vsherrie t
+p2539
+sa(dp2540
+g21
+VNovember 24, 2012
+p2541
+sg23
+VMechanicsburg, PA
+p2542
+sg25
+VLeonard A
+p2543
+sa(dp2544
+g36
+VNovember 26, 2012
+p2545
+sg38
+VHixson, TN
+p2546
+sg39
+VLeah N
+p2547
+sa(dp2548
+g21
+VNovember 24, 2012
+p2549
+sg23
+VBeverly Hills, CA
+p2550
+sg25
+Vjoel b
+p2551
+sa(dp2552
+g36
+VNovember 27, 2012
+p2553
+sg38
+VBoulder, CO
+p2554
+sg39
+VSue H
+p2555
+sa(dp2556
+g91
+VNovember 25, 2012
+p2557
+sg93
+g10
+sg95
+VJennie B
+p2558
+sa(dp2559
+g14
+VNovember 23, 2012
+p2560
+sg16
+VHumble, TX
+p2561
+sg18
+VRenee K
+p2562
+sa(dp2563
+g91
+VNovember 25, 2012
+p2564
+sg93
+VFort Lupton, CO
+p2565
+sg95
+VRichard B
+p2566
+sa(dp2567
+g14
+VNovember 23, 2012
+p2568
+sg16
+VStaunton, VA
+p2569
+sg18
+VAmanda P
+p2570
+sa(dp2571
+g36
+VNovember 25, 2012
+p2572
+sg38
+VLas Vegas, NV
+p2573
+sg39
+VRobert P
+p2574
+sa(dp2575
+g14
+VNovember 17, 2012
+p2576
+sg16
+VEdgewater, FL
+p2577
+sg18
+VRobert B
+p2578
+sa(dp2579
+g14
+VNovember 18, 2012
+p2580
+sg16
+VWaynesboro, GA
+p2581
+sg18
+Vvickie r
+p2582
+sa(dp2583
+g14
+VNovember 22, 2012
+p2584
+sg16
+VRuskin, FL
+p2585
+sg18
+VDel H
+p2586
+sa(dp2587
+g36
+VNovember 26, 2012
+p2588
+sg38
+VSeattle, WA
+p2589
+sg39
+VNancy K H
+p2590
+sa(dp2591
+g58
+VDecember 05, 2012
+p2592
+sg60
+VRocky Mount, NC
+p2593
+sg61
+VMichael P
+p2594
+sa(dp2595
+g36
+VNovember 26, 2012
+p2596
+sg38
+VBrentwood, TN
+p2597
+sg39
+VKevin M
+p2598
+sa(dp2599
+g14
+VNovember 22, 2012
+p2600
+sg16
+VWinlock, WA
+p2601
+sg18
+VCheryl B
+p2602
+sa(dp2603
+g36
+VNovember 26, 2012
+p2604
+sg38
+VBridgeport, CT
+p2605
+sg39
+VGiuseppina B
+p2606
+sa(dp2607
+g36
+VNovember 28, 2012
+p2608
+sg38
+VAustin, TX
+p2609
+sg39
+VDestiny H
+p2610
+sa(dp2611
+g14
+VNovember 16, 2012
+p2612
+sg16
+Vnevada, TX
+p2613
+sg18
+VDana L
+p2614
+sa(dp2615
+g21
+VNovember 24, 2012
+p2616
+sg23
+VLumberton, NC
+p2617
+sg25
+VSusan H
+p2618
+sa(dp2619
+g36
+VNovember 28, 2012
+p2620
+sg38
+g10
+sg39
+VDaniel A
+p2621
+sa(dp2622
+g58
+VDecember 05, 2012
+p2623
+sg60
+VRochester, MI
+p2624
+sg61
+VScott W
+p2625
+sa(dp2626
+g36
+VDecember 01, 2012
+p2627
+sg38
+VChillicothe, OH
+p2628
+sg39
+VSamuel L
+p2629
+sa(dp2630
+g14
+VNovember 22, 2012
+p2631
+sg16
+VHerod, IL
+p2632
+sg18
+VKurt D
+p2633
+sa(dp2634
+g14
+VNovember 16, 2012
+p2635
+sg16
+VDelta, OH
+p2636
+sg18
+Vmichelle l
+p2637
+sa(dp2638
+g21
+VNovember 24, 2012
+p2639
+sg23
+g10
+sg25
+VChinyere O
+p2640
+sa(dp2641
+g36
+VNovember 26, 2012
+p2642
+sg38
+VBristol, TN
+p2643
+sg39
+VAllison B
+p2644
+sa(dp2645
+g7
+VDecember 04, 2012
+p2646
+sg9
+VNorristown, PA
+p2647
+sg11
+VTesia L
+p2648
+sa(dp2649
+g14
+VNovember 22, 2012
+p2650
+sg16
+VPottsville, PA
+p2651
+sg18
+Vrebecca b
+p2652
+sa(dp2653
+g14
+VNovember 22, 2012
+p2654
+sg16
+VMartinsville, IN
+p2655
+sg18
+VRichard B
+p2656
+sa(dp2657
+g840
+VDecember 04, 2012
+p2658
+sg842
+VBristol, CT
+p2659
+sg844
+VMary Ellen C
+p2660
+sa(dp2661
+g21
+VNovember 24, 2012
+p2662
+sg23
+g10
+sg25
+VDavid H
+p2663
+sa(dp2664
+g14
+VNovember 23, 2012
+p2665
+sg16
+g10
+sg18
+Vjoe p
+p2666
+sa(dp2667
+g14
+VNovember 18, 2012
+p2668
+sg16
+VProvidence, RI
+p2669
+sg18
+VPeter T
+p2670
+sa(dp2671
+g36
+VNovember 30, 2012
+p2672
+sg38
+VHouston, PA
+p2673
+sg39
+VZachary O
+p2674
+sa(dp2675
+g21
+VNovember 25, 2012
+p2676
+sg23
+g10
+sg25
+VMichael F
+p2677
+sa(dp2678
+g21
+VNovember 24, 2012
+p2679
+sg23
+VErie, PA
+p2680
+sg25
+Vbrian k
+p2681
+sa(dp2682
+g36
+VNovember 27, 2012
+p2683
+sg38
+VTemecula, CA
+p2684
+sg39
+VMaria C
+p2685
+sa(dp2686
+g14
+VNovember 23, 2012
+p2687
+sg16
+g10
+sg18
+VMatt B
+p2688
+sa(dp2689
+g14
+VNovember 19, 2012
+p2690
+sg16
+VPost, TX
+p2691
+sg18
+VCarol T
+p2692
+sa(dp2693
+g14
+VNovember 16, 2012
+p2694
+sg16
+VLoris, SC
+p2695
+sg18
+Vvaleria h
+p2696
+sa(dp2697
+g7
+VDecember 04, 2012
+p2698
+sg9
+g10
+sg11
+VStefano S
+p2699
+sa(dp2700
+g36
+VDecember 01, 2012
+p2701
+sg38
+VEastport, ME
+p2702
+sg39
+VBonnie M
+p2703
+sa(dp2704
+g503
+VDecember 02, 2012
+p2705
+sg505
+VBeverly Hills, CA
+p2706
+sg507
+VJamie W
+p2707
+sa(dp2708
+g14
+VNovember 18, 2012
+p2709
+sg16
+VSabattus, ME
+p2710
+sg18
+Vdiana g
+p2711
+sa(dp2712
+g21
+VNovember 24, 2012
+p2713
+sg23
+g10
+sg25
+VJodi B
+p2714
+sa(dp2715
+g14
+VNovember 16, 2012
+p2716
+sg16
+VAmherst, WI
+p2717
+sg18
+VSharon D
+p2718
+sa(dp2719
+g36
+VNovember 27, 2012
+p2720
+sg38
+VByron, NY
+p2721
+sg39
+VDawn A
+p2722
+sa(dp2723
+g36
+VNovember 27, 2012
+p2724
+sg38
+VHolly Springs, NC
+p2725
+sg39
+VMichael W
+p2726
+sa(dp2727
+g14
+VNovember 22, 2012
+p2728
+sg16
+VBlythe, GA
+p2729
+sg18
+VTim C
+p2730
+sa(dp2731
+g36
+VNovember 30, 2012
+p2732
+sg38
+VJefferson City, MO
+p2733
+sg39
+VRachel L
+p2734
+sa(dp2735
+g21
+VNovember 24, 2012
+p2736
+sg23
+VBrookings, SD
+p2737
+sg25
+VDouglas H
+p2738
+sa(dp2739
+g36
+VNovember 27, 2012
+p2740
+sg38
+VColorado Springs, CO
+p2741
+sg39
+VGeorge S
+p2742
+sa(dp2743
+g91
+VNovember 25, 2012
+p2744
+sg93
+VGreensboro, NC
+p2745
+sg95
+VJackqulyn R
+p2746
+sa(dp2747
+g14
+VNovember 23, 2012
+p2748
+sg16
+g10
+sg18
+VJanelle B
+p2749
+sa(dp2750
+g14
+VNovember 18, 2012
+p2751
+sg16
+VFlagstaff, AZ
+p2752
+sg18
+VKatherine A
+p2753
+sa(dp2754
+g91
+VNovember 25, 2012
+p2755
+sg93
+VBirmingham, AL
+p2756
+sg95
+VWilliam K
+p2757
+sa(dp2758
+g36
+VDecember 01, 2012
+p2759
+sg38
+g10
+sg39
+VVICKI N
+p2760
+sa(dp2761
+g36
+VDecember 01, 2012
+p2762
+sg38
+VDover, DE
+p2763
+sg39
+VPaul B
+p2764
+sa(dp2765
+g36
+VNovember 29, 2012
+p2766
+sg38
+VCasey, IL
+p2767
+sg39
+VJohn R
+p2768
+sa(dp2769
+g36
+VNovember 26, 2012
+p2770
+sg38
+g10
+sg39
+VGurveer B
+p2771
+sa(dp2772
+g14
+VNovember 23, 2012
+p2773
+sg16
+VDiamond Springs, CA
+p2774
+sg18
+VJacob D
+p2775
+sa(dp2776
+g58
+VDecember 05, 2012
+p2777
+sg60
+VBrockton, MA
+p2778
+sg61
+Vjeremy m
+p2779
+sa(dp2780
+g21
+VNovember 24, 2012
+p2781
+sg23
+VBaltimore, MD
+p2782
+sg25
+VGregory C
+p2783
+sa(dp2784
+g36
+VNovember 27, 2012
+p2785
+sg38
+VQuinlan, TX
+p2786
+sg39
+VTim  D
+p2787
+sa(dp2788
+g14
+VNovember 23, 2012
+p2789
+sg16
+VColumbia, NC
+p2790
+sg18
+Vjacob m
+p2791
+sa(dp2792
+g36
+VNovember 26, 2012
+p2793
+sg38
+VSomerset, KY
+p2794
+sg39
+VHeather C
+p2795
+sa(dp2796
+g14
+VNovember 22, 2012
+p2797
+sg16
+VConroe, TX
+p2798
+sg18
+VVictor M
+p2799
+sa(dp2800
+g21
+VNovember 24, 2012
+p2801
+sg23
+VTaft, CA
+p2802
+sg25
+VDonna A
+p2803
+sa(dp2804
+g21
+VNovember 24, 2012
+p2805
+sg23
+g10
+sg25
+VNavneet k
+p2806
+sa(dp2807
+g36
+VNovember 30, 2012
+p2808
+sg38
+VRichmond, IN
+p2809
+sg39
+VJason S
+p2810
+sa(dp2811
+g58
+VDecember 05, 2012
+p2812
+sg60
+VBerea, KY
+p2813
+sg61
+Vjoann c
+p2814
+sa(dp2815
+g21
+VNovember 24, 2012
+p2816
+sg23
+VAuburn, AL
+p2817
+sg25
+VChantay S
+p2818
+sa(dp2819
+g36
+VNovember 26, 2012
+p2820
+sg38
+g10
+sg39
+VMargaret J
+p2821
+sa(dp2822
+g1166
+VNovember 25, 2012
+p2823
+sg1168
+VAugusta, ME
+p2824
+sg1170
+Vrachael s
+p2825
+sa(dp2826
+g21
+VNovember 25, 2012
+p2827
+sg23
+VTrenton, NJ
+p2828
+sg25
+Vlaure w
+p2829
+sa(dp2830
+g58
+VDecember 05, 2012
+p2831
+sg60
+VWest Palm Beach, FL
+p2832
+sg61
+VSHEILA M
+p2833
+sa(dp2834
+g14
+VNovember 16, 2012
+p2835
+sg16
+VCrystal River, FL
+p2836
+sg18
+Vkaren f
+p2837
+sa(dp2838
+g36
+VNovember 29, 2012
+p2839
+sg38
+g10
+sg39
+VSteven B
+p2840
+sa(dp2841
+g7
+VDecember 03, 2012
+p2842
+sg9
+VCovington, KY
+p2843
+sg11
+VHope S
+p2844
+sa(dp2845
+g840
+VDecember 04, 2012
+p2846
+sg842
+VAberdeen Proving Ground, MD
+p2847
+sg844
+VClarence B
+p2848
+sa(dp2849
+g148
+VNovember 25, 2012
+p2850
+sg150
+VEureka Springs, AR
+p2851
+sg152
+VStacey P
+p2852
+sa(dp2853
+g58
+VDecember 05, 2012
+p2854
+sg60
+VFresno, CA
+p2855
+sg61
+VStephen F
+p2856
+sa(dp2857
+g14
+VNovember 22, 2012
+p2858
+sg16
+VMenlo Park, CA
+p2859
+sg18
+VMark L
+p2860
+sa(dp2861
+g36
+VNovember 27, 2012
+p2862
+sg38
+g10
+sg39
+VOlivia H
+p2863
+sa(dp2864
+g14
+VNovember 19, 2012
+p2865
+sg16
+VWinchester, IN
+p2866
+sg18
+VFred D
+p2867
+sa(dp2868
+g309
+VDecember 03, 2012
+p2869
+sg311
+VDallas, TX
+p2870
+sg313
+VJohn S
+p2871
+sa(dp2872
+g14
+VNovember 22, 2012
+p2873
+sg16
+VHollywood, FL
+p2874
+sg18
+VRichard B
+p2875
+sa(dp2876
+g14
+VNovember 17, 2012
+p2877
+sg16
+g10
+sg18
+VBob S
+p2878
+sa(dp2879
+g36
+VNovember 26, 2012
+p2880
+sg38
+VJacksonville, FL
+p2881
+sg39
+VBonnie V
+p2882
+sa(dp2883
+g36
+VNovember 27, 2012
+p2884
+sg38
+VOcean Springs, MS
+p2885
+sg39
+VJohn H
+p2886
+sa(dp2887
+g36
+VNovember 26, 2012
+p2888
+sg38
+g10
+sg39
+VAJ R
+p2889
+sa(dp2890
+g21
+VNovember 24, 2012
+p2891
+sg23
+VWilmington, NC
+p2892
+sg25
+VGlenn T
+p2893
+sa(dp2894
+g58
+VDecember 05, 2012
+p2895
+sg60
+VSan Antonio, TX
+p2896
+sg61
+VIngrid K
+p2897
+sa(dp2898
+g21
+VNovember 24, 2012
+p2899
+sg23
+VGreensboro, NC
+p2900
+sg25
+VChristina C
+p2901
+sa(dp2902
+g21
+VNovember 24, 2012
+p2903
+sg23
+VHumble, TX
+p2904
+sg25
+Vart h
+p2905
+sa(dp2906
+g58
+VDecember 05, 2012
+p2907
+sg60
+VFresno, CA
+p2908
+sg61
+VErin M
+p2909
+sa(dp2910
+g21
+VNovember 24, 2012
+p2911
+sg23
+VSaint Augustine, FL
+p2912
+sg25
+VHarley A
+p2913
+sa(dp2914
+g36
+VNovember 26, 2012
+p2915
+sg38
+VMinneapolis, MN
+p2916
+sg39
+VStephanie H
+p2917
+sa(dp2918
+g1744
+VNovember 25, 2012
+p2919
+sg1746
+VNorth Olmsted, OH
+p2920
+sg1748
+VMichael R
+p2921
+sa(dp2922
+g36
+VNovember 27, 2012
+p2923
+sg38
+VLehigh Acres, FL
+p2924
+sg39
+VKatherine L
+p2925
+sa(dp2926
+g36
+VNovember 30, 2012
+p2927
+sg38
+VPinole, CA
+p2928
+sg39
+VJanice F
+p2929
+sa(dp2930
+g36
+VNovember 28, 2012
+p2931
+sg38
+VPleasant Hill, CA
+p2932
+sg39
+VKen S
+p2933
+sa(dp2934
+g91
+VNovember 25, 2012
+p2935
+sg93
+VRock Hill, SC
+p2936
+sg95
+VOmar M
+p2937
+sa(dp2938
+g14
+VNovember 17, 2012
+p2939
+sg16
+VWichita, KS
+p2940
+sg18
+VBarbara S
+p2941
+sa(dp2942
+g7
+VDecember 03, 2012
+p2943
+sg9
+VRandolph, MA
+p2944
+sg11
+VDana S
+p2945
+sa(dp2946
+g21
+VNovember 24, 2012
+p2947
+sg23
+VTopeka, KS
+p2948
+sg25
+VScott G
+p2949
+sa(dp2950
+g14
+VNovember 18, 2012
+p2951
+sg16
+VDexter, ME
+p2952
+sg18
+VRobert Y
+p2953
+sa(dp2954
+g14
+VNovember 22, 2012
+p2955
+sg16
+g10
+sg18
+VChance K
+p2956
+sa(dp2957
+g21
+VNovember 24, 2012
+p2958
+sg23
+VPittsboro, NC
+p2959
+sg25
+VJoshua K
+p2960
+sa(dp2961
+g36
+VNovember 29, 2012
+p2962
+sg38
+VMesa, AZ
+p2963
+sg39
+VBruce L
+p2964
+sa(dp2965
+g36
+VDecember 01, 2012
+p2966
+sg38
+VSanta Ana, CA
+p2967
+sg39
+VVictoria B
+p2968
+sa(dp2969
+g36
+VNovember 25, 2012
+p2970
+sg38
+VLinn Grove, IA
+p2971
+sg39
+VGary B
+p2972
+sa(dp2973
+g14
+VNovember 16, 2012
+p2974
+sg16
+VGray, ME
+p2975
+sg18
+VDebi E
+p2976
+sa(dp2977
+g1166
+VNovember 25, 2012
+p2978
+sg1168
+g10
+sg1170
+VNajma A
+p2979
+sa(dp2980
+g324
+VDecember 05, 2012
+p2981
+sg326
+VBeaverton, OR
+p2982
+sg327
+VSteven P
+p2983
+sa(dp2984
+g36
+VNovember 25, 2012
+p2985
+sg38
+VBoone, NC
+p2986
+sg39
+VSam K
+p2987
+sa(dp2988
+g14
+VNovember 23, 2012
+p2989
+sg16
+g10
+sg18
+VEdson M
+p2990
+sa(dp2991
+g14
+VNovember 22, 2012
+p2992
+sg16
+VChicago, IL
+p2993
+sg18
+VThomas B
+p2994
+sa(dp2995
+g58
+VDecember 05, 2012
+p2996
+sg60
+VEl Cajon, CA
+p2997
+sg61
+VJoey M
+p2998
+sa(dp2999
+g36
+VNovember 28, 2012
+p3000
+sg38
+VSouth Bend, IN
+p3001
+sg39
+VThomas B
+p3002
+sa(dp3003
+g14
+VNovember 22, 2012
+p3004
+sg16
+VMarietta, GA
+p3005
+sg18
+VTony S
+p3006
+sa(dp3007
+g14
+VNovember 23, 2012
+p3008
+sg16
+VOak Harbor, WA
+p3009
+sg18
+Vbenjamin h
+p3010
+sa(dp3011
+g14
+VNovember 16, 2012
+p3012
+sg16
+VHarwood, MD
+p3013
+sg18
+VCrandall C
+p3014
+sa(dp3015
+g14
+VNovember 18, 2012
+p3016
+sg16
+g10
+sg18
+VJami G
+p3017
+sa(dp3018
+g14
+VNovember 23, 2012
+p3019
+sg16
+VShelton, WA
+p3020
+sg18
+Vmarilyn m
+p3021
+sa(dp3022
+g14
+VNovember 21, 2012
+p3023
+sg16
+VSalt Lake City, UT
+p3024
+sg18
+VMark H
+p3025
+sa(dp3026
+g21
+VNovember 24, 2012
+p3027
+sg23
+VBanning, CA
+p3028
+sg25
+VDennis C
+p3029
+sa(dp3030
+g21
+VNovember 24, 2012
+p3031
+sg23
+g10
+sg25
+VGary H
+p3032
+sa(dp3033
+g14
+VNovember 23, 2012
+p3034
+sg16
+VHilton Head Island, SC
+p3035
+sg18
+VJ. Rex V
+p3036
+sa(dp3037
+g36
+VNovember 28, 2012
+p3038
+sg38
+VConcord, CA
+p3039
+sg39
+VLiz B
+p3040
+sa(dp3041
+g14
+VNovember 22, 2012
+p3042
+sg16
+g10
+sg18
+VHerp D
+p3043
+sa(dp3044
+g503
+VDecember 02, 2012
+p3045
+sg505
+VPortland, OR
+p3046
+sg507
+VSarah D
+p3047
+sa(dp3048
+g7
+VDecember 03, 2012
+p3049
+sg9
+VAmerican Canyon, CA
+p3050
+sg11
+VLarry A
+p3051
+sa(dp3052
+g14
+VNovember 16, 2012
+p3053
+sg16
+g10
+sg18
+VMary D
+p3054
+sa(dp3055
+g21
+VNovember 25, 2012
+p3056
+sg23
+VPagosa Springs, CO
+p3057
+sg25
+VJody B
+p3058
+sa(dp3059
+g14
+VNovember 23, 2012
+p3060
+sg16
+VFort Benning, GA
+p3061
+sg18
+Vheidi k
+p3062
+sa(dp3063
+g14
+VNovember 18, 2012
+p3064
+sg16
+g10
+sg18
+VAmy P
+p3065
+sa(dp3066
+g14
+VNovember 23, 2012
+p3067
+sg16
+VHanover, PA
+p3068
+sg18
+VRoy C
+p3069
+sa(dp3070
+g14
+VNovember 22, 2012
+p3071
+sg16
+VFall River, MA
+p3072
+sg18
+VKevin C
+p3073
+sa(dp3074
+g36
+VNovember 26, 2012
+p3075
+sg38
+VCoralville, IA
+p3076
+sg39
+VBrenda B
+p3077
+sa(dp3078
+g21
+VNovember 24, 2012
+p3079
+sg23
+VTolleson, AZ
+p3080
+sg25
+VMark S
+p3081
+sa(dp3082
+g14
+VNovember 23, 2012
+p3083
+sg16
+VFort Plain, NY
+p3084
+sg18
+VWanda F
+p3085
+sa(dp3086
+g21
+VNovember 25, 2012
+p3087
+sg23
+VBremerton, WA
+p3088
+sg25
+VStephen H
+p3089
+sa(dp3090
+g36
+VNovember 28, 2012
+p3091
+sg38
+VSaint Albans, WV
+p3092
+sg39
+VJoseph M
+p3093
+sa(dp3094
+g36
+VNovember 29, 2012
+p3095
+sg38
+VSaint Clair Shores, MI
+p3096
+sg39
+VJames H
+p3097
+sa(dp3098
+g14
+VNovember 17, 2012
+p3099
+sg16
+VKnoxville, TN
+p3100
+sg18
+VDavid C
+p3101
+sa(dp3102
+g91
+VNovember 25, 2012
+p3103
+sg93
+VWest Chester, PA
+p3104
+sg95
+VWilliam  D
+p3105
+sa(dp3106
+g14
+VNovember 23, 2012
+p3107
+sg16
+VBrookings, OR
+p3108
+sg18
+VLinda B
+p3109
+sa(dp3110
+g36
+VDecember 01, 2012
+p3111
+sg38
+VOakwood, TX
+p3112
+sg39
+VElisabeth  G
+p3113
+sa(dp3114
+g14
+VNovember 22, 2012
+p3115
+sg16
+VMilwaukee, WI
+p3116
+sg18
+VDavid F
+p3117
+sa(dp3118
+g14
+VNovember 23, 2012
+p3119
+sg16
+VEl Paso, TX
+p3120
+sg18
+VElias A
+p3121
+sa(dp3122
+g58
+VDecember 05, 2012
+p3123
+sg60
+VOlympia, WA
+p3124
+sg61
+VJoshua B
+p3125
+sa(dp3126
+g14
+VNovember 16, 2012
+p3127
+sg16
+VSpringdale, AR
+p3128
+sg18
+VTINA H
+p3129
+sa(dp3130
+g36
+VNovember 26, 2012
+p3131
+sg38
+VSaint Cloud, FL
+p3132
+sg39
+VKimberly C
+p3133
+sa(dp3134
+g14
+VNovember 18, 2012
+p3135
+sg16
+VHobart, IN
+p3136
+sg18
+VDiane B
+p3137
+sa(dp3138
+g21
+VNovember 24, 2012
+p3139
+sg23
+VLynchburg, VA
+p3140
+sg25
+VJanna L
+p3141
+sa(dp3142
+g36
+VNovember 29, 2012
+p3143
+sg38
+VChautauqua, NY
+p3144
+sg39
+VAlisha A
+p3145
+sa(dp3146
+g21
+VNovember 24, 2012
+p3147
+sg23
+g10
+sg25
+Vross r
+p3148
+sa(dp3149
+g36
+VNovember 28, 2012
+p3150
+sg38
+VCincinnati, OH
+p3151
+sg39
+VWilliam B
+p3152
+sa(dp3153
+g14
+VNovember 20, 2012
+p3154
+sg16
+VCentertown, KY
+p3155
+sg18
+VCourtney S
+p3156
+sa(dp3157
+g21
+VNovember 24, 2012
+p3158
+sg23
+V, TN
+p3159
+sg25
+Vlisa b
+p3160
+sa(dp3161
+g7
+VDecember 03, 2012
+p3162
+sg9
+VGeorgetown, TX
+p3163
+sg11
+Vrick k
+p3164
+sa(dp3165
+g14
+VNovember 23, 2012
+p3166
+sg16
+VAurora, CO
+p3167
+sg18
+Vdebi f
+p3168
+sa(dp3169
+g14
+VNovember 18, 2012
+p3170
+sg16
+VRedondo Beach, CA
+p3171
+sg18
+VJay R
+p3172
+sa(dp3173
+g21
+VNovember 24, 2012
+p3174
+sg23
+g10
+sg25
+VDavid J
+p3175
+sa(dp3176
+g36
+VNovember 30, 2012
+p3177
+sg38
+VInver Grove Heights, MN
+p3178
+sg39
+VCarol E
+p3179
+sa(dp3180
+g36
+VNovember 26, 2012
+p3181
+sg38
+VRichwood, OH
+p3182
+sg39
+VAnthony T
+p3183
+sa(dp3184
+g36
+VNovember 29, 2012
+p3185
+sg38
+VTallahassee, FL
+p3186
+sg39
+VAmber  R
+p3187
+sa(dp3188
+g14
+VNovember 23, 2012
+p3189
+sg16
+VCutchogue, NY
+p3190
+sg18
+Vdennis l
+p3191
+sa(dp3192
+g21
+VNovember 24, 2012
+p3193
+sg23
+VShrewsbury, MA
+p3194
+sg25
+VMichael S
+p3195
+sa(dp3196
+g36
+VNovember 25, 2012
+p3197
+sg38
+VAnn Arbor, MI
+p3198
+sg39
+VMichelle S
+p3199
+sa(dp3200
+g36
+VDecember 01, 2012
+p3201
+sg38
+VNorth Baltimore, OH
+p3202
+sg39
+VTim T
+p3203
+sa(dp3204
+g14
+VNovember 17, 2012
+p3205
+sg16
+VUtica, IL
+p3206
+sg18
+Vstarla p
+p3207
+sa(dp3208
+g14
+VNovember 22, 2012
+p3209
+sg16
+VMemphis, TN
+p3210
+sg18
+Vmary u
+p3211
+sa(dp3212
+g36
+VNovember 29, 2012
+p3213
+sg38
+VKirkland, WA
+p3214
+sg39
+Vthomas c
+p3215
+sa(dp3216
+g14
+VNovember 17, 2012
+p3217
+sg16
+VSouth Bend, IN
+p3218
+sg18
+VDave R
+p3219
+sa(dp3220
+g21
+VNovember 24, 2012
+p3221
+sg23
+g10
+sg25
+VBerkley C
+p3222
+sa(dp3223
+g36
+VNovember 27, 2012
+p3224
+sg38
+VConstantia, NY
+p3225
+sg39
+VMichelle C
+p3226
+sa(dp3227
+g14
+VNovember 16, 2012
+p3228
+sg16
+VBall Ground, GA
+p3229
+sg18
+VAnna M  R
+p3230
+sa(dp3231
+g36
+VNovember 27, 2012
+p3232
+sg38
+VMobile, AL
+p3233
+sg39
+VTerry D
+p3234
+sa(dp3235
+g7
+VDecember 04, 2012
+p3236
+sg9
+VOwyhee, NV
+p3237
+sg11
+Vcindy p
+p3238
+sa(dp3239
+g36
+VNovember 27, 2012
+p3240
+sg38
+VOklahoma City, OK
+p3241
+sg39
+VShellie S
+p3242
+sa(dp3243
+g14
+VNovember 18, 2012
+p3244
+sg16
+VWaunakee, WI
+p3245
+sg18
+VJeff T
+p3246
+sa(dp3247
+g36
+VNovember 27, 2012
+p3248
+sg38
+VGoodyear, AZ
+p3249
+sg39
+VLia L
+p3250
+sa(dp3251
+g14
+VNovember 18, 2012
+p3252
+sg16
+VWhitehouse, OH
+p3253
+sg18
+Vsteve m
+p3254
+sa(dp3255
+g503
+VDecember 02, 2012
+p3256
+sg505
+VSpring, TX
+p3257
+sg507
+VLisa S
+p3258
+sa(dp3259
+g14
+VNovember 22, 2012
+p3260
+sg16
+VHouston, TX
+p3261
+sg18
+VBryan H
+p3262
+sa(dp3263
+g36
+VNovember 26, 2012
+p3264
+sg38
+VBridgman, MI
+p3265
+sg39
+VRobert A
+p3266
+sa(dp3267
+g21
+VNovember 24, 2012
+p3268
+sg23
+VSunland, CA
+p3269
+sg25
+VJANIS J
+p3270
+sa(dp3271
+g14
+VNovember 17, 2012
+p3272
+sg16
+VCumming, GA
+p3273
+sg18
+VChris L
+p3274
+sa(dp3275
+g21
+VNovember 24, 2012
+p3276
+sg23
+VSaugatuck, MI
+p3277
+sg25
+VFrances M
+p3278
+sa(dp3279
+g21
+VNovember 24, 2012
+p3280
+sg23
+Vfayette, AL
+p3281
+sg25
+Vdouglas m
+p3282
+sa(dp3283
+g14
+VNovember 16, 2012
+p3284
+sg16
+VOcala, FL
+p3285
+sg18
+VSandra M
+p3286
+sa(dp3287
+g58
+VDecember 05, 2012
+p3288
+sg60
+VFarmington, IL
+p3289
+sg61
+VTricia S
+p3290
+sa(dp3291
+g21
+VNovember 25, 2012
+p3292
+sg23
+VBreaux Bridge, LA
+p3293
+sg25
+Vdoug p
+p3294
+sa(dp3295
+g36
+VNovember 26, 2012
+p3296
+sg38
+VSeattle, WA
+p3297
+sg39
+VElizabeth L
+p3298
+sa(dp3299
+g36
+VDecember 01, 2012
+p3300
+sg38
+g10
+sg39
+Vrebecca g
+p3301
+sa(dp3302
+g36
+VNovember 26, 2012
+p3303
+sg38
+VBoise, ID
+p3304
+sg39
+VMichelle F
+p3305
+sa(dp3306
+g667
+VDecember 03, 2012
+p3307
+sg669
+VAlbuquerque, NM
+p3308
+sg671
+Vnicholas h
+p3309
+sa(dp3310
+g14
+VNovember 20, 2012
+p3311
+sg16
+VSterling Heights, MI
+p3312
+sg18
+VTimothy C
+p3313
+sa(dp3314
+g14
+VNovember 23, 2012
+p3315
+sg16
+VBarnegat, NJ
+p3316
+sg18
+VKathy A
+p3317
+sa(dp3318
+g14
+VNovember 16, 2012
+p3319
+sg16
+VTulare, CA
+p3320
+sg18
+VDaniel P
+p3321
+sa(dp3322
+g14
+VNovember 18, 2012
+p3323
+sg16
+VNashville, TN
+p3324
+sg18
+VChris S
+p3325
+sa(dp3326
+g36
+VNovember 29, 2012
+p3327
+sg38
+VMontgomery, AL
+p3328
+sg39
+Vmason  G
+p3329
+sa(dp3330
+g21
+VNovember 24, 2012
+p3331
+sg23
+VLaurel, MT
+p3332
+sg25
+VSUSANA H
+p3333
+sa(dp3334
+g14
+VNovember 22, 2012
+p3335
+sg16
+VHuntsville, AL
+p3336
+sg18
+VPandora J
+p3337
+sa(dp3338
+g14
+VNovember 22, 2012
+p3339
+sg16
+VSan Antonio, TX
+p3340
+sg18
+VJesse G
+p3341
+sa(dp3342
+g36
+VNovember 28, 2012
+p3343
+sg38
+VPortland, OR
+p3344
+sg39
+VCharles L
+p3345
+sa(dp3346
+g21
+VNovember 25, 2012
+p3347
+sg23
+g10
+sg25
+VWesley T
+p3348
+sa(dp3349
+g667
+VDecember 02, 2012
+p3350
+sg669
+VMercer Island, WA
+p3351
+sg671
+VMargaret M
+p3352
+sa(dp3353
+g21
+VNovember 25, 2012
+p3354
+sg23
+VSan Gabriel, CA
+p3355
+sg25
+VMary R
+p3356
+sa(dp3357
+g58
+VDecember 05, 2012
+p3358
+sg60
+VGrand Island, NE
+p3359
+sg61
+Vdavid s
+p3360
+sa(dp3361
+g21
+VNovember 24, 2012
+p3362
+sg23
+VOak Park, IL
+p3363
+sg25
+VDonna T
+p3364
+sa(dp3365
+g14
+VNovember 23, 2012
+p3366
+sg16
+VBronx, NY
+p3367
+sg18
+VMelissa R
+p3368
+sa(dp3369
+g14
+VNovember 18, 2012
+p3370
+sg16
+VForest Grove, OR
+p3371
+sg18
+VAnya D
+p3372
+sa(dp3373
+g21
+VNovember 24, 2012
+p3374
+sg23
+VDecatur, AL
+p3375
+sg25
+VDonna N
+p3376
+sa(dp3377
+g14
+VNovember 16, 2012
+p3378
+sg16
+VNorth Port, FL
+p3379
+sg18
+VDeirdre S
+p3380
+sa(dp3381
+g14
+VNovember 23, 2012
+p3382
+sg16
+g10
+sg18
+Vb b
+p3383
+sa(dp3384
+g36
+VDecember 01, 2012
+p3385
+sg38
+g10
+sg39
+VMary D
+p3386
+sa(dp3387
+g14
+VNovember 17, 2012
+p3388
+sg16
+VDover, DE
+p3389
+sg18
+VJoshua T
+p3390
+sas.

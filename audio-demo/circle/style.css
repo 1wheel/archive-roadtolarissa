@@ -1,0 +1,25 @@
+#kickDrum {
+    background-color:orange;
+    position:absolute;
+    top:25%;
+    left:25%;
+    width: 200px;
+    height:200px;
+    border-radius:120px;
+    border-style:solid;
+    border-width:15px;
+    border-color:grey;
+} 
+
+#snareDrum {
+    background-color:orange;
+    position:absolute;
+    top:25%;
+    left:50%;         /*Changed to 50%*/
+    width: 200px;
+    height:200px;
+    border-radius:120px;
+    border-style:solid;
+    border-width:15px;
+    border-color:grey;
+}
