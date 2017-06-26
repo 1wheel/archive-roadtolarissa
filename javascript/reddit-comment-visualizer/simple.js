@@ -12,7 +12,7 @@ function startQuery(){
 		currentlyQuerying = true;
 		rawCommentArray = [];
 		userName = graphDisplayed ? $("#secoundTextBox").val() : $("#firstTextBox").val();
-		queryURL = 'http://www.reddit.com/user/' + userName + '/comments/.json?jsonp=?&limit=100&';
+		queryURL = 'https://www.reddit.com/user/' + userName + '/comments/.json?jsonp=?&limit=100&';
 		queryReddit("", 0);
 	}
 	else {
