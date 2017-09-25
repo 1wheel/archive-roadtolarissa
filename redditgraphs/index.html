@@ -155,8 +155,8 @@
 		<span class='q'>Where are my older comments?</span><br />
 		Unfortunately, <a href="http://www.reddit.com/r/ideasfortheadmins/comments/10tai6/ever_wondered_the_data_liberation_policy_of_reddit/c6gicdf">reddit's API</a> only exposes your  1000 most recent comments - if you'd like to see more, the admins will have to change something on their end. <br /><br />
 
-		<span class='q'>How does the grade level statistic work? It seems off.</span><br />
-		It uses the <a href="http://en.wikipedia.org/wiki/Coleman-Liau_Index">Coleman-Liau Index</a> to estimate how difficult your comment are to read based on words per sentence and characters per word. It is difficult to count sentences and word length when the input isn't sanitized - URLs and LOLOLOLOLs increase the grade level way too much - so to make the output appear more reasonable, I cheat and use <a href="http://en.wikipedia.org/wiki/Sigmoid_function">sigmoidal functions</a> to force the reading level between 0 and 20.<br /><br />
+		<span class='q'>How does the grade level statisitic work? It seems off.</span><br />
+		It uses the <a href="http://en.wikipedia.org/wiki/Coleman-Liau_Index">Coleman-Liau Index</a> to esimate how difficult your comment are to read based on words per sentence and characters per word. It is difficult to count sentences and word length when the input isn't sanitized - URLs and LOLOLOLOLs increase the grade level way too much - so to make the output appear more reasonable, I cheat and use <a href="http://en.wikipedia.org/wiki/Sigmoid_function">sigmoidal functions</a> to force the reading level between 0 and 20.<br /><br />
 
 		<span class='q'>Can I graph karma v. comment length?</span><br />
 		I looked a few people's profiles and wasn't able to see much a correlation between the two. This could be because each of them had a small number of comments with a very high amount of karma. One of the main difficulties with this type of display that has many moving parts and combinations is leading the user the -most- interesting graphs to look at. To facilitate that, I removed several potentially interesting things from the <a href="http://www.roadtolarissa.com/wp-content/uploads/2012/10/scatter-plot-screen-shot.png">old UI</a> . 
@@ -173,8 +173,8 @@
 </body>​	
 
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
 <script src="flot/jquery.jsonp-2.4.0.min.js"></script>
 
 <script src="flot/jquery.flot.js"></script>
@@ -183,7 +183,7 @@
 <script src="flot/jquery.flot.stack.js"></script>
 
 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 
  <script type="text/javascript" src="plot.js"></script>
  <script type="text/javascript" src="read.js"></script>
