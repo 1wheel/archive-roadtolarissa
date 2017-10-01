@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/1wheel
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://roadtolarissa.com
+  * I am 1wheel (https://keybase.io/1wheel) on keybase.
+  * I have a public key ASCRLcacBHkko8-0Hfxe9gWoocXyid8V4l0g72XJWqch4Ao
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120912dc69c047924a3cfb41dfc5ef605a8a1c5f289df15e25d20ef65c95aa721e00a",
+      "host": "keybase.io",
+      "kid": "0120912dc69c047924a3cfb41dfc5ef605a8a1c5f289df15e25d20ef65c95aa721e00a",
+      "uid": "138be763f1ea1feb81526a5f984dd619",
+      "username": "1wheel"
+    },
+    "merkle_root": {
+      "ctime": 1506835765,
+      "hash": "4e4caa5c94897cae951790d3503a7c8245fccd93be2be2dadd63210b2b82457a1d2bfb43627878c892088ed216a59bcf4f5bc0627f1d07bb69412fca24f396bb",
+      "hash_meta": "1c27af50e687f1c45bed69085685a80088e6924c34241e70b3454864fd941efd",
+      "seqno": 1480967
+    },
+    "service": {
+      "hostname": "roadtolarissa.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.31"
+  },
+  "ctime": 1506835820,
+  "expire_in": 504576000,
+  "prev": "aa2a32bd314933307899f32ccfad77e34c56a788d1247fee1e0122a0ace03c9c",
+  "seqno": 10,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgkS3GnAR5JKPPtB38XvYFqKHF8onfFeJdIO9lyVqnIeAKp3BheWxvYWTFA0h7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwOTEyZGM2OWMwNDc5MjRhM2NmYjQxZGZjNWVmNjA1YThhMWM1ZjI4OWRmMTVlMjVkMjBlZjY1Yzk1YWE3MjFlMDBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwOTEyZGM2OWMwNDc5MjRhM2NmYjQxZGZjNWVmNjA1YThhMWM1ZjI4OWRmMTVlMjVkMjBlZjY1Yzk1YWE3MjFlMDBhIiwidWlkIjoiMTM4YmU3NjNmMWVhMWZlYjgxNTI2YTVmOTg0ZGQ2MTkiLCJ1c2VybmFtZSI6IjF3aGVlbCJ9LCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTUwNjgzNTc2NSwiaGFzaCI6IjRlNGNhYTVjOTQ4OTdjYWU5NTE3OTBkMzUwM2E3YzgyNDVmY2NkOTNiZTJiZTJkYWRkNjMyMTBiMmI4MjQ1N2ExZDJiZmI0MzYyNzg3OGM4OTIwODhlZDIxNmE1OWJjZjRmNWJjMDYyN2YxZDA3YmI2OTQxMmZjYTI0ZjM5NmJiIiwiaGFzaF9tZXRhIjoiMWMyN2FmNTBlNjg3ZjFjNDViZWQ2OTA4NTY4NWE4MDA4OGU2OTI0YzM0MjQxZTcwYjM0NTQ4NjRmZDk0MWVmZCIsInNlcW5vIjoxNDgwOTY3fSwic2VydmljZSI6eyJob3N0bmFtZSI6InJvYWR0b2xhcmlzc2EuY29tIiwicHJvdG9jb2wiOiJodHRwczoifSwidHlwZSI6IndlYl9zZXJ2aWNlX2JpbmRpbmciLCJ2ZXJzaW9uIjoxfSwiY2xpZW50Ijp7Im5hbWUiOiJrZXliYXNlLmlvIGdvIGNsaWVudCIsInZlcnNpb24iOiIxLjAuMzEifSwiY3RpbWUiOjE1MDY4MzU4MjAsImV4cGlyZV9pbiI6NTA0NTc2MDAwLCJwcmV2IjoiYWEyYTMyYmQzMTQ5MzMzMDc4OTlmMzJjY2ZhZDc3ZTM0YzU2YTc4OGQxMjQ3ZmVlMWUwMTIyYTBhY2UwM2M5YyIsInNlcW5vIjoxMCwidGFnIjoic2lnbmF0dXJlIn2jc2lnxEDeB9Wwxr8OEzEAdNlPVDt3Loi0wr/0yH3l/L2Kc6yqHvwsa0Y3R3NHxeoxDKRhwmRFmBReaHZrX5qx6QRkhSIBqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQg/SUzXdOZwNNEXdfpA3e1tFC52ofx1pdjHzG0c4JA91WjdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/1wheel
+
+==================================================================
