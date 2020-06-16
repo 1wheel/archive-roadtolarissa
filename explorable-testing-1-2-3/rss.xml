@@ -1,0 +1,60 @@
+<!--
+@license
+Copyright 2020 Google. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+	<title>Explorable AI</title>
+	<link>https://pair.withgoogle.com/explorable</link>
+	<description>Charts from Adam Pearce</description>
+	<image>
+		<title>roadtolarissa</title>
+		<link>https://pair.withgoogle.com/explorable</link>
+	</image>
+	
+		<item>
+			<title>Measuring Fairness </title>
+			
+				<description>
+					<![CDATA[
+						<a href="https://pair.withgoogle.com/explorables/measuring-fairness//">
+							<img src="https://pair.withgoogle.com/explorables/images/measuring-fairness.png"/>
+						</a>
+					]]>
+				</description>
+			
+			<link>https://pair.withgoogle.com/explorable/measuring-fairness/</link>
+			<pubDate>Invalid Date</pubDate>
+		</item>
+		
+		<item>
+			<title>Hidden Bias</title>
+			
+				<description>
+					<![CDATA[
+						<a href="https://pair.withgoogle.com/explorables/hidden-bias//">
+							<img src="https://pair.withgoogle.com/explorables/images/hidden-bias.png"/>
+						</a>
+					]]>
+				</description>
+			
+			<link>https://pair.withgoogle.com/explorable/hidden-bias/</link>
+			<pubDate>Invalid Date</pubDate>
+		</item>
+		
+</channel>
+</rss>

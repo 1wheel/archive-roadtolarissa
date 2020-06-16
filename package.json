@@ -3,6 +3,6 @@
   "dependencies": {
   },
   "scripts": {
-    "publish": "cd .. && rsync -a --omit-dir-times --no-perms archive-roadtolarissa/ demo@roadtolarissa.com:../../usr/share/nginx/html/"
+    "pub": "cd .. && rsync -a --omit-dir-times --no-perms archive-roadtolarissa/ demo@roadtolarissa.com:../../usr/share/nginx/html/"
   }
 }
