@@ -4,13 +4,14 @@ var {execSync} = require('child_process')
 var sharp = require('sharp')
 
 function updateProjects(){
-  d3.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vTGqTVxJ_yfhMaRRRQ1BjvmbCEFrw57kAC5d6iK9gdEiaL_MKEAi1r6eMQ_9QRN6xpDdO-MAbbFKqqQ/pub?output=csv', (err, res) => {
+  d3.csv('https://www.googleapis.com/drive/v3/files/1xUvK5PGo8XPqARJIvXRnn71lJSL8CwjvjUWB9Jcy0Ho/export?mimeType=text/csv&key=AIzaSyAT-ALGW_bcmcvNs1dPgcV7fF6tR1vKY44', (err, res) => {
+    console.log(err, res)
     var projects = res
 
     io.writeDataSync(__dirname + '/projects.csv', projects)
   })
 }
-// updateProjects()
+updateProjects()
 
 
 var rawImgPath = __dirname + '/raw-img/'

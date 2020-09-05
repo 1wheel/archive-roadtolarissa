@@ -1,4 +1,6 @@
 slug,date,url,img
+playoff-probabilities,2020-09,https://roadtolarissa.com/playoff-probabilities/,https://i.imgur.com/LiSk3Sd.png
+regression-discontinuity,2020-06,https://roadtolarissa.com/regression-discontinuity/,https://i.imgur.com/FL2zUAs.png
 measuring-fairness,2020-05,https://pair.withgoogle.com/explorables/measuring-fairness/,https://pair.withgoogle.com/explorables/images/measuring-fairness.png
 hidden-bias,2020-05,https://pair.withgoogle.com/explorables/hidden-bias/,https://pair.withgoogle.com/explorables/images/hidden-bias.png
 covid19-mobility,2020-04,https://www.google.com/covid19/mobility/,https://i.imgur.com/jEQwOku.png
@@ -73,7 +75,7 @@ trump-agenda-tracker,2017-01,https://www.nytimes.com/interactive/2017/us/politic
 you-draw-obama-legacy,2017-01,https://www.nytimes.com/interactive/2017/01/15/us/politics/you-draw-obama-legacy.html,https://static01.nyt.com/images/2017/01/11/us/politics/you-draw-obama-legacy-1484349598705/you-draw-obama-legacy-1484349598705-master1050.png
 cabinet-removal,2016-12,https://www.nytimes.com/interactive/2016/12/22/us/politics/cabinet-removal.html,https://static01.nyt.com/images/2016/12/22/us/politics/cabinet-removal-1482354548542/cabinet-removal-1482354548542-blog533.png
 trump-climate-change,2016-12,https://www.nytimes.com/interactive/2016/12/08/us/trump-climate-change.html,https://static01.nyt.com/images/2016/12/08/us/trump-climate-change-1481174650062/trump-climate-change-1481174650062-master1050-v2.png
-d3-module-faces,2016-12,https://bl.ocks.org/1wheel/68073eeba4d19c454a8c25fcd6e9e68a,https://i.imgur.com/0aPWgaV.png
+d3-module-faces,2016-12,https://blocks.roadtolarissa.com/1wheel/68073eeba4d19c454a8c25fcd6e9e68a,https://i.imgur.com/0aPWgaV.png
 pope-francis,2016-11,https://www.nytimes.com/interactive/2016/11/18/world/europe/pope-francis-cardinals-shape-church.html,https://static01.nyt.com/images/2016/11/18/world/europe/pope-francis-cardinals-shape-church-1479418314614/pope-francis-cardinals-shape-church-1479418314614-master1050.png
 rural-urban-split,2016-11,https://www.nytimes.com/2016/11/12/upshot/this-election-highlighted-a-growing-rural-urban-split.html,https://i.imgur.com/NVOLG7s.png
 forecast-president,2016-11,https://www.nytimes.com/elections/forecast/president,https://i.imgur.com/lyB54bH.png
@@ -99,8 +101,8 @@ why-orlando-was-so-deadly,2016-06,https://www.nytimes.com/interactive/2016/06/12
 lebron-finals-streak,2016-06,https://www.nytimes.com/interactive/2016/06/02/sports/basketball/lebron-james-nba-finals-streak.html,https://i.imgur.com/3c13aWf.png
 europe-right-wing,2016-05,https://www.nytimes.com/interactive/2016/05/22/world/europe/europe-right-wing-austria-hungary.html,https://static01.nyt.com/images/2016/05/22/world/europe/europe-right-wing-austria-hungary-1463897749837/europe-right-wing-austria-hungary-1463897749837-master1050-v3.png
 swoopy-drag,2016-03,http://1wheel.github.io/swoopy-drag/,https://i.imgur.com/x2M55Yl.png
-line-intersection,2016-03,https://bl.ocks.org/1wheel/464141fe9b940153e636,https://i.imgur.com/wm8XlpS.png
-voroni-spiral,2016-03,https://bl.ocks.org/1wheel/c7122eee6247b95dba09,https://i.imgur.com/TDEygIX.png
+line-intersection,2016-03,https://blocks.roadtolarissa.com/1wheel/464141fe9b940153e636,https://i.imgur.com/wm8XlpS.png
+voroni-spiral,2016-03,https://blocks.roadtolarissa.com/1wheel/c7122eee6247b95dba09,https://i.imgur.com/TDEygIX.png
 who-marries-whom,2016-02,http://www.bloomberg.com/graphics/2016-who-marries-whom/,/images/thumbnails/who-marries-whom.png
 donor-network,2016-02,http://www.bloomberg.com/politics/graphics/2016-fec-filings/febuary/bush-donors/,/images/thumbnails/donor-network.png
 nba-win-loss,2016-01,http://roadtolarissa.com/nba-win-loss/,/images/thumbnails/nba-win-loss.png
