@@ -5,10 +5,9 @@ var sharp = require('sharp')
 
 function updateProjects(){
   d3.csv('https://www.googleapis.com/drive/v3/files/1xUvK5PGo8XPqARJIvXRnn71lJSL8CwjvjUWB9Jcy0Ho/export?mimeType=text/csv&key=AIzaSyAT-ALGW_bcmcvNs1dPgcV7fF6tR1vKY44', (err, res) => {
-    console.log(err, res)
-    var projects = res
+    if (err) console.log(err, res)
 
-    io.writeDataSync(__dirname + '/projects.csv', projects)
+    io.writeDataSync(__dirname + '/projects.csv', res)
   })
 }
 updateProjects()

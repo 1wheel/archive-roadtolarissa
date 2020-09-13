@@ -11,9 +11,8 @@ https://docs.google.com/spreadsheets/d/1xUvK5PGo8XPqARJIvXRnn71lJSL8CwjvjUWB9Jcy
 update thumbnails
 
 ```
-cd archive-roadtolarissa/
-
-homepage-list/script.js
+node ../archive-roadtolarissa/homepage-list/script.js
+node ../archive-roadtolarissa/homepage-list/script.js
 
 yarn pub
 ```
