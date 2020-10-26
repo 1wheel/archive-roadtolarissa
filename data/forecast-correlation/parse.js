@@ -44,7 +44,7 @@ function parseEcon(){
   fs.writeFileSync(__dirname + '/maps-eco.buf', out)
   console.log(d3.extent(out))
 }
-parseEcon()
+// parseEcon()
 
 
 
@@ -72,7 +72,10 @@ function calc(model){
 
       var cor = ss.sampleCorrelation(a.trumpShare, b.trumpShare)
 
-      return {indexA, strA, indexB, strB, cor}
+      var lineData = a.trumpShare.map((d, i) => [d, b.trumpShare[i]])
+      var {b, m} = ss.linearRegression(lineData)
+
+      return {indexA, strA, indexB, strB, cor, b, m}
     })
     .filter(d => d)
 
