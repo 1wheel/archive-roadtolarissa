@@ -21,7 +21,7 @@ yarn pub
 update index.html
 
 ```
-cd roadtolarissa/source
+cd roadtolarissa
 
-homepage/list-bin.js
+node source/homepage/list-bin.js
 ```

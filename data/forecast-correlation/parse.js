@@ -1,7 +1,6 @@
 var {_, d3, jp, fs, glob, io} = require('scrape-stl')
 var ss = require('simple-statistics')
 
-
 var stateStrs = ["AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY"]
 
 
@@ -25,9 +24,9 @@ function parse538(){
   })
 
   fs.writeFileSync(__dirname + '/maps-538.buf', out)
-  console.log(d3.extent(out))
 }
-// parse538()
+parse538()
+
 
 function parseEcon(){
   var maps = io.readDataSync(__dirname + '/raw-eco.csv')
@@ -42,11 +41,8 @@ function parseEcon(){
   })
 
   fs.writeFileSync(__dirname + '/maps-eco.buf', out)
-  console.log(d3.extent(out))
 }
-// parseEcon()
-
-
+parseEcon()
 
 
 
@@ -69,7 +65,6 @@ function calc(model){
       var indexB = b.stateIndex
 
       // if (indexB <= indexA) return
-
       var cor = ss.sampleCorrelation(a.trumpShare, b.trumpShare)
 
       var lineData = a.trumpShare.map((d, i) => [d, b.trumpShare[i]])
