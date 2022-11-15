@@ -1,7 +1,7 @@
 {
   "name": "archive-roadtolarissa",
   "dependencies": {
-    "sharp": "^0.25.3"
+    "sharp": "^0.31.2"
   },
   "scripts": {
     "pub": "cd .. && rsync -a --omit-dir-times --no-perms --exclude node_modules archive-roadtolarissa/ demo@roadtolarissa.com:../../usr/share/nginx/html/"
