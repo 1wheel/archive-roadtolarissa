@@ -34,8 +34,8 @@ function dlImages(){
   existingImages.forEach(d => isExisting[d.split('/').slice(-1)[0].split('.')[0]] = true)
 
   projects.forEach(d => {
-
     if (isExisting[d.slug]) return
+    console.log(d)
     execSync(`curl ${d.img} > ${d.rawPath}`)
   })
 }
