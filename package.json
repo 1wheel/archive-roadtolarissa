@@ -1,5 +1,6 @@
 {
   "name": "archive-roadtolarissa",
+  "license": "MIT",
   "dependencies": {
     "sharp": "^0.31.2"
   },
