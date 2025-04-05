@@ -1,4 +1,8 @@
 slug,date,url,img
+llm-biology,2025-03,https://transformer-circuits.pub/2025/attribution-graphs/biology.html,https://i.imgur.com/ILLiRWy.png
+circuit-tracing,2025-03,https://transformer-circuits.pub/2025/attribution-graphs/methods.html,https://i.imgur.com/FNdyN7T.png
+alignment-audit,2025-03,https://arxiv.org/abs/2503.10965,https://i.imgur.com/fwcfqmR.png
+advent-of-code,2024-12,https://roadtolarissa.com/advent-of-code/,https://i.imgur.com/Qkb945t.png
 scaling-monosemanticity,2024-05,https://transformer-circuits.pub/2024/scaling-monosemanticity/,https://i.imgur.com/5OW3rpY.png
 patchoscopes,2024-01,https://arxiv.org/abs/2401.06102,https://i.imgur.com/3ebFXcx.png
 grokking,2023-08,https://pair.withgoogle.com/explorables/grokking/,https://pair.withgoogle.com/explorables/images/grokking-abstract.png
