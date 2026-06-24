@@ -9,14 +9,16 @@
   <p class='intro'>Survivorship-free, 1963&ndash;2026. Membership reconstructed from Chen, Noronha &amp; Singal (2004) for 1962&ndash;2000 and fja05680 for 1996&ndash;2026. Four views of the same per-company tenure data.</p>
 
   <section class='c-percentiles'><div class='chart'></div></section>
-  <section class='c-decade'><div class='chart'></div></section>
-  <section class='c-rankcont'><div class='chart'></div></section>
+  <section class='c-heatmap'><div class='chart'></div></section>
   <section class='c-marey'><div class='chart'></div></section>
+  <section class='c-cohorts'><div class='chart'></div></section>
+  <section class='c-regl'><div class='chart'></div></section>
 
   <p class='sources'>Data: <a href='https://doi.org/10.1111/j.1540-6261.2004.00683.x'>Chen, Noronha &amp; Singal (2004)</a>, <a href='https://github.com/fja05680/sp500'>fja05680/sp500</a>, <a href='https://pages.stern.nyu.edu/~jwurgler/data'>Wurgler &amp; Zhuravskaya (2002)</a>. Survivorship-free; tenure = years continuously in the index.</p>
 </div>
 
 <script src='https://roadtolarissa.com/slinks/static-rss/d3_.js'></script>
+<script src='https://unpkg.com/regl@2/dist/regl.min.js'></script>
 <script type='module'>
   import { parquetReadObjects } from 'https://cdn.jsdelivr.net/npm/hyparquet@latest/+esm'
   const buf = await (await fetch('https://roadtolarissa.com/data/sp500-tenure.parquet')).arrayBuffer()
@@ -25,7 +27,8 @@
 </script>
 <script src='util.js'></script>
 <script src='draw-percentiles.js'></script>
-<script src='draw-decade.js'></script>
-<script src='draw-rankcont.js'></script>
+<script src='draw-heatmap.js'></script>
 <script src='draw-marey.js'></script>
+<script src='draw-cohorts.js'></script>
+<script src='draw-regl.js'></script>
 <script src='init.js'></script>

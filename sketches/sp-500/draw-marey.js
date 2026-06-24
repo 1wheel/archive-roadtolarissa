@@ -8,15 +8,18 @@ window.drawMarey = function(data){
   var isMobile = window.innerWidth < 620
 
   // ---- spans + derived still-in flag (exit_t = lastQuarter + 0.25) ----
+  // group/trace/hit-test by d.id (UNIQUE) — tickers are reused over time.
   var spans = data.spans.map(function(d){
     return {
+      id: d.id,
       ticker: d.ticker,
+      name: d.name,
       entry: d.entry,
       enter_t: d.enter_t,
       exit_t: d.exit_t,
       og: d.og,
       tenure: Math.max(0, d.tenure),
-      stillIn: d.exit_t >= 2026.0
+      stillIn: d.exit_t >= 2026.3
     }
   })
 
@@ -60,8 +63,8 @@ window.drawMarey = function(data){
   function buildPanel(opts){
     var rows = opts.rows
     var n = rows.length
-    var H = panelH
-    var rowH = H / n
+    var H = n            // exactly 1px per company (no sub-pixel overlap)
+    var rowH = 1
     var ratio = window.devicePixelRatio || 1
     // crisp 1-device-pixel hairlines: snap each line's centre to a device-pixel row
     var lineY = function(i){
@@ -82,17 +85,11 @@ window.drawMarey = function(data){
     ctx.scale(ratio, ratio)
     ctx.translate(margin.left, margin.top)
     ctx.clearRect(-margin.left, -margin.top, cvW, totalH)
-    ctx.lineWidth = 1 / ratio
-    ctx.lineCap = 'butt'
+    // solid 1px-per-company rows (fillRect, not a thin stroke -> full colour, crisp)
     rows.forEach(function(d, i){
-      var y = lineY(i)
-      var x0 = x(d.enter_t)
-      var x1 = x(d.exit_t)
-      ctx.strokeStyle = colorFor(d)
-      ctx.beginPath()
-      ctx.moveTo(x0, y)
-      ctx.lineTo(Math.max(x1, x0 + 0.8), y)
-      ctx.stroke()
+      var x0 = Math.round(x(d.enter_t)), x1 = Math.round(x(d.exit_t))
+      ctx.fillStyle = colorFor(d)
+      ctx.fillRect(x0, i, Math.max(x1 - x0, 1), 1)
     })
 
     // --- highlight overlay canvas ---
@@ -157,13 +154,17 @@ window.drawMarey = function(data){
         var d = rows[i]
         drawHi(i)
 
-        var entTxt = d.og ? 'before 1962' : Math.floor(d.entry)
-        var exitTxt = d.stillIn ? 'still in' : Math.floor(d.exit_t)
-        var tk = d.ticker && d.ticker !== '?' ? d.ticker : '(unnamed)'
+        var nameTxt = d.name || d.ticker || '(unnamed)'
+        var joinedTxt = d.og ? 'before 1962' : Math.floor(d.entry)
+        var hasTicker = d.ticker && d.ticker !== '?'
+        var leftHtml = d.stillIn
+          ? '<div class="tt-row"><b>still in</b></div>'
+          : '<div class="tt-row">left <b>' + Math.floor(d.exit_t) + '</b></div>'
         window.ttSel.classed('tooltip-hidden', false).html(
-          '<div class="tt-tick">' + tk + (d.og ? ' · joined before 1962' : '') + '</div>' +
-          '<div class="tt-row">entered <b>' + entTxt + '</b></div>' +
-          '<div class="tt-row">exited <b>' + exitTxt + '</b></div>' +
+          '<div class="tt-tick">' + nameTxt + '</div>' +
+          (hasTicker ? '<div class="tt-row">' + d.ticker + '</div>' : '') +
+          '<div class="tt-row">joined <b>' + joinedTxt + '</b></div>' +
+          leftHtml +
           '<div class="tt-row">tenure <b>' + d.tenure.toFixed(1) + ' yrs</b></div>'
         )
         var tw = 150, off = 14

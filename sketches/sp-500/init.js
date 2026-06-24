@@ -5,9 +5,10 @@ window.init = function(){
   var grouped = util.parse(window.parquetRows)
 
   drawPercentiles(grouped)
-  drawDecade(grouped)
-  drawRankcont(grouped)
+  drawHeatmap(grouped)
   drawMarey(grouped)
+  drawCohorts(grouped)
+  drawRegl(grouped)
 }
 
 if (window.parquetRows) init()

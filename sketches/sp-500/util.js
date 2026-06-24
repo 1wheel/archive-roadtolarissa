@@ -1,11 +1,14 @@
 // parse the flat parquet rows ONCE into the structures each chart needs.
-// rows: {q, t, ticker, entry_year, tenure} per (quarter, member).
+// rows: {q, t, id, ticker, name, entry_year, exit_year, tenure} per (quarter, member).
+// id is the UNIQUE canonical company key (tickers are reused over time, so never
+// group/trace by ticker). Within a quarter, ties on tenure break by exit_year so
+// neighbours stay STABLE quarter-to-quarter (no churn/jitter in the stack).
 window.util = {
   parse(rows){
     var byQ = d3.nestBy(rows, d => d.q)
     byQ.forEach(c => {
       c.q = c.key; c.t = c[0].t
-      c.sort((a,b) => a.tenure - b.tenure)   // tenure ascending (newest bottom)
+      c.sort((a,b) => (a.tenure - b.tenure) || (a.exit_year - b.exit_year))
     })
     byQ.sort((a,b) => a.t - b.t)
 
@@ -19,11 +22,12 @@ window.util = {
       return o
     })
 
-    // per-company spans (marey): group by ticker+entry_year
-    var spans = d3.nestBy(rows.filter(d => d.ticker), d => d.ticker + '|' + d.entry_year)
+    // per-company spans (marey): group by UNIQUE id + entry (separate re-entry stints)
+    var spans = d3.nestBy(rows.filter(d => d.id), d => d.id + '|' + d.entry_year)
       .map(g => {
         var ts = g.map(d => d.t)
-        return {ticker: g[0].ticker, entry: g[0].entry_year, enter_t: d3.min(ts), exit_t: d3.max(ts)+0.25,
+        return {id: g[0].id, ticker: g[0].ticker, name: g[0].name, entry: g[0].entry_year,
+                enter_t: d3.min(ts), exit_t: d3.max(ts)+0.25,
                 og: g[0].entry_year==null || g[0].entry_year<=1962.5, tenure: d3.max(g,d=>d.tenure)}
       })
 

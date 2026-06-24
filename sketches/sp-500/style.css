@@ -177,3 +177,53 @@ body { margin: 0; }
 .c-percentiles .grid line { shape-rendering: crispEdges; }
 .c-percentiles .guide { shape-rendering: crispEdges; }
 .c-percentiles .hit { cursor: crosshair; }
+
+/* heatmap color toggle */
+.c-heatmap .hm-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:6px }
+.c-heatmap .hm-subhead{ font-size:13px; font-weight:600; color:#444 }
+.c-heatmap .hm-toggle button{ font:inherit; font-size:11px; border:1px solid #d6d6d6; background:#fff; color:#666; padding:2px 9px; cursor:pointer; border-radius:3px; margin-right:4px }
+.c-heatmap .hm-toggle button.on{ background:#1d3557; color:#fff; border-color:#1d3557 }
+.c-heatmap .hm-plot{ position:relative }
+.c-heatmap .hm-plot canvas{ display:block; position:absolute; top:0; left:0; z-index:1 }
+.c-heatmap .hm-plot canvas.hi{ z-index:2; pointer-events:none }
+.c-heatmap .hm-plot svg{ position:relative; z-index:3; overflow:visible; display:block }
+.c-heatmap text{ font-size:12px; fill:#555 }
+.c-heatmap .hm-axis path, .c-heatmap .hm-axis line{ display:none }
+.c-heatmap .hm-x-label{ font-size:11px; fill:#888 }
+.c-heatmap .hm-y-title{ font-size:11px; fill:#888 }
+.c-heatmap .hm-legend-title{ font-size:11px; fill:#888 }
+.c-heatmap .hm-legend-tick{ font-size:10px; fill:#999 }
+
+/* ============================================================ */
+/* regl re-sorted spans  (all selectors nested under .c-regl)   */
+/* ============================================================ */
+.c-regl{ margin: 30px 0; }
+.c-regl .rg-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:8px }
+.c-regl .rg-sub{ font-size:13px; color:#888 }
+.c-regl .rg-toggle button{ font:inherit; font-size:11px; border:1px solid #d6d6d6; background:#fff; color:#666; padding:2px 9px; cursor:pointer; border-radius:3px; margin-right:4px }
+.c-regl .rg-toggle button.on{ background:#1d3557; color:#fff; border-color:#1d3557 }
+.c-regl .rg-plot{ position:relative }
+.c-regl .rg-plot canvas{ display:block; position:absolute; top:0; left:0; z-index:1 }
+.c-regl .rg-plot svg{ position:relative; z-index:2; overflow:visible; display:block; pointer-events:none }
+.c-regl text{ font-size:12px; fill:#555 }
+.c-regl .rg-axis path, .c-regl .rg-axis line{ stroke:#bbb }
+.c-regl .rg-x-label{ font-size:11px; fill:#888 }
+
+/* crosshair over chart plot areas; buttons stay a pointer */
+.sp500 .chart canvas, .sp500 .chart svg{ cursor: crosshair }
+.sp500 button{ cursor: pointer }
+
+/* ggplot-style axes (house style): no domain line, faded axis, light ticks */
+.sp500 .domain{ display: none }
+.sp500 .axis{ opacity: .7 }
+.sp500 .tick line{ stroke: #e6e6e6 }
+.sp500 .tick text, .sp500 .x text, .sp500 .y text{ fill: #8a8a8a }
+.sp500 .hm-axis line, .sp500 .rg-axis line{ stroke: #e6e6e6 }
+
+/* cohort lifespan distributions */
+.c-cohorts{ margin: 30px 0 }
+.c-cohorts .co-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:8px; flex-wrap:wrap }
+.c-cohorts .co-sub{ font-size:13px; font-weight:600; color:#444 }
+.c-cohorts .co-toggle button{ font:inherit; font-size:11px; border:1px solid #d6d6d6; background:#fff; color:#666; padding:2px 9px; cursor:pointer; border-radius:3px; margin-right:4px }
+.c-cohorts .co-toggle button.on{ background:#1d3557; color:#fff; border-color:#1d3557 }
+.c-cohorts .co-dot{ }
