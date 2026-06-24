@@ -1,0 +1,179 @@
+/* ---- decade heatmap (scoped under .c-decade) ---- */
+.c-decade .subhead{
+  font-size: 14px;
+  line-height: 1.45;
+  color: #6a6a6a;
+  margin: 0 0 12px;
+  max-width: 680px;
+}
+.c-decade .plot{ position: relative; }
+.c-decade .plot canvas{ position: absolute; top: 0; left: 0; }
+.c-decade .plot svg{ position: absolute; top: 0; left: 0; overflow: visible; display: block; }
+.c-decade svg{ overflow: visible; display: block; }
+.c-decade text{ font-size: 12px; fill: #555; }
+.c-decade .x-label{ font-size: 11px; fill: #888; }
+.c-decade .x-tick{ stroke: #bbb; stroke-width: 1px; }
+.c-decade .axis-caption{
+  font-size: 11px;
+  fill: #888;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+.c-decade .median{
+  fill: none;
+  stroke: #222;
+  stroke-width: 1.4px;
+  opacity: 0.5;
+  stroke-dasharray: 4 3;
+}
+.c-decade .annotation{
+  font-size: 12px;
+  fill: #333;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 3.5px;
+  stroke-linejoin: round;
+}
+.c-decade .legend-bg{
+  fill: #fff;
+  opacity: 0.86;
+  stroke: #e6e6e6;
+  stroke-width: 1px;
+}
+.c-decade .legend-title{ font-size: 12px; fill: #555; }
+.c-decade .legend-label{
+  font-size: 11px;
+  fill: #444;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 2.5px;
+  stroke-linejoin: round;
+}
+/* ============================================================ */
+/* shared page chrome + tooltip (used by all four charts)       */
+/* ============================================================ */
+html, body{ margin: 0; background: #fff; }
+body{
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #2a2a2a;
+  -webkit-font-smoothing: antialiased;
+}
+.sp500{ max-width: 1000px; margin: 0 auto; padding: 24px 16px 40px; }
+.sp500 h1{ font-size: 24px; font-weight: 700; line-height: 1.18; margin: 0 0 8px; color: #1a1a1a; }
+.sp500 .intro{ font-size: 14px; line-height: 1.5; color: #6a6a6a; margin: 0 0 18px; max-width: 720px; }
+.sp500 .sources{ font-size: 11px; color: #9a9a9a; line-height: 1.5; margin-top: 26px; padding-top: 12px; border-top: 1px solid #eee; max-width: 720px; }
+.sp500 .sources a{ color: #777; text-decoration: underline; }
+.sp500 .sources a:hover{ color: #333; }
+
+.sp500-tt{
+  position: absolute;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  font-size: 12px;
+  line-height: 1.5;
+  pointer-events: none;
+  color: #2a2a2a;
+  max-width: 200px;
+  z-index: 10;
+}
+.sp500-tt.tooltip-hidden{ opacity: 0; }
+.sp500-tt .tt-tick{ font-weight: 700; color: #1a1a1a; font-size: 13px; }
+.sp500-tt .tt-row{ color: #555; }
+.sp500-tt .tt-row b{ color: #1a1a1a; font-weight: 600; }
+
+/* ============================================================ */
+/* Canvas Marey  (all selectors nested under .c-marey)          */
+/* ============================================================ */
+.c-marey{ margin: 30px 0; }
+.c-marey .marey-sub{ font-size: 13px; color: #888; margin: 0 0 8px; }
+
+.c-marey .plot{ position: relative; margin-bottom: 4px; }
+.c-marey .plot canvas{ display: block; position: absolute; top: 0; left: 0; z-index: 1; }
+.c-marey .plot canvas.hi{ z-index: 2; pointer-events: none; }
+.c-marey .plot svg{ position: relative; z-index: 3; }
+
+.c-marey svg{ overflow: visible; display: block; }
+.c-marey text{ font-size: 12px; fill: #555; }
+
+.c-marey .axis path, .c-marey .axis line{ display: none; }
+.c-marey .x-label{ font-size: 11px; fill: #888; }
+
+.c-marey .panel-label{
+  font-size: 12px;
+  fill: #555;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.c-marey .legend-title{ font-size: 11px; fill: #888; }
+.c-marey .legend-tick{ font-size: 10px; fill: #999; }
+
+/* ---- tenure rank heatmap (scoped under .c-rankcont) ---- */
+.c-rankcont .rc-subhead{
+  font-size: 14px;
+  line-height: 1.45;
+  color: #6a6a6a;
+  margin: 0 0 12px;
+  max-width: 680px;
+}
+.c-rankcont .rc-plot{ position: relative; }
+.c-rankcont .rc-plot canvas{ display: block; position: absolute; top: 0; left: 0; z-index: 1; }
+.c-rankcont .rc-plot canvas.hi{ z-index: 2; pointer-events: none; }
+.c-rankcont .rc-plot svg{ position: relative; z-index: 3; }
+.c-rankcont svg{ overflow: visible; display: block; }
+.c-rankcont text{ font-size: 12px; fill: #555; }
+.c-rankcont .rc-axis path, .c-rankcont .rc-axis line{ display: none; }
+.c-rankcont .rc-x-label{ font-size: 11px; fill: #888; }
+.c-rankcont .rc-y-title{ font-size: 11px; fill: #888; }
+.c-rankcont .rc-anno{
+  font-size: 11.5px;
+  fill: #555;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+.c-rankcont .rc-legend-title{ font-size: 11px; fill: #888; }
+.c-rankcont .rc-legend-tick{ font-size: 10px; fill: #999; }
+/* sp500 shared base */
+html { background: #fff; font-family: system-ui, -apple-system, sans-serif; font-size: 14px; }
+body { margin: 0; }
+.sp500 { max-width: 980px; margin: 5px auto 40px; padding: 0 14px; }
+.sp500 h1 { font-size: 24px; font-weight: 700; color: #1a1a1a; margin: 18px 0 6px; }
+.sp500 .intro { font-size: 13px; line-height: 1.55; color: #666; max-width: 760px; margin: 0 0 18px; }
+.sp500 section { margin: 0 0 38px; }
+.sp500 .chart { position: relative; max-width: 980px; }
+.sp500 svg { overflow: visible; }
+.sp500 text { cursor: default; -webkit-font-smoothing: antialiased; }
+.sp500 .axis line, .sp500 .domain { stroke: #d8d8d8; }
+.sp500 .axis text { fill: #8a8a8a; font-size: 11px; }
+.sp500 .sources { font-size: 11px; line-height: 1.55; color: #9a9a9a; margin: 26px 0 0; }
+.sp500 .sources a { color: #7a7a7a; }
+
+/* shared tooltip (appended to body by init.js) */
+.sp500-tt {
+  top: -1000px; position: fixed; padding: 9px 11px;
+  background: rgba(255, 255, 255, .97); border: 1px solid #ccc; border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .12); pointer-events: none; z-index: 10000;
+  width: 178px; font-size: 12.5px; line-height: 1.45; color: #222;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+.sp500-tt b { color: #1a1a1a; }
+.sp500-tt .row { display: flex; justify-content: space-between; }
+.sp500-tt .row.cens { margin-top: 4px; padding-top: 4px; border-top: 1px solid #eee; color: #999; font-size: 11px; }
+.tooltip-hidden { opacity: 0; transition: all .3s; transition-delay: .1s; }
+
+/* c-percentiles */
+.c-percentiles .chart { max-width: 940px; }
+.c-percentiles .subtitle { letter-spacing: .2px; }
+.c-percentiles .grid line { shape-rendering: crispEdges; }
+.c-percentiles .guide { shape-rendering: crispEdges; }
+.c-percentiles .hit { cursor: crosshair; }
