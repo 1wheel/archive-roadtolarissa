@@ -81,3 +81,19 @@ body{
   border: 1px solid #ddd; border-radius: 3px; padding: 2px 8px; width: 150px;
 }
 .c-tours .guest-search:focus{ outline: none; border-color: #1d3557; }
+
+/* small multiples: 3+ host blitzes */
+.c-tours .multiples{ margin-top: 22px; }
+.c-tours .mult-head{ font-size: 13px; font-weight: 600; color: #444; margin-bottom: 10px; }
+.c-tours .mult-card{
+  display: inline-block; vertical-align: top;
+  width: 208px; margin: 0 10px 12px 0; padding: 8px 8px 2px;
+  border: 1px solid #e8e8e8; border-radius: 4px; cursor: pointer;
+}
+.c-tours .mult-card:hover{ border-color: #bbb; }
+.c-tours .mult-card.on{ border-color: #1d3557; box-shadow: 0 0 0 1px #1d3557; }
+.c-tours .mult-name{ font-size: 12.5px; font-weight: 600; color: #222; }
+.c-tours .mult-sub{ font-size: 10.5px; color: #999; margin: 1px 0 2px; }
+.c-tours .mult-card svg{ display: block; overflow: visible; cursor: pointer; }
+.c-tours .mult-show{ font-size: 10px; fill: #666; }
+.c-tours .mult-axis{ font-size: 9px; fill: #aaa; }

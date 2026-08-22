@@ -240,6 +240,54 @@ window.drawTours = function(eps){
       })
   }
 
+  // ---- small multiples: every 3+ host blitz, zoomed to its window ----
+  var multSel = d3.select('.c-tours .multiples')
+  var fmtShort = d3.utcFormat('%b %-d'), fmtYr = d3.utcFormat('%b %Y')
+  function drawMultiples(){
+    multSel.html('')
+    var big = tours.filter(t => t.nHosts >= 3).sort((a, b) => b.last - a.last)
+    if (!big.length) return
+    multSel.append('div.mult-head').text('The blitzes — every guest hitting 3+ hosts inside the window')
+    var cards = multSel.appendMany('div.mult-card', big)
+      .classed('on', t => pinned == t.key)
+      .on('click', t => {
+        pinned = pinned == t.key ? null : t.key
+        d3.select('.c-tours .guest-search').property('value', pinned ? guestMeta[t.key].name : '')
+        highlight(pinned)
+        drawChips()
+        drawMultiples()
+      })
+    cards.each(function(t){
+      var sel = d3.select(this)
+      var eps = t.eps.slice().sort((a, b) => a.date - b.date)
+      var days = Math.max(1, Math.round((+eps[eps.length-1].date - +eps[0].date)/864e5))
+      sel.append('div.mult-name').text(t.name)
+      sel.append('div.mult-sub').text(t.nHosts + ' hosts · ' + days + ' days · ' + fmtYr(t.last))
+      var W = 208, rowH = 18, padT = 6, padB = 20, tlL = 6, tlR = 88
+      var H = padT + eps.length*rowH + padB
+      var svg = sel.append('svg').at({width: W, height: H})
+      var x = d3.scaleUtc()
+        .domain([+eps[0].date - 2.5*864e5, +eps[eps.length-1].date + 2.5*864e5])
+        .range([tlL + 4, W - tlR - 6])
+      // connecting path through dots
+      var pts = eps.map((d, i) => [x(d.date), padT + i*rowH + rowH/2])
+      svg.append('path').at({
+        d: 'M' + pts.map(p => p.join(' ')).join(' L '),
+        fill: 'none', stroke: C.three, strokeWidth: 1.2, opacity: .45,
+      })
+      eps.forEach((d, i) => {
+        var yy = padT + i*rowH + rowH/2
+        svg.append('line').at({x1: tlL, x2: W - tlR, y1: yy, y2: yy, stroke: '#f1f1f1'})
+        svg.append('circle').at({cx: x(d.date), cy: yy, r: 4.5, fill: C.three, stroke: '#fff', strokeWidth: 1})
+        svg.append('text.mult-show').at({x: W - tlR + 4, y: yy + 3})
+          .text(SHOWS[d.s].short + ' · ' + fmtShort(d.date))
+      })
+      svg.append('text.mult-axis').at({x: tlL, y: H - 5}).text(fmtShort(eps[0].date))
+      svg.append('text.mult-axis').at({x: W - tlR, y: H - 5, textAnchor: 'end'})
+        .text(days > 0 ? fmtShort(eps[eps.length-1].date) : '')
+    })
+  }
+
   // ---- tooltip + nearest-point hover ----
   var fmt = d3.utcFormat('%b %-d, %Y')
   var esc = s => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -289,6 +337,7 @@ window.drawTours = function(eps){
     computeTours(W)
     restyle()
     drawChips()
+    drawMultiples()
     drawAnnotation()
     highlight(pinned)
     countSel.text(tours.length + ' tours · ' + eps.filter(d => d.tier).length + ' episodes bolded')
