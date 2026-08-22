@@ -5,7 +5,9 @@
 // as best-effort (and as untrusted strings: everything lands in the DOM
 // escaped or via .text()).
 window.drawTours = function(eps){
-  var C = {base: '#a9b2bd', two: '#3e6fa8', three: '#d1495b', ink: '#1d3557'}
+  var C = {base: '#1f1f1f', two: '#3e6fa8', three: '#d1495b', ink: '#1d3557', sel: '#e0218a'}
+  var RUN = ['#b92d3c', '#2f6db5', '#d39a14', '#1e9e8a']   // one per 3+ host run (validated, fixed order); extras fold to neutral
+  var runColor = t => t && t.ci < RUN.length ? RUN[t.ci] : '#555'
 
   var SHOWS = {
     'ek-vox':       {label: 'EK Show · Vox',  short: 'Vox',       host: 'Ezra Klein'},
@@ -144,6 +146,7 @@ window.drawTours = function(eps){
       flush()
     })
     tours.sort((a, b) => (b.nHosts - a.nHosts) || (b.last - a.last))
+    tours.slice().sort((a, b) => byGuest[b.key].length - byGuest[a.key].length || b.last - a.last).forEach((t, i) => t.ci = i)
   }
 
   // ---- dots ----
@@ -160,12 +163,12 @@ window.drawTours = function(eps){
 
   function restyle(){
     dotSel
-      .at({r: d => d.p ? (d.tier ? 4 : 3) : d.tier == 3 ? 4 : d.tier == 2 ? 3.4 : 2})
+      .at({r: d => d.p ? (d.tier ? 4.5 : 3) : d.tier ? 4.5 : 1.4})
       .st({
-        fill: d => d.p ? '#fff' : d.tier == 3 ? C.three : d.tier == 2 ? C.two : C.base,
-        fillOpacity: d => d.tier || d.p ? .95 : .55,
-        stroke: d => d.p ? (d.tier == 3 ? C.three : d.tier == 2 ? C.two : '#8a94a0') : d.tier ? '#fff' : 'none',
-        strokeWidth: d => d.p ? 1.4 : .6,
+        fill: d => d.p ? '#fff' : d.tier ? runColor(d.tour) : C.base,
+        fillOpacity: d => d.tier || d.p ? 1 : .45,
+        stroke: d => d.p ? (d.tier ? runColor(d.tour) : '#777') : d.tier ? '#fff' : 'none',
+        strokeWidth: d => d.p ? 1.4 : .8,
       })
     dotSel.filter(d => d.tier).raise()
 
@@ -184,7 +187,7 @@ window.drawTours = function(eps){
     var gm = guestMeta[key]
     if (!gm) return
     var gTours = tours.filter(t => t.key == key)
-    var color = gTours.some(t => t.nHosts >= 3) ? C.three : gTours.length ? C.two : C.ink
+    var color = C.sel
     hiG.appendMany('circle', gm.eps)
       .translate(d => [d.px, d.py])
       .at({r: 6.5, fill: 'none', stroke: color, strokeWidth: 1.6})
@@ -230,8 +233,9 @@ window.drawTours = function(eps){
       .html('')
       .each(function(t){
         var b = d3.select(this)
+        b.append('span.sw').st({background: runColor(t)})
         b.append('b').text(t.name)
-        b.append('span.n').text(guestMeta[t.key].eps.length + ' appearances')
+        b.append('span.n').text('· ' + guestMeta[t.key].eps.length + ' appearances')
       })
   }
 
@@ -261,6 +265,7 @@ window.drawTours = function(eps){
       })
     cards.each(function(t){
       var sel = d3.select(this)
+      var rc = runColor(t)
       var stops = t.eps.slice().sort((a, b) => a.date - b.date)
       var days = Math.max(1, Math.round((+stops[stops.length-1].date - +stops[0].date)/864e5))
       var prints = []
@@ -308,13 +313,13 @@ window.drawTours = function(eps){
       var pts = all.map(d => [x(d.date), rowY[d.s]])
       svg.append('path').at({
         d: 'M' + pts.map(p => p.join(' ')).join(' L '),
-        fill: 'none', stroke: C.three, strokeWidth: 1.2, opacity: .45,
+        fill: 'none', stroke: rc, strokeWidth: 1.2, opacity: .45,
       })
       all.forEach(d => {
         var print = isPrint(d.s) || !!d.p
         svg.append('circle')
           .at({cx: x(d.date), cy: rowY[d.s], r: 4.5,
-               fill: print ? '#fff' : C.three, stroke: print ? C.three : '#fff', strokeWidth: print ? 1.5 : 1})
+               fill: print ? '#fff' : rc, stroke: print ? rc : '#fff', strokeWidth: print ? 1.5 : 1})
           .append('title').text(fmtShort(d.date) + (d.t ? ' · ' + d.t : ' · ' + d.label))
       })
       rows.forEach(r => {

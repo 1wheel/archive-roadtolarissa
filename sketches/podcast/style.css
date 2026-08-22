@@ -108,3 +108,6 @@ body{
 .c-tours .suggest button:hover{ background: #f3f5f8; }
 .c-tours .suggest button .n{ color: #999; font-size: 11px; margin-left: 6px; }
 .c-tours .guest-search{ width: 170px; padding: 4px 8px; }
+
+.c-tours .chips .sw{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:5px; vertical-align:0; }
+.c-tours .chips button.on .sw{ outline: 1.5px solid #fff; }
