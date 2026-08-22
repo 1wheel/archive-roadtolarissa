@@ -3,7 +3,7 @@ window.init = function(){
   drawTours(window.episodes)
 }
 
-window.DATA_V = '20260822j'   // bump when episodes.json changes so browsers refetch
+window.DATA_V = '20260822k'   // bump when episodes.json changes so browsers refetch
 fetch('episodes.json?v=' + window.DATA_V)
   .then(r => r.json())
   .then(eps => {
