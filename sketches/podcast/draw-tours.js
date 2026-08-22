@@ -248,6 +248,9 @@ window.drawTours = function(eps){
     var big = tours.filter(t => t.nHosts >= 3).sort((a, b) => b.last - a.last)
     if (!big.length) return
     multSel.append('div.mult-head').text('The blitzes — every guest hitting 3+ hosts inside the window')
+    // one shared x-span across all cards so tour pacing is comparable
+    var SPAN = Math.max(20, d3.max(big, t =>
+      (+d3.max(t.eps, d => d.date) - +d3.min(t.eps, d => d.date))/864e5) + 6)
     var cards = multSel.appendMany('div.mult-card', big)
       .classed('on', t => pinned == t.key)
       .on('click', t => {
@@ -259,32 +262,45 @@ window.drawTours = function(eps){
       })
     cards.each(function(t){
       var sel = d3.select(this)
-      var eps = t.eps.slice().sort((a, b) => a.date - b.date)
-      var days = Math.max(1, Math.round((+eps[eps.length-1].date - +eps[0].date)/864e5))
+      var stops = t.eps.slice().sort((a, b) => a.date - b.date)
+      var days = Math.max(1, Math.round((+stops[stops.length-1].date - +stops[0].date)/864e5))
       sel.append('div.mult-name').text(t.name)
       sel.append('div.mult-sub').text(t.nHosts + ' hosts · ' + days + ' days · ' + fmtYr(t.last))
+      // rows = shows hit, ordered by first stop; centered on the tour in the shared span
+      var rows = d3.nestBy(stops, d => d.s)
+      var mid = (+stops[0].date + +stops[stops.length-1].date)/2
+      var t0 = mid - SPAN/2*864e5, t1 = mid + SPAN/2*864e5
       var W = 208, rowH = 18, padT = 6, padB = 20, tlL = 6, tlR = 88
-      var H = padT + eps.length*rowH + padB
+      var H = padT + rows.length*rowH + padB
       var svg = sel.append('svg').at({width: W, height: H})
-      var x = d3.scaleUtc()
-        .domain([+eps[0].date - 2.5*864e5, +eps[eps.length-1].date + 2.5*864e5])
-        .range([tlL + 4, W - tlR - 6])
-      // connecting path through dots
-      var pts = eps.map((d, i) => [x(d.date), padT + i*rowH + rowH/2])
+      var x = d3.scaleUtc().domain([t0, t1]).range([tlL + 4, W - tlR - 6])
+      var rowY = {}
+      rows.forEach((r, i) => { rowY[r.key] = padT + i*rowH + rowH/2 })
+      // context: every other episode those feeds published inside the window
+      rows.forEach(r => {
+        var yy = rowY[r.key]
+        svg.append('line').at({x1: tlL, x2: W - tlR, y1: yy, y2: yy, stroke: '#f1f1f1'})
+        eps.forEach(d => {
+          if (d.s != r.key || +d.date < t0 || +d.date > t1) return
+          if (r.indexOf(d) > -1) return
+          svg.append('circle').at({cx: x(d.date), cy: yy, r: 2, fill: C.base, fillOpacity: .7})
+        })
+      })
+      // connecting path + stops on top
+      var pts = stops.map(d => [x(d.date), rowY[d.s]])
       svg.append('path').at({
         d: 'M' + pts.map(p => p.join(' ')).join(' L '),
         fill: 'none', stroke: C.three, strokeWidth: 1.2, opacity: .45,
       })
-      eps.forEach((d, i) => {
-        var yy = padT + i*rowH + rowH/2
-        svg.append('line').at({x1: tlL, x2: W - tlR, y1: yy, y2: yy, stroke: '#f1f1f1'})
-        svg.append('circle').at({cx: x(d.date), cy: yy, r: 4.5, fill: C.three, stroke: '#fff', strokeWidth: 1})
-        svg.append('text.mult-show').at({x: W - tlR + 4, y: yy + 3})
-          .text(SHOWS[d.s].short + ' · ' + fmtShort(d.date))
+      stops.forEach(d => {
+        svg.append('circle').at({cx: x(d.date), cy: rowY[d.s], r: 4.5, fill: C.three, stroke: '#fff', strokeWidth: 1})
       })
-      svg.append('text.mult-axis').at({x: tlL, y: H - 5}).text(fmtShort(eps[0].date))
-      svg.append('text.mult-axis').at({x: W - tlR, y: H - 5, textAnchor: 'end'})
-        .text(days > 0 ? fmtShort(eps[eps.length-1].date) : '')
+      rows.forEach(r => {
+        svg.append('text.mult-show').at({x: W - tlR + 4, y: rowY[r.key] + 3})
+          .text(SHOWS[r.key].short + ' · ' + r.map(d => fmtShort(d.date)).join(', '))
+      })
+      svg.append('text.mult-axis').at({x: tlL, y: H - 5}).text(fmtShort(new Date(t0)))
+      svg.append('text.mult-axis').at({x: W - tlR, y: H - 5, textAnchor: 'end'}).text(fmtShort(new Date(t1)))
     })
   }
 
