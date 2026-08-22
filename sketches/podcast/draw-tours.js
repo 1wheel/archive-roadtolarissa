@@ -241,6 +241,10 @@ window.drawTours = function(eps){
   }
 
   // ---- small multiples: every 3+ host blitz, zoomed to its window ----
+  // press stops that weren't podcast episodes (shown hollow on the cards only)
+  var PRINT_STOPS = {
+    'jasmine|sun': [{date: new Date('2026-08-17T12:00:00Z'), label: 'Nate Silver · in print'}],
+  }
   var multSel = d3.select('.c-tours .multiples')
   var fmtShort = d3.utcFormat('%b %-d'), fmtYr = d3.utcFormat('%b %Y')
   function drawMultiples(){
@@ -264,10 +268,19 @@ window.drawTours = function(eps){
       var sel = d3.select(this)
       var stops = t.eps.slice().sort((a, b) => a.date - b.date)
       var days = Math.max(1, Math.round((+stops[stops.length-1].date - +stops[0].date)/864e5))
+      var prints = (PRINT_STOPS[t.key] || []).filter(p =>
+        Math.abs(+p.date - (+stops[0].date + +stops[stops.length-1].date)/2) < 45*864e5)
       sel.append('div.mult-name').text(t.name)
-      sel.append('div.mult-sub').text(t.nHosts + ' hosts · ' + days + ' days · ' + fmtYr(t.last))
+      sel.append('div.mult-sub').text(t.nHosts + ' hosts' + (prints.length ? ' +' + prints.length + ' in print' : '')
+        + ' · ' + days + ' days · ' + fmtYr(t.last))
       // rows = shows hit, ordered by first stop; centered on the tour in the shared span
       var rows = d3.nestBy(stops, d => d.s)
+      prints.forEach((p, i) => {
+        p.s = '__print' + i
+        var r = [p]; r.key = p.s
+        var before = rows.filter(rr => +rr[0].date <= +p.date).length
+        rows.splice(before, 0, r)
+      })
       var mid = (+stops[0].date + +stops[stops.length-1].date)/2
       var t0 = mid - SPAN/2*864e5, t1 = mid + SPAN/2*864e5
       var W = 208, rowH = 18, padT = 6, padB = 20, tlL = 6, tlR = 88
@@ -276,31 +289,45 @@ window.drawTours = function(eps){
       var x = d3.scaleUtc().domain([t0, t1]).range([tlL + 4, W - tlR - 6])
       var rowY = {}
       rows.forEach((r, i) => { rowY[r.key] = padT + i*rowH + rowH/2 })
+      var isPrint = key => key.indexOf('__print') == 0
       // context: every other episode those feeds published inside the window
       rows.forEach(r => {
         var yy = rowY[r.key]
         svg.append('line').at({x1: tlL, x2: W - tlR, y1: yy, y2: yy, stroke: '#f1f1f1'})
+        if (isPrint(r.key)) return
         eps.forEach(d => {
           if (d.s != r.key || +d.date < t0 || +d.date > t1) return
           if (r.indexOf(d) > -1) return
           svg.append('circle').at({cx: x(d.date), cy: yy, r: 2, fill: C.base, fillOpacity: .7})
         })
       })
-      // connecting path + stops on top
-      var pts = stops.map(d => [x(d.date), rowY[d.s]])
+      // time axis: weekly ticks, month boundaries labeled (the window edges themselves mean nothing)
+      var axisY = padT + rows.length*rowH + 4
+      x.ticks(d3.utcWeek).forEach(d => {
+        svg.append('line').at({x1: x(d), x2: x(d), y1: axisY, y2: axisY + 3, stroke: '#ccc'})
+      })
+      x.ticks(d3.utcMonth).forEach(d => {
+        svg.append('line').at({x1: x(d), x2: x(d), y1: padT - 2, y2: axisY + 5, stroke: '#e2e2e2'})
+        svg.append('text.mult-axis').at({x: x(d) + 3, y: axisY + 13}).text(d3.utcFormat('%b')(d))
+      })
+      // connecting path through every stop (podcast + print), then dots on top
+      var all = stops.concat(prints).sort((a, b) => a.date - b.date)
+      var pts = all.map(d => [x(d.date), rowY[d.s]])
       svg.append('path').at({
         d: 'M' + pts.map(p => p.join(' ')).join(' L '),
         fill: 'none', stroke: C.three, strokeWidth: 1.2, opacity: .45,
       })
-      stops.forEach(d => {
-        svg.append('circle').at({cx: x(d.date), cy: rowY[d.s], r: 4.5, fill: C.three, stroke: '#fff', strokeWidth: 1})
+      all.forEach(d => {
+        var print = isPrint(d.s)
+        svg.append('circle')
+          .at({cx: x(d.date), cy: rowY[d.s], r: 4.5,
+               fill: print ? '#fff' : C.three, stroke: print ? C.three : '#fff', strokeWidth: print ? 1.5 : 1})
+          .append('title').text(fmtShort(d.date) + (d.t ? ' · ' + d.t : ' · ' + d.label))
       })
       rows.forEach(r => {
         svg.append('text.mult-show').at({x: W - tlR + 4, y: rowY[r.key] + 3})
-          .text(SHOWS[r.key].short + ' · ' + r.map(d => fmtShort(d.date)).join(', '))
+          .text(isPrint(r.key) ? r[0].label : SHOWS[r.key].short)
       })
-      svg.append('text.mult-axis').at({x: tlL, y: H - 5}).text(fmtShort(new Date(t0)))
-      svg.append('text.mult-axis').at({x: W - tlR, y: H - 5, textAnchor: 'end'}).text(fmtShort(new Date(t1)))
     })
   }
 
