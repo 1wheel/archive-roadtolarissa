@@ -23,6 +23,8 @@ window.drawTours = function(eps){
     'decoder':      {label: 'Decoder',        short: 'Decoder',   host: 'Nilay Patel'},
     'tyler':        {label: 'Conv. w/ Tyler', short: 'CwT',       host: 'Tyler Cowen'},
     'dwarkesh':     {label: 'Dwarkesh Pod',   short: 'Dwarkesh',  host: 'Dwarkesh Patel'},
+    'fresh-air':    {label: 'Fresh Air',      short: 'Fresh Air', host: 'Terry Gross'},
+    'tal':          {label: 'This American Life', short: 'TAL',   host: 'Ira Glass'},
   }
   var ROWS = [
     {host: 'Ezra Klein',                       lanes: ['ek-vox', 'impeachment', 'ek-nyt']},
@@ -34,6 +36,8 @@ window.drawTours = function(eps){
     {host: 'Nilay Patel',                      lanes: ['decoder']},
     {host: 'Tyler Cowen',                      lanes: ['tyler']},
     {host: 'Dwarkesh Patel',                   lanes: ['dwarkesh']},
+    {host: 'Terry Gross',                      lanes: ['fresh-air']},
+    {host: 'Ira Glass',                        lanes: ['tal']},
   ]
 
   // ---- layout ----
@@ -49,7 +53,7 @@ window.drawTours = function(eps){
     y += 20  // host label
     row.labelY = y - 6
     row.lanes.forEach(s => {
-      laneH[s] = s == 'odd-lots' ? 46 : 24
+      laneH[s] = (s == 'odd-lots' || s == 'fresh-air') ? 46 : 24
       laneY[s] = y + laneH[s]/2
       y += laneH[s] + 5
     })
