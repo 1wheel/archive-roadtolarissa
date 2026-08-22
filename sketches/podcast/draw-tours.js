@@ -47,20 +47,20 @@ window.drawTours = function(eps){
   var measured = chartSel.node().getBoundingClientRect().width || window.innerWidth
   var availWidth = Math.min(measured, document.documentElement.clientWidth - 10)
   var isMobile = availWidth < 640
-  var margin = {top: 18, right: 14, bottom: 30, left: isMobile ? 58 : 96}
+  var margin = {top: 18, right: 14, bottom: 30, left: isMobile ? 92 : 150}
 
+  // one lane per host; every show a host has run lands in the same lane
+  var SHORT = {'Joe Weisenthal & Tracy Alloway': 'Weisenthal & Alloway', 'Kevin Roose & Casey Newton': 'Roose & Newton'}
   var laneH = {}, laneY = {}, y = 0
   ROWS.forEach(row => {
-    y += 20  // host label
-    row.labelY = y - 6
-    row.lanes.forEach(s => {
-      laneH[s] = (s == 'odd-lots' || s == 'fresh-air') ? 46 : 24
-      laneY[s] = y + laneH[s]/2
-      y += laneH[s] + 5
-    })
-    y += 14
+    var dense = row.lanes.indexOf('odd-lots') > -1 || row.lanes.indexOf('fresh-air') > -1
+    laneH[row.host] = dense ? 44 : 26
+    laneY[row.host] = y + laneH[row.host]/2
+    row.labelY = laneY[row.host] + 4
+    y += laneH[row.host] + 10
   })
-  var height = y - 14
+  var height = y - 10
+  var laneOf = d => SHOWS[d.s].host
 
   var c = d3.conventions({
     sel: chartSel,
@@ -86,20 +86,14 @@ window.drawTours = function(eps){
   }
   eps.forEach(d => {
     d.px = c.x(d.date)
-    d.py = laneY[d.s] + hash(d.t)*(laneH[d.s]/2 - 4)
+    d.py = laneY[laneOf(d)] + hash(d.t)*(laneH[laneOf(d)]/2 - 4)
   })
 
   // ---- row + lane chrome ----
   ROWS.forEach(row => {
-    c.svg.append('text.host-label').at({x: isMobile ? -margin.left + 2 : -margin.left + 4, y: row.labelY})
-      .text(!isMobile ? row.host : row.host
-        .replace('Joe Weisenthal & Tracy Alloway', 'Joe & Tracy · Odd Lots')
-        .replace('Kevin Roose & Casey Newton', 'Roose & Newton · Hard Fork'))
-    row.lanes.forEach(s => {
-      c.svg.append('line.lane-line').at({x1: 0, x2: c.width, y1: laneY[s], y2: laneY[s]})
-      c.svg.append('text.lane-label').at({x: -8, y: laneY[s] + 3, textAnchor: 'end'})
-        .text(isMobile ? SHOWS[s].short : SHOWS[s].label)
-    })
+    c.svg.append('line.lane-line').at({x1: 0, x2: c.width, y1: laneY[row.host], y2: laneY[row.host]})
+    c.svg.append('text.host-label').at({x: -10, y: row.labelY, textAnchor: 'end'})
+      .text(isMobile ? (SHORT[row.host] || row.host).split(' & ')[0] : (SHORT[row.host] || row.host))
   })
 
   // ---- guest → tour computation ----
@@ -131,7 +125,7 @@ window.drawTours = function(eps){
       var cluster = [list[0]]
       var flush = () => {
         var hosts = d3.nestBy(cluster, d => SHOWS[d.s].host)
-        if (hosts.length >= 2){
+        if (hosts.length >= 3){
           var name = ''
           cluster.forEach(d => d.g.forEach(g => {
             if (guestKey(g) == k && g.length > name.length) name = g
@@ -139,7 +133,7 @@ window.drawTours = function(eps){
           var tour = {key: k, name, eps: cluster, nHosts: hosts.length, last: cluster[cluster.length - 1].date}
           tours.push(tour)
           cluster.forEach(d => {
-            if (!d.tour || tour.nHosts > d.tour.nHosts) { d.tour = tour; d.tier = hosts.length >= 3 ? 3 : 2 }
+            if (!d.tour || tour.nHosts > d.tour.nHosts) { d.tour = tour; d.tier = 3 }
           })
         }
       }
@@ -176,8 +170,6 @@ window.drawTours = function(eps){
     dotSel.filter(d => d.tier).raise()
 
     linkG.html('')
-    linkG.appendMany('path', tours.filter(t => t.nHosts >= 3))
-      .at({d: tourPath, fill: 'none', stroke: C.three, strokeWidth: 1, opacity: .25})
   }
 
   // ---- highlight a guest: every appearance ever + links on their tour clusters ----
@@ -193,9 +185,6 @@ window.drawTours = function(eps){
     if (!gm) return
     var gTours = tours.filter(t => t.key == key)
     var color = gTours.some(t => t.nHosts >= 3) ? C.three : gTours.length ? C.two : C.ink
-    gTours.forEach(t => {
-      hiG.append('path').at({d: tourPath(t), fill: 'none', stroke: color, strokeWidth: 1.6, opacity: .8})
-    })
     hiG.appendMany('circle', gm.eps)
       .translate(d => [d.px, d.py])
       .at({r: 6.5, fill: 'none', stroke: color, strokeWidth: 1.6})
@@ -228,8 +217,7 @@ window.drawTours = function(eps){
   var chipSel = d3.select('.c-tours .chips')
   function drawChips(){
     chipSel.html('')
-    var top = tours.filter(t => t.nHosts >= 3).slice(0, 12)
-    if (top.length < 8) top = tours.slice(0, 12)
+    var top = tours.slice().sort((a, b) => guestMeta[b.key].eps.length - guestMeta[a.key].eps.length).slice(0, 14)
     chipSel.appendMany('button', top)
       .classed('on', t => pinned == t.key)
       .on('click', t => {
@@ -243,7 +231,7 @@ window.drawTours = function(eps){
       .each(function(t){
         var b = d3.select(this)
         b.append('b').text(t.name)
-        b.append('span.n').text(t.nHosts + ' hosts · ' + t.eps.length + ' eps')
+        b.append('span.n').text(guestMeta[t.key].eps.length + ' appearances')
       })
   }
 
@@ -256,7 +244,7 @@ window.drawTours = function(eps){
   var fmtShort = d3.utcFormat('%b %-d'), fmtYr = d3.utcFormat('%b %Y')
   function drawMultiples(){
     multSel.html('')
-    var big = tours.filter(t => t.nHosts >= 3).sort((a, b) => b.last - a.last)
+    var big = tours.slice().sort((a, b) => guestMeta[b.key].eps.length - guestMeta[a.key].eps.length || b.last - a.last)
     if (!big.length) return
     multSel.append('div.mult-head').text('3+ hosts')
     // one shared x-span across all cards so tour pacing is comparable
@@ -388,13 +376,13 @@ window.drawTours = function(eps){
     drawMultiples()
     drawAnnotation()
     highlight(pinned)
-    countSel.text(tours.length + ' tours · ' + eps.filter(d => d.tier).length + ' episodes bolded')
+    countSel.text(tours.length + ' runs of 3+ hosts')
   }
   // ---- guest search (find every appearance, ever) ----
   var names = Object.values(guestMeta).sort((a, b) => b.eps.length - a.eps.length)
   var sugSel = d3.select('.c-tours .suggest')
   function showSuggest(q){
-    var hits = q.length > 1 ? names.filter(g => fold(g.name).indexOf(q) > -1).slice(0, 8) : []
+    var hits = (q.length > 1 ? names.filter(g => fold(g.name).indexOf(q) > -1) : names).slice(0, 8)
     sugSel.html('').classed('open', hits.length > 0)
     sugSel.appendMany('button', hits)
       .on('click', g => {
@@ -411,6 +399,8 @@ window.drawTours = function(eps){
   }
   function fold(s){ return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim() }
   d3.select('.c-tours .guest-search')
+    .on('focus', function(){ showSuggest(fold(this.value)) })
+    .on('blur', function(){ setTimeout(() => sugSel.classed('open', false), 200) })
     .on('input change', function(){
       var q = fold(this.value)
       showSuggest(q)
