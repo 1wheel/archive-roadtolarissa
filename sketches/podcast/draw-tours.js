@@ -88,7 +88,7 @@ window.drawTours = function(eps){
   }
   eps.forEach(d => {
     d.px = c.x(d.date)
-    d.py = laneY[laneOf(d)] + hash(d.t)*(laneH[laneOf(d)]/2 - 4)
+    d.py = laneY[laneOf(d)] + hash(d.u || d.t)*(laneH[laneOf(d)]/2 - 4)   // url seeds the jitter: generic dated titles would stripe
   })
 
   // ---- row + lane chrome ----
