@@ -1,0 +1,26 @@
+<!doctype html>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='style.css'>
+<title>The Podcast Tour Detector</title>
+
+<div class='podtour'>
+  <h1>The Podcast Tour Detector</h1>
+  <p class='intro'>Every episode of the shows hosted by Ezra Klein, Derek Thompson, Joe&nbsp;Weisenthal &amp; Tracy&nbsp;Alloway, and Nate Silver &mdash; one dot per episode, 2015&ndash;2026. A guest who turns up on two or more of these hosts' shows inside a short window is on a <b>press tour</b> and gets a bold dot: <span class='k k2'></span> two hosts, <span class='k k3'></span> three or more. Inspired by Jasmine Sun's August 2026 data-center blitz.</p>
+
+  <section class='c-tours'>
+    <div class='controls'>
+      <span class='ctl-label'>tour window: <b class='win-days'>30</b> days</span>
+      <input type='range' class='win-slider' min='7' max='90' value='30'>
+      <span class='tour-count'></span>
+    </div>
+    <div class='chart'></div>
+    <div class='chips'></div>
+  </section>
+
+  <p class='sources'>Sources: public RSS feeds, Apple's podcast catalog for the paywalled <i>Ezra Klein Show</i> back&nbsp;catalog, and a union of Wayback Machine feed snapshots for <i>538&nbsp;Politics</i> (which only covers Nov&nbsp;2018 on). Guests are pulled out of episode titles and descriptions with regexes, so a few are missed or mangled. <i>Risky Business</i> ended Jan&nbsp;2026 &mdash; Nate did his Jasmine Sun interview <a href='https://www.natesilver.net/p/why-does-everyone-hate-data-centers'>in print</a>. Data: <a href='episodes.json'>episodes.json</a></p>
+</div>
+
+<script src='https://roadtolarissa.com/slinks/static-rss/d3_.js'></script>
+<script src='draw-tours.js'></script>
+<script src='init.js'></script>

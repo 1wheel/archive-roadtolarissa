@@ -1,0 +1,75 @@
+html, body{ margin: 0; background: #fff; }
+body{
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #2a2a2a;
+  -webkit-font-smoothing: antialiased;
+}
+.podtour{ max-width: 940px; margin: 0 auto; padding: 28px 14px 60px; }
+.podtour h1{ font-size: 26px; margin: 0 0 10px; letter-spacing: .2px; }
+.podtour .intro{ font-size: 14px; line-height: 1.5; color: #555; max-width: 720px; margin: 0 0 18px; }
+.podtour .sources{ font-size: 11px; line-height: 1.5; color: #999; max-width: 720px; margin: 26px 0 0; }
+.podtour .sources a{ color: #888; }
+
+/* legend keys inline in the intro */
+.podtour .k{ display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin: 0 1px; }
+.podtour .k2{ background: #3e6fa8; }
+.podtour .k3{ background: #d1495b; }
+
+/* controls */
+.c-tours .controls{ display: flex; align-items: center; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
+.c-tours .ctl-label{ font-size: 12px; color: #666; }
+.c-tours .win-slider{ width: 140px; accent-color: #1d3557; }
+.c-tours .tour-count{ font-size: 12px; color: #999; }
+
+/* chart */
+.c-tours .chart{ position: relative; }
+.c-tours svg{ overflow: visible; display: block; cursor: crosshair; }
+.c-tours text{ font-size: 12px; fill: #555; }
+.c-tours .host-label{ font-size: 12px; font-weight: 600; fill: #333; }
+.c-tours .lane-label{ font-size: 10px; fill: #979797; }
+.c-tours .x .tick line{ stroke: #ececec; }
+.c-tours .x text{ fill: #8a8a8a; font-size: 11px; }
+.c-tours .domain{ display: none; }
+.c-tours .lane-line{ stroke: #f1f1f1; stroke-width: 1px; shape-rendering: crispEdges; }
+.c-tours .annotation{
+  font-size: 12px; fill: #333;
+  paint-order: stroke; stroke: #fff; stroke-width: 3.5px; stroke-linejoin: round;
+}
+.c-tours .annotation .light{ fill: #888; }
+.c-tours .hover-name{
+  font-size: 11.5px; font-weight: 600; fill: #222;
+  paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round;
+}
+
+/* tour chips */
+.c-tours .chips{ margin-top: 14px; font-size: 12px; color: #888; line-height: 2.1; }
+.c-tours .chips button{
+  font: inherit; font-size: 11px; color: #444;
+  border: 1px solid #ddd; border-radius: 12px; background: #fff;
+  padding: 1px 9px; margin: 0 3px 3px 0; cursor: pointer; vertical-align: middle;
+}
+.c-tours .chips button b{ font-weight: 600; }
+.c-tours .chips button .n{ color: #999; margin-left: 3px; }
+.c-tours .chips button:hover{ border-color: #999; }
+.c-tours .chips button.on{ background: #1d3557; border-color: #1d3557; color: #fff; }
+.c-tours .chips button.on .n{ color: #b9c6d8; }
+
+/* tooltip */
+.tooltip{
+  position: absolute; z-index: 10; pointer-events: none;
+  background: #fff; border: 1px solid #ddd; border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.09);
+  padding: 8px 10px; font-size: 12px; line-height: 1.4;
+  max-width: 300px; color: #333;
+}
+.tooltip .tt-show{ color: #888; font-size: 10.5px; text-transform: uppercase; letter-spacing: .4px; }
+.tooltip .tt-title{ font-weight: 600; margin: 2px 0; }
+.tooltip .tt-guest{ color: #1d3557; }
+.tooltip .tt-desc{ color: #777; font-size: 11px; margin-top: 3px; }
+.tooltip .tt-tour{ margin-top: 5px; padding-top: 5px; border-top: 1px solid #eee; font-size: 11px; }
+.tooltip-hidden{ opacity: 0; transition: all .3s; transition-delay: .1s; }
+
+@media (max-width: 640px){
+  .podtour h1{ font-size: 21px; }
+  .c-tours text{ font-size: 11px; }
+}
