@@ -1,0 +1,209 @@
+<!doctype html>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Who books the same circuit? — host × host shared-guest matrix</title>
+<style>
+  body{ margin: 0; background: #fff; color: #222; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+  .wrap{ max-width: 860px; margin: 28px auto 60px; padding: 0 16px; }
+  h1{ font-size: 24px; margin: 0 0 8px; color: #1d3557; letter-spacing: -.2px; }
+  .sub{ font-size: 14px; line-height: 1.5; color: #555; margin: 0 0 18px; max-width: 720px; }
+  .sub b{ color: #1d3557; }
+  .chart{ position: relative; }
+  .chart text{ font-size: 12px; fill: #333; }
+  text.col-label{ font-size: 11.5px; }
+  text.n{ font-size: 12px; pointer-events: none; }
+  text.total{ fill: #999; font-size: 11px; }
+  text.legend{ fill: #888; font-size: 11px; }
+  rect.cell{ cursor: pointer; }
+  .tooltip{ position: absolute; z-index: 10; pointer-events: none; background: #fff; border: 1px solid #ddd; border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.09); padding: 8px 10px; font-size: 12px; line-height: 1.4; max-width: 280px; color: #333; }
+  .tooltip .tt-pair{ color: #888; font-size: 10.5px; text-transform: uppercase; letter-spacing: .4px; }
+  .tooltip .tt-n{ font-weight: 600; margin: 2px 0 4px; color: #1d3557; }
+  .tooltip .tt-names{ color: #555; font-size: 11.5px; }
+  .tooltip .tt-hint{ color: #aaa; font-size: 10px; margin-top: 5px; }
+  .tooltip-hidden{ opacity: 0; transition: opacity .2s; }
+  .detail{ margin-top: 14px; font-size: 13px; line-height: 1.45; }
+  .detail h2{ font-size: 15px; margin: 0 0 8px; color: #1d3557; }
+  .detail h2 span{ color: #999; font-weight: normal; font-size: 13px; margin-left: 6px; }
+  .detail .empty{ color: #999; font-style: italic; }
+  .tour{ display: flex; gap: 12px; padding: 6px 0; border-top: 1px solid #eee; }
+  .tour .name{ flex: 0 0 160px; font-weight: 600; }
+  .tour .name small{ display: block; font-weight: normal; color: #999; font-size: 11px; }
+  .tour .stops{ flex: 1; color: #444; }
+  .tour .stop{ display: block; }
+  .tour .stop a{ color: #1d3557; text-decoration: none; border-bottom: 1px dotted #bbb; }
+  .tour .stop .dt{ color: #999; margin-right: 6px; font-variant-numeric: tabular-nums; }
+  .tour .stop.other{ color: #aaa; }
+  .tour .stop.other a{ color: #888; }
+  .tour .red{ color: #d1495b; }
+</style>
+
+<div class='wrap'>
+  <h1>Which hosts book the same circuit?</h1>
+  <p class='sub'>Each cell counts the <b>press tours</b> shared by a pair of hosts: one guest who turned up on both of their shows, with no more than 30 days between consecutive appearances (a tour hitting three hosts counts toward all three pairs). Darker navy = more shared tours; the gray number at the end of each row is that host's total tours with anyone. Hover a cell for the guest names, <b>click</b> it to list every tour behind it with links to the episodes.</p>
+  <div class='chart'></div>
+  <div class='detail'><span class='empty'>Click a cell to see who is behind the count.</span></div>
+</div>
+
+<script src='https://roadtolarissa.com/slinks/static-rss/d3_.js'></script>
+<script>
+var SHOWS = {
+  'ek-vox': ['EK Show · Vox', 'Ezra Klein'], 'impeachment': ['Impeachment', 'Ezra Klein'], 'ek-nyt': ['EK Show · NYT', 'Ezra Klein'],
+  'crazy-genius': ['Crazy/Genius', 'Derek Thompson'], 'plain-english': ['Plain English', 'Derek Thompson'],
+  'odd-lots': ['Odd Lots', 'Joe Weisenthal & Tracy Alloway'], '538-politics': ['538 Politics', 'Nate Silver'], 'risky-biz': ['Risky Business', 'Nate Silver'],
+  'reply-all': ['Reply All', 'PJ Vogt'], 'crypto-island': ['Crypto Island', 'PJ Vogt'], 'search-engine': ['Search Engine', 'PJ Vogt'],
+  'hard-fork': ['Hard Fork', 'Kevin Roose & Casey Newton'], 'decoder': ['Decoder', 'Nilay Patel'], 'tyler': ['Conv. w/ Tyler', 'Tyler Cowen'],
+  'dwarkesh': ['Dwarkesh Pod', 'Dwarkesh Patel'], 'fresh-air': ['Fresh Air', 'Terry Gross'], 'tal': ['This American Life', 'Ira Glass'],
+}
+var SHORT = {'Joe Weisenthal & Tracy Alloway': 'Joe & Tracy', 'Kevin Roose & Casey Newton': 'Roose & Newton'}
+var hostOf = s => SHOWS[s][1]
+var WINDOW = 30
+var esc = s => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+var fmtShort = d3.utcFormat('%b %-d')
+
+function guestKey(g){
+  var p = g.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\./g, '').toLowerCase().split(/\s+/)
+  return p[0] + '|' + p[p.length - 1]
+}
+
+fetch('../episodes.json').then(r => r.json()).then(eps => {
+  eps.forEach(d => d.date = new Date(d.d + 'T12:00:00Z'))
+
+  // ---- tours: cluster each guest's appearances, keep clusters spanning 2+ hosts ----
+  var byGuest = {}
+  eps.forEach(d => (d.g || []).forEach(g => {
+    var k = guestKey(g)
+    ;(byGuest[k] = byGuest[k] || []).push(d)
+  }))
+  var tours = []
+  Object.keys(byGuest).forEach(k => {
+    var list = byGuest[k].slice().sort((a, b) => a.date - b.date)
+    var cluster = [list[0]]
+    var flush = () => {
+      var hosts = d3.nestBy(cluster, d => hostOf(d.s)).map(h => h.key)
+      if (hosts.length < 2) return
+      var name = ''
+      cluster.forEach(d => d.g.forEach(g => { if (guestKey(g) == k && g.length > name.length) name = g }))
+      tours.push({key: k, name, eps: cluster, hosts, last: cluster[cluster.length - 1].date,
+        days: Math.max(1, Math.round((cluster[cluster.length - 1].date - cluster[0].date)/864e5))})
+    }
+    for (var i = 1; i < list.length; i++){
+      if ((list[i].date - list[i-1].date)/864e5 <= WINDOW) cluster.push(list[i])
+      else { flush(); cluster = [list[i]] }
+    }
+    flush()
+  })
+
+  // ---- pair counts ----
+  var pairTours = {}, totals = {}
+  var pairKey = (a, b) => [a, b].sort().join('||')
+  tours.forEach(t => {
+    t.hosts.forEach(h => totals[h] = (totals[h] || 0) + 1)
+    for (var i = 0; i < t.hosts.length; i++) for (var j = i + 1; j < t.hosts.length; j++){
+      var pk = pairKey(t.hosts[i], t.hosts[j])
+      ;(pairTours[pk] = pairTours[pk] || []).push(t)
+    }
+  })
+  var hosts = d3.nestBy(Object.keys(SHOWS), s => hostOf(s)).map(d => d.key)
+    .sort((a, b) => (totals[b] || 0) - (totals[a] || 0) || a.localeCompare(b))
+  var cells = []
+  hosts.forEach((a, i) => hosts.forEach((b, j) => {
+    if (i == j) return
+    var list = (pairTours[pairKey(a, b)] || []).slice().sort((x, y) => y.last - x.last)
+    cells.push({a, b, i, j, n: list.length, tours: list})
+  }))
+  var maxN = d3.max(cells, d => d.n)
+
+  // ---- layout ----
+  var chartSel = d3.select('.chart')
+  var ttSel = chartSel.append('div.tooltip.tooltip-hidden')
+  var availW = Math.min(chartSel.node().getBoundingClientRect().width || 860, 860)
+  var isMobile = availW < 600
+  var margin = {top: isMobile ? 78 : 96, right: 46, bottom: 40, left: isMobile ? 96 : 150}
+  var size = Math.floor(Math.min(56, (availW - margin.left - margin.right)/hosts.length))
+  var side = size*hosts.length
+  var c = d3.conventions({sel: chartSel, width: side, height: side, margin: margin})
+  var pos = i => i*size + size/2
+  var color = d3.scaleSqrt().domain([0, maxN]).range(['#f3f5f8', '#1d3557'])
+
+  // row labels + totals, column labels
+  c.svg.appendMany('text.row-label', hosts)
+    .at({x: -8, y: (d, i) => pos(i) + 4, textAnchor: 'end'})
+    .text(d => isMobile ? SHORT[d] || d : d)
+  c.svg.appendMany('text.total', hosts)
+    .at({x: side + 8, y: (d, i) => pos(i) + 4})
+    .text(d => totals[d] ? totals[d] + (totals[d] > 1 ? ' tours' : ' tour') : 'none')
+  c.svg.appendMany('text.col-label', hosts)
+    .at({transform: (d, i) => 'translate(' + (pos(i) + 4) + ',-8) rotate(-40)'})
+    .text(d => SHORT[d] || d)
+
+  // diagonal: hatched "self" cells
+  c.svg.appendMany('rect.diag', hosts)
+    .at({x: (d, i) => i*size + 1, y: (d, i) => i*size + 1, width: size - 2, height: size - 2, fill: '#fafafa', stroke: '#eee'})
+
+  var cellSel = c.svg.appendMany('rect.cell', cells)
+    .at({x: d => d.j*size + 1, y: d => d.i*size + 1, width: size - 2, height: size - 2, rx: 2})
+    .st({fill: d => color(d.n), stroke: '#fff', strokeWidth: 1})
+  var numSel = c.svg.appendMany('text.n', cells.filter(d => d.n))
+    .at({x: d => pos(d.j), y: d => pos(d.i) + 4, textAnchor: 'middle'})
+    .st({fill: d => d.n > maxN*.35 ? '#fff' : '#1d3557', fontWeight: d => d.n == maxN ? 600 : 400})
+    .text(d => d.n)
+
+  // legend: swatches for 1 … max
+  var legendVals = [1, 2, 4, 8, maxN].filter((v, i, arr) => v <= maxN && arr.indexOf(v) == i)
+  var lg = c.svg.append('g').translate([0, side + 14])
+  lg.append('text.legend').at({x: 0, y: 12}).text('shared tours:')
+  var lgItems = lg.appendMany('g', legendVals).translate((d, i) => [92 + i*42, 0])
+  lgItems.append('rect').at({width: 16, height: 16, rx: 2}).st({fill: d => color(d)})
+  lgItems.append('text.legend').at({x: 21, y: 12}).text(d => d)
+
+  // ---- interaction ----
+  var pinned = null
+  function restroke(){
+    cellSel.st({stroke: d => pinned && d.i == pinned.i && d.j == pinned.j ? '#d1495b' : '#fff',
+                strokeWidth: d => pinned && d.i == pinned.i && d.j == pinned.j ? 2.5 : 1})
+    cellSel.filter(d => pinned && d.i == pinned.i && d.j == pinned.j).raise()
+    numSel.raise()
+  }
+  cellSel
+    .on('mousemove', function(d){
+      var m = d3.mouse(chartSel.node())
+      var names = d.tours.map(t => t.name)
+      var html = "<div class='tt-pair'>" + esc(SHORT[d.a] || d.a) + ' × ' + esc(SHORT[d.b] || d.b) + '</div>'
+        + "<div class='tt-n'>" + d.n + ' shared press tour' + (d.n == 1 ? '' : 's') + '</div>'
+        + (d.n ? "<div class='tt-names'>" + esc(names.slice(0, 8).join(', ')) + (names.length > 8 ? ', +' + (names.length - 8) + ' more' : '') + '</div>' : '')
+        + (d.n ? "<div class='tt-hint'>click to list the tours</div>" : '')
+      ttSel.classed('tooltip-hidden', false).html(html)
+      var w = chartSel.node().getBoundingClientRect().width
+      ttSel.st({left: Math.min(m[0] + 14, w - 290) + 'px', top: (m[1] + 16) + 'px'})
+    })
+    .on('mouseleave', () => ttSel.classed('tooltip-hidden', true))
+    .on('click', d => {
+      pinned = pinned && pinned.i == d.i && pinned.j == d.j ? null : d
+      restroke()
+      drawDetail(pinned)
+    })
+
+  var detailSel = d3.select('.detail')
+  function drawDetail(d){
+    detailSel.html('')
+    if (!d){ detailSel.append('span.empty').text('Click a cell to see who is behind the count.'); return }
+    detailSel.append('h2').html(esc(d.a) + ' × ' + esc(d.b)
+      + '<span>' + d.n + ' shared tour' + (d.n == 1 ? '' : 's') + (d.n ? ', most recent first' : '') + '</span>')
+    if (!d.n){ detailSel.append('span.empty').text('No guest has appeared on both of their shows within ' + WINDOW + ' days.'); return }
+    var rows = detailSel.appendMany('div.tour', d.tours)
+    rows.append('div.name').html(t => esc(t.name) + '<small>' + t.eps.length + ' stops · ' + t.days + ' days'
+      + (t.hosts.length > 2 ? " · <span class='red'>" + t.hosts.length + ' hosts</span>' : '') + '</small>')
+    rows.append('div.stops').each(function(t){
+      var s = d3.select(this)
+      t.eps.forEach(e => {
+        var h = hostOf(e.s), inPair = h == d.a || h == d.b
+        var stop = s.append('span.stop').classed('other', !inPair)
+        stop.append('span.dt').text(fmtShort(e.date) + (e == t.eps[0] ? ', ' + e.date.getUTCFullYear() : ''))
+        var link = e.u ? stop.append('a').at({href: e.u, target: '_blank'}) : stop.append('span')
+        link.text(SHOWS[e.s][0] + ' — ' + e.t)
+      })
+    })
+  }
+})
+</script>

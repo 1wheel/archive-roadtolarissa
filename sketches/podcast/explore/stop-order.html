@@ -1,0 +1,206 @@
+<meta charset="utf-8">
+<title>Stop order — which show comes first on a podcast press tour?</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:#222;background:#fff;margin:0;padding:28px 16px 56px}
+.wrap{max-width:940px;margin:0 auto}
+h1{font-size:22px;margin:0 0 8px;color:#1d3557;font-weight:700}
+p.sub{font-size:14px;line-height:1.5;color:#555;max-width:760px;margin:0 0 22px}
+.panel{margin-bottom:34px}
+.panel h2{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#1d3557;margin:0 0 4px}
+.panel p.note{font-size:12.5px;color:#777;margin:0 0 8px}
+svg text{font-size:11px;fill:#444}
+.halo{paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
+.axis path{display:none}.axis line{stroke:#e8e8e8}.axis text{fill:#888;font-size:10px}
+.head{font-weight:600;fill:#1d3557}.gap{fill:#888;font-size:10.5px}
+.tooltip{position:absolute;pointer-events:none;background:#fff;border:1px solid #ccc;box-shadow:0 2px 8px rgba(0,0,0,.12);padding:8px 10px;font-size:12px;line-height:1.45;max-width:300px;z-index:9}
+.tooltip b{color:#1d3557}.tooltip .g{color:#777}
+.tooltip-hidden{display:none}
+</style>
+<div class="wrap">
+  <h1>Stop order: who gets the guest first?</h1>
+  <p class="sub">Every press tour in the archive — a guest appearing on two or more different hosts' shows within 30 days of each other — laid out as a route. Columns are the 1st, 2nd, 3rd… stop of the tour; each band is a set of guests that went from one host to the next, as thick as the number of tours that took that leg. Hosts are sorted from habitual <b>openers</b> (top) to habitual <b>closers</b> (bottom). The small grey numbers between columns are the median days between stops. Hover a band or block for details; the second chart tallies how often each host opens or closes a tour.</p>
+  <div class="panel route"><h2>The route</h2><p class="note">Blocks are hosts at a given stop; bands connect consecutive stops of the same tour.</p><div class="chart"></div></div>
+  <div class="panel roles"><h2>Opener or closer?</h2><p class="note">How many tours each host opened (left, navy) versus closed (right, red). Middle stops are rare and not drawn.</p><div class="chart"></div></div>
+</div>
+<div class="tooltip tooltip-hidden"></div>
+<script src="https://roadtolarissa.com/slinks/static-rss/d3_.js"></script>
+<script>
+var HOST = {'ek-vox':'Ezra Klein', impeachment:'Ezra Klein', 'ek-nyt':'Ezra Klein', 'crazy-genius':'Derek Thompson',
+  'plain-english':'Derek Thompson', 'odd-lots':'Joe & Tracy · Odd Lots', '538-politics':'Nate Silver', 'risky-biz':'Nate Silver',
+  'reply-all':'PJ Vogt', 'crypto-island':'PJ Vogt', 'search-engine':'PJ Vogt', 'hard-fork':'Roose & Newton · Hard Fork',
+  decoder:'Nilay Patel', tyler:'Tyler Cowen', dwarkesh:'Dwarkesh Patel', 'fresh-air':'Terry Gross', tal:'Ira Glass'}
+var C = {ink:'#1d3557', red:'#d1495b', band:'#c9cfd6', mid:'#8a94a0'}
+var ORD = ['1st', '2nd', '3rd', '4th', '5th', '6th']
+var ttSel = d3.select('.tooltip')
+var esc = s => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+function guestKey(g){
+  var p = g.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\./g, '').toLowerCase().split(/\s+/)
+  return p[0] + '|' + p[p.length - 1]
+}
+function showTip(html){
+  ttSel.classed('tooltip-hidden', false).html(html)
+  var left = Math.min(d3.event.pageX + 14, document.documentElement.clientWidth - 316)
+  ttSel.st({left: left + 'px', top: (d3.event.pageY + 14) + 'px'})
+}
+function hideTip(){ ttSel.classed('tooltip-hidden', true) }
+var days = v => v == null ? '—' : Math.round(v) + ' day' + (Math.round(v) == 1 ? '' : 's')
+var med = arr => { var a = arr.filter(v => v != null && !isNaN(v)); return a.length ? d3.median(a) : null }
+
+fetch('../episodes.json').then(r => r.json()).then(init)
+
+function init(eps){
+  eps.forEach(d => d.date = new Date(d.d + 'T12:00:00Z'))
+  // ---- guests -> tours -> ordered stops (one stop per host, at the host's first episode in the cluster) ----
+  var byGuest = {}
+  eps.forEach(d => (d.g || []).forEach(g => { var k = guestKey(g); (byGuest[k] = byGuest[k] || []).push(d) }))
+  var tours = []
+  Object.keys(byGuest).forEach(k => {
+    var list = byGuest[k].slice().sort((a, b) => a.date - b.date), cluster = [list[0]]
+    function flush(){
+      var stops = []
+      cluster.forEach(d => { if (!stops.some(s => s.host == HOST[d.s])) stops.push({host: HOST[d.s], date: d.date, ep: d}) })
+      if (stops.length < 2) return
+      var name = ''
+      cluster.forEach(d => d.g.forEach(g => { if (guestKey(g) == k && g.length > name.length) name = g }))
+      var t = {key: k, name, stops, n: stops.length}
+      stops.forEach((s, i) => { s.pos = i; s.tour = t; s.gap = i ? (s.date - stops[i - 1].date)/864e5 : null })
+      tours.push(t)
+    }
+    for (var i = 1; i < list.length; i++){
+      if ((list[i].date - list[i - 1].date)/864e5 <= 30) cluster.push(list[i]); else { flush(); cluster = [list[i]] }
+    }
+    flush()
+  })
+  var allStops = d3.merge(tours.map(t => t.stops))
+  // hosts ordered by mean relative position in their tours: 0 = always opens, 1 = always closes
+  var hosts = d3.nestBy(allStops, s => s.host).map(v => ({
+    host: v.key, n: v.length, stops: v,
+    first: v.filter(s => s.pos == 0).length, last: v.filter(s => s.pos == s.tour.n - 1).length,
+    rel: d3.mean(v, s => s.pos/(s.tour.n - 1)),
+    gapAfter: med(v.map(s => s.tour.stops[s.pos + 1] ? s.tour.stops[s.pos + 1].gap : null)),
+    gapBefore: med(v.map(s => s.gap)),
+  })).sort((a, b) => a.rel - b.rel || b.n - a.n)
+  var hostIdx = {}; hosts.forEach((h, i) => hostIdx[h.host] = i)
+
+  drawRoute(tours, allStops, hostIdx)
+  drawRoles(hosts)
+}
+
+// ---- panel 1: sankey-like route through stop positions ----
+function drawRoute(tours, allStops, hostIdx){
+  var maxPos = d3.max(tours, t => t.n), NW = 12, GAP = 6
+  var c = d3.conventions({sel: d3.select('.route .chart').html(''), totalWidth: 940, height: 420,
+    margin: {top: 44, right: 170, bottom: 10, left: 10}})
+  var colX = d3.scalePoint().domain(d3.range(maxPos)).range([0, c.width - NW])
+  var nTours = tours.length, maxNodes = d3.max(d3.range(maxPos), p => d3.nestBy(allStops.filter(s => s.pos == p), s => s.host).length)
+  var k = (c.height - (maxNodes - 1)*GAP)/nTours   // px per tour
+
+  var cols = d3.range(maxPos).map(p => {
+    var nodes = d3.nestBy(allStops.filter(s => s.pos == p), s => s.host)
+      .sort((a, b) => hostIdx[a.key] - hostIdx[b.key])
+      .map(v => ({pos: p, host: v.key, stops: v, n: v.length, out: [], inn: [], x: colX(p)}))
+    var y = (c.height - d3.sum(nodes, d => d.n)*k - (nodes.length - 1)*GAP)/2
+    nodes.forEach(d => { d.y0 = y; d.y1 = y + d.n*k; y = d.y1 + GAP })
+    return nodes
+  })
+  var nodeAt = {}; cols.forEach(col => col.forEach(d => nodeAt[d.pos + '|' + d.host] = d))
+  var linkMap = {}
+  tours.forEach(t => t.stops.slice(1).forEach((s, i) => {
+    var a = t.stops[i], key = a.pos + '|' + a.host + '|' + s.host
+    var l = linkMap[key] = linkMap[key] || {src: nodeAt[a.pos + '|' + a.host], tgt: nodeAt[s.pos + '|' + s.host], tours: [], gaps: []}
+    l.tours.push(t); l.gaps.push(s.gap)
+  }))
+  var links = Object.values(linkMap)
+  links.forEach(l => { l.n = l.tours.length; l.gap = med(l.gaps); l.src.out.push(l); l.tgt.inn.push(l) })
+  cols.forEach(col => col.forEach(d => {
+    var y = d.y0; d.out.sort((a, b) => a.tgt.y0 - b.tgt.y0).forEach(l => { l.sy0 = y; y += l.n*k; l.sy1 = y })
+    y = d.y0; d.inn.sort((a, b) => a.src.y0 - b.src.y0).forEach(l => { l.ty0 = y; y += l.n*k; l.ty1 = y })
+  }))
+  function ribbon(l){
+    var x0 = l.src.x + NW, x1 = l.tgt.x, xm = (x0 + x1)/2
+    return 'M' + x0 + ',' + l.sy0 + 'C' + xm + ',' + l.sy0 + ' ' + xm + ',' + l.ty0 + ' ' + x1 + ',' + l.ty0
+      + 'L' + x1 + ',' + l.ty1 + 'C' + xm + ',' + l.ty1 + ' ' + xm + ',' + l.sy1 + ' ' + x0 + ',' + l.sy1 + 'Z'
+  }
+
+  // column headers + median gap between positions
+  cols.forEach((col, p) => {
+    c.svg.append('text.head').at({x: colX(p) + NW/2, y: -28, textAnchor: 'middle'})
+      .text(ORD[p] + ' stop')
+    c.svg.append('text.gap').at({x: colX(p) + NW/2, y: -15, textAnchor: 'middle'})
+      .text(d3.sum(col, d => d.n) + ' tour' + (d3.sum(col, d => d.n) == 1 ? '' : 's'))
+    if (p < maxPos - 1){
+      var g = med(allStops.filter(s => s.pos == p + 1).map(s => s.gap))
+      c.svg.append('text.gap').at({x: (colX(p) + colX(p + 1) + NW)/2, y: -28, textAnchor: 'middle'})
+        .text('→ median ' + days(g) + ' later →')
+    }
+  })
+
+  var linkSel = c.svg.appendMany('path.link', links)
+    .at({d: ribbon, fill: C.band, fillOpacity: .6, stroke: 'none'})
+  var nodeSel = c.svg.appendMany('rect.node', d3.merge(cols))
+    .at({x: d => d.x, y: d => d.y0, width: NW, height: d => Math.max(1, d.y1 - d.y0), fill: C.ink})
+  c.svg.appendMany('text.halo', d3.merge(cols).filter(d => d.y1 - d.y0 + GAP >= 9))
+    .at({x: d => d.x + NW + 5, y: d => (d.y0 + d.y1)/2 + 3.5})
+    .st({pointerEvents: 'none'})
+    .text(d => d.host + ' ' + d.n)
+
+  function hiLinks(test){ linkSel.at({fill: l => test(l) ? C.red : C.band, fillOpacity: l => test(l) ? .85 : .25}) }
+  function reset(){ linkSel.at({fill: C.band, fillOpacity: .6}); nodeSel.at({fill: C.ink}); hideTip() }
+  var names = ts => ts.map(t => esc(t.name)).slice(0, 8).join(', ') + (ts.length > 8 ? ', +' + (ts.length - 8) + ' more' : '')
+  linkSel
+    .on('mousemove', l => {
+      hiLinks(x => x == l); nodeSel.at({fill: d => d == l.src || d == l.tgt ? C.red : C.ink})
+      showTip('<b>' + esc(l.src.host) + ' → ' + esc(l.tgt.host) + '</b> as stops ' + (l.src.pos + 1) + '→' + (l.tgt.pos + 1)
+        + '<br>' + l.n + ' tour' + (l.n == 1 ? '' : 's') + ' · median gap ' + days(l.gap)
+        + (l.n > 1 ? ' (range ' + d3.min(l.gaps) + '–' + d3.max(l.gaps) + ')' : '')
+        + '<div class="g">' + names(l.tours) + '</div>')
+    })
+    .on('mouseleave', reset)
+  nodeSel
+    .on('mousemove', d => {
+      var ts = d.stops.map(s => s.tour)
+      hiLinks(l => l.tours.some(t => ts.indexOf(t) > -1)); nodeSel.at({fill: x => x == d ? C.red : C.ink})
+      var after = med(d.stops.map(s => s.tour.stops[s.pos + 1] ? s.tour.stops[s.pos + 1].gap : null))
+      var before = med(d.stops.map(s => s.gap))
+      showTip('<b>' + esc(d.host) + '</b> as the ' + ORD[d.pos] + ' stop · ' + d.n + ' tour' + (d.n == 1 ? '' : 's')
+        + (before != null ? '<br>median ' + days(before) + ' after the previous stop' : '')
+        + (after != null ? '<br>next stop follows a median ' + days(after) + ' later' : '<br>usually the final stop')
+        + '<div class="g">' + names(ts) + '</div>')
+    })
+    .on('mouseleave', reset)
+}
+
+// ---- panel 2: opener vs closer butterfly ----
+function drawRoles(hosts){
+  var rowH = 22
+  var c = d3.conventions({sel: d3.select('.roles .chart').html(''), totalWidth: 940, height: hosts.length*rowH,
+    margin: {top: 22, right: 40, bottom: 28, left: 190}})
+  var maxN = d3.max(hosts, h => Math.max(h.first, h.last))
+  var x = d3.scaleLinear().domain([-maxN, maxN]).range([0, c.width]).nice()
+  var y = i => i*rowH + rowH/2
+  c.svg.append('g.axis').translate(c.height + 4, 1)
+    .call(d3.axisBottom(x).ticks(8).tickFormat(d => Math.abs(d)).tickSize(-c.height - 4))
+  c.svg.append('text.head').at({x: x(0) - 6, y: -8, textAnchor: 'end'}).text('opened the tour')
+  c.svg.append('text.head').at({x: x(0) + 6, y: -8}).st({fill: C.red}).text('closed the tour')
+  c.svg.append('line').at({x1: x(0), x2: x(0), y1: -2, y2: c.height + 4, stroke: '#999'})
+
+  var rows = c.svg.appendMany('g.row', hosts).translate((h, i) => [0, y(i)])
+  rows.append('rect').at({x: h => x(-h.first), y: -7, width: h => x(0) - x(-h.first), height: 14, fill: C.ink})
+  rows.append('rect').at({x: x(0), y: -7, width: h => x(h.last) - x(0), height: 14, fill: C.red})
+  rows.append('text').at({x: h => x(-h.first) - 4, y: 4, textAnchor: 'end'}).st({fill: C.ink}).text(h => h.first || '')
+  rows.append('text').at({x: h => x(h.last) + 4, y: 4}).st({fill: C.red}).text(h => h.last || '')
+  rows.append('text').at({x: -c.margin.left + 4, y: 4}).st({fontWeight: 600}).text(h => h.host)
+  rows.append('text').at({x: -8, y: 4, textAnchor: 'end'}).st({fill: '#999', fontSize: '10px'})
+    .text(h => Math.round(100*h.first/h.n) + '% open')
+  rows.append('rect').at({x: -c.margin.left, y: -rowH/2, width: c.width + c.margin.left + c.margin.right, height: rowH, opacity: 0})
+    .on('mousemove', h => {
+      var mid = h.n - h.first - h.last
+      showTip('<b>' + esc(h.host) + '</b> · in ' + h.n + ' tour' + (h.n == 1 ? '' : 's')
+        + '<br>opened ' + h.first + ' · closed ' + h.last + (mid ? ' · mid-tour ' + mid : '')
+        + (h.gapAfter != null ? '<br>when not last, next stop comes a median ' + days(h.gapAfter) + ' later' : '')
+        + (h.gapBefore != null ? '<br>when not first, previous stop was a median ' + days(h.gapBefore) + ' earlier' : '')
+        + (h.n < 5 ? '<div class="g">small sample — read with care</div>' : ''))
+    })
+    .on('mouseleave', hideTip)
+}
+</script>

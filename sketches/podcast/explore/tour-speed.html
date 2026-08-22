@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Tour speed</title>
+<style>
+  html, body{ margin: 0; background: #fff; }
+  body{ font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #2a2a2a; -webkit-font-smoothing: antialiased; }
+  .wrap{ max-width: 900px; margin: 0 auto; padding: 28px 14px 60px; }
+  h1{ font-size: 24px; margin: 0 0 8px; color: #1d3557; }
+  .intro{ font-size: 14px; line-height: 1.5; color: #555; max-width: 700px; margin: 0 0 18px; }
+  .k{ display: inline-block; width: 9px; height: 9px; border-radius: 50%; vertical-align: -1px; }
+  .chart{ position: relative; }
+  svg{ overflow: visible; display: block; }
+  text{ font-size: 12px; fill: #555; }
+  .axis text{ fill: #8a8a8a; font-size: 11px; }
+  .axis line{ stroke: #ececec; }
+  .axis .domain{ display: none; }
+  .row-label{ font-size: 12px; font-weight: 600; fill: #333; }
+  .row-sub{ font-size: 10.5px; fill: #999; }
+  .section{ font-size: 12px; font-weight: 600; fill: #333; }
+  .ann{ font-size: 11.5px; fill: #333; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
+  .ann .light{ fill: #888; }
+  .tooltip{ position: absolute; z-index: 10; pointer-events: none; background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 8px 10px; font-size: 12px; line-height: 1.45; width: 290px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .tooltip-hidden{ display: none; }
+  .tt-name{ font-weight: 600; color: #1d3557; font-size: 13px; }
+  .tt-meta{ color: #888; margin-bottom: 4px; }
+  .tt-stop{ display: flex; gap: 8px; }
+  .tt-stop .gap{ color: #d1495b; width: 44px; flex: none; text-align: right; }
+  .tt-stop .when{ color: #888; width: 74px; flex: none; }
+</style>
+<div class="wrap">
+  <h1>How fast is a podcast press tour?</h1>
+  <p class="intro">Every guest who appeared on two or more different hosts' shows within 30 days of each other is a "tour": <span class="n-tours">66</span> of them across ~7,300 episodes. Each dot is one tour, placed by how many days elapsed between its first and last stop, and stacked into rows by how many distinct hosts the guest hit (<span class="k" style="background:#1d3557"></span> 2 hosts, <span class="k" style="background:#d1495b"></span> 3+). The vertical tick in each row is the median. Below, the gray bars count the individual hops between consecutive stops. Hover a dot to see the itinerary.</p>
+  <div class="chart"></div>
+</div>
+<script src="https://roadtolarissa.com/slinks/static-rss/d3_.js"></script>
+<script>
+var HOST = {'ek-vox':'Ezra Klein','impeachment':'Ezra Klein','ek-nyt':'Ezra Klein','crazy-genius':'Derek Thompson','plain-english':'Derek Thompson','odd-lots':'Joe Weisenthal & Tracy Alloway','538-politics':'Nate Silver','risky-biz':'Nate Silver','reply-all':'PJ Vogt','crypto-island':'PJ Vogt','search-engine':'PJ Vogt','hard-fork':'Kevin Roose & Casey Newton','decoder':'Nilay Patel','tyler':'Tyler Cowen','dwarkesh':'Dwarkesh Patel','fresh-air':'Terry Gross','tal':'Ira Glass'}
+var SHORT = {'Ezra Klein':'Klein','Derek Thompson':'Thompson','Joe Weisenthal & Tracy Alloway':'Odd Lots','Nate Silver':'Silver','PJ Vogt':'Vogt','Kevin Roose & Casey Newton':'Hard Fork','Nilay Patel':'Decoder','Tyler Cowen':'Cowen','Dwarkesh Patel':'Dwarkesh','Terry Gross':'Gross','Ira Glass':'Glass'}
+var NAVY = '#1d3557', RED = '#d1495b', WINDOW = 30
+
+fetch('../episodes.json').then(r => r.json()).then(draw)
+
+function guestKey(g){
+  var p = g.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\./g, '').toLowerCase().trim().split(/\s+/)
+  return p[0] + '|' + p[p.length - 1]
+}
+
+function computeTours(eps){
+  eps.forEach(d => d.date = new Date(d.d + 'T12:00:00Z'))
+  var byGuest = {}
+  eps.forEach(d => (d.g || []).forEach(g => {
+    var k = guestKey(g)
+    ;(byGuest[k] = byGuest[k] || []).push(d)
+  }))
+  var tours = []
+  Object.keys(byGuest).forEach(k => {
+    var list = byGuest[k].sort((a, b) => a.date - b.date)
+    var cluster = [list[0]]
+    var flush = () => {
+      var hosts = d3.nestBy(cluster, d => HOST[d.s]).map(d => d.key)
+      if (hosts.length < 2) return
+      var name = ''
+      cluster.forEach(d => d.g.forEach(g => { if (guestKey(g) == k && g.length > name.length) name = g }))
+      var gaps = cluster.slice(1).map((d, i) => Math.round((d.date - cluster[i].date)/864e5))
+      tours.push({key: k, name, eps: cluster, hosts, nHosts: hosts.length, gaps,
+        span: Math.round((cluster[cluster.length - 1].date - cluster[0].date)/864e5),
+        group: hosts.length >= 4 ? '4+' : '' + hosts.length})
+    }
+    for (var i = 1; i < list.length; i++){
+      if ((list[i].date - list[i - 1].date)/864e5 <= WINDOW) cluster.push(list[i])
+      else { flush(); cluster = [list[i]] }
+    }
+    flush()
+  })
+  return tours
+}
+
+// deterministic beeswarm: place circles left-to-right, alternating above/below the centerline
+function dodge(items, x, r){
+  var placed = []
+  items.slice().sort((a, b) => a.span - b.span || a.name.localeCompare(b.name)).forEach(d => {
+    var cx = x(d.span), yo = 0, step = 0
+    while (placed.some(p => Math.abs(p.cx - cx) < 2*r + .5 && Math.abs(p.yo - yo) < 2*r + .5)){
+      step++
+      yo = (step % 2 ? 1 : -1) * Math.ceil(step/2) * (2*r + 1)
+    }
+    d.cx = cx; d.yo = yo
+    placed.push(d)
+  })
+}
+
+function draw(eps){
+  var tours = computeTours(eps)
+  d3.select('.n-tours').text(tours.length)
+  var groups = ['4+', '3', '2']   // densest row at the bottom, next to the axis
+  var byGroup = {}
+  groups.forEach(g => byGroup[g] = tours.filter(d => d.group == g))
+
+  var chartSel = d3.select('.chart')
+  var ttSel = chartSel.selectAppend('div.tooltip.tooltip-hidden')
+  var totalWidth = Math.min(chartSel.node().getBoundingClientRect().width || 900, 900)
+  var r = totalWidth < 600 ? 4 : 5.5
+  var rowH = {'2': 120, '3': 56, '4+': 56}, rowGap = 14, histH = 80
+  var margin = {top: 44, right: 30, bottom: 30, left: 78}
+  var swarmH = d3.sum(groups, g => rowH[g]) + rowGap*(groups.length - 1)
+  var height = swarmH + 60 + histH
+
+  var c = d3.conventions({sel: chartSel, totalWidth, height, margin})
+  var maxSpan = d3.max(tours, d => d.span)
+  c.x.domain([0, Math.max(maxSpan, WINDOW) + 2]).nice()
+  c.xAxis.ticks(8).tickSize(-swarmH).tickFormat(d => d + (d == 0 ? ' days' : ''))
+  c.svg.append('g.axis.x').translate(swarmH, 1).call(c.xAxis)
+  c.svg.append('text.axis-title').at({x: c.width, y: swarmH + 30, textAnchor: 'end', fontSize: 11, fill: '#8a8a8a'})
+    .text('days from first stop to last stop →')
+
+  // ---- swarm rows ----
+  var y0 = 0, rowMid = {}
+  groups.forEach(g => {
+    var items = byGroup[g], mid = y0 + rowH[g]/2
+    rowMid[g] = mid
+    dodge(items, c.x, r)
+    var rowSel = c.svg.append('g.row').translate([0, mid])
+    rowSel.append('line').at({x1: 0, x2: c.width, stroke: '#f1f1f1'})
+    rowSel.append('text.row-label').at({x: -margin.left + 2, y: -2}).text(g + ' hosts')
+    rowSel.append('text.row-sub').at({x: -margin.left + 2, y: 12})
+      .text(items.length + (items.length == 1 ? ' tour' : ' tours'))
+    if (items.length >= 3){
+      var med = d3.median(items, d => d.span)
+      rowSel.append('line').at({x1: c.x(med), x2: c.x(med), y1: -rowH[g]/2 + 6, y2: rowH[g]/2 - 6, stroke: '#555', strokeWidth: 1, strokeDasharray: '2 2'})
+      rowSel.append('text.row-sub').at({x: c.x(med) + 4, y: rowH[g]/2 - 3}).st({fill: '#666'}).text('median ' + med + 'd')
+    }
+    rowSel.appendMany('circle.tour', items)
+      .at({cx: d => d.cx, cy: d => d.yo, r, fill: d => d.nHosts >= 3 ? RED : NAVY, fillOpacity: .85, stroke: '#fff', strokeWidth: 1})
+      .st({cursor: 'pointer'})
+      .on('mouseenter', showTip)
+      .on('mouseleave', hideTip)
+      .on('click', d => { var u = d.eps[0].u; if (u) window.open(u, '_blank') })
+    y0 += rowH[g] + rowGap
+  })
+
+  // ---- annotations: fastest + slowest ----
+  var fastest = tours.slice().sort((a, b) => a.span - b.span || b.nHosts - a.nHosts)[0]
+  var slowest = tours.slice().sort((a, b) => b.span - a.span || b.nHosts - a.nHosts)[0]
+  var mostStops = tours.slice().sort((a, b) => b.eps.length - a.eps.length || a.span - b.span)[0]
+  var fmt = d3.utcFormat('%b %-d, %Y')
+  var annG = c.svg.append('g').st({pointerEvents: 'none'})
+  function annotate(t, dx, dy, lines){
+    var px = t.cx, py = rowMid[t.group] + t.yo
+    annG.append('line').at({x1: px + Math.sign(dx)*(r + 1), y1: py + Math.sign(dy)*(r + 1), x2: px + dx, y2: py + dy, stroke: '#999', strokeWidth: .8})
+    var text = annG.append('text.ann').at({x: px + dx + (dx < 0 ? -3 : 3), y: py + dy + (dy > 0 ? 12 : -4), textAnchor: dx < 0 ? 'end' : 'start'})
+    lines.forEach((l, i) => text.append('tspan').at({x: px + dx + (dx < 0 ? -3 : 3), dy: i ? 14 : 0}).classed('light', i > 0).text(l))
+  }
+  var sameDay = fastest.span == 0
+  annotate(fastest, 40, -48, [
+    'Fastest: ' + fastest.name + (sameDay ? ', same day' : ', ' + fastest.span + ' days'),
+    fastest.hosts.map(h => SHORT[h]).join(' + ') + (sameDay ? ' · ' + fmt(fastest.eps[0].date) : '')])
+  annotate(slowest, -30, -30, [
+    'Slowest: ' + slowest.name + ', ' + slowest.span + ' days',
+    slowest.eps.length + ' stops · ' + slowest.hosts.length + ' hosts · hops of ' + slowest.gaps.join(', ') + ' days'])
+  if (mostStops != slowest && mostStops != fastest) annotate(mostStops, 30, 26, [
+    'Most stops: ' + mostStops.name + ', ' + mostStops.eps.length + ' in ' + mostStops.span + ' days',
+    mostStops.hosts.map(h => SHORT[h]).join(' + ')])
+
+  // ---- gap histogram ----
+  var gaps = []
+  tours.forEach(t => t.gaps.forEach(g => gaps.push({gap: g, tour: t})))
+  var bins = d3.histogram().value(d => d.gap).domain([0, WINDOW + 1]).thresholds(d3.range(0, WINDOW + 2, 3))(gaps)
+  var hTop = swarmH + 60
+  var hy = d3.scaleLinear().domain([0, d3.max(bins, b => b.length)]).range([hTop + histH, hTop])
+  var hG = c.svg.append('g')
+  hG.append('text.section').at({x: -margin.left + 2, y: hTop - 16})
+    .text('Days between consecutive stops (' + gaps.length + ' hops, all tours)')
+  hG.append('g.axis').call(d3.axisLeft(hy).ticks(3).tickSize(-c.width))
+  hG.appendMany('rect', bins)
+    .at({x: b => c.x(b.x0) + 1, width: b => Math.max(1, c.x(b.x1) - c.x(b.x0) - 2), y: b => hy(b.length), height: b => hy(0) - hy(b.length), fill: '#c9ced6'})
+    .on('mouseenter', function(b){
+      d3.select(this).at({fill: NAVY})
+      var [mx, my] = d3.mouse(chartSel.node())
+      ttSel.classed('tooltip-hidden', false).html('<div class="tt-name">' + b.length + ' hop' + (b.length == 1 ? '' : 's') + ' of ' + b.x0 + '–' + (b.x1 - 1) + ' days</div><div class="tt-meta">'
+        + esc(d3.nestBy(b, d => d.tour.name).map(d => d.key).slice(0, 6).join(', ')) + (b.length > 6 ? '…' : '') + '</div>')
+      place(mx, my)
+    })
+    .on('mouseleave', function(){ d3.select(this).at({fill: '#c9ced6'}); hideTip() })
+  hG.append('g.axis').translate([0, hTop + histH]).call(d3.axisBottom(c.x).ticks(8).tickSize(0).tickFormat(d => d + (d == 0 ? ' days' : '')))
+
+  // ---- tooltip ----
+  function esc(s){ return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') }
+  function place(mx, my){
+    var w = chartSel.node().getBoundingClientRect().width
+    ttSel.st({left: Math.min(Math.max(4, mx + 14), w - 314) + 'px', top: (my + 16) + 'px'})
+  }
+  function showTip(d){
+    d3.select(this).at({strokeWidth: 2, stroke: '#222'})
+    var [mx, my] = d3.mouse(chartSel.node())
+    var html = '<div class="tt-name">' + esc(d.name) + '</div>'
+      + '<div class="tt-meta">' + d.eps.length + ' stops · ' + d.nHosts + ' hosts · ' + (d.span ? d.span + ' days' : 'same day') + '</div>'
+    d.eps.forEach((e, i) => {
+      html += '<div class="tt-stop"><span class="gap">' + (i ? '+' + d.gaps[i - 1] + 'd' : '') + '</span><span class="when">' + fmt(e.date) + '</span><span>' + esc(HOST[e.s]) + '</span></div>'
+    })
+    html += '<div class="tt-meta" style="margin-top:4px">click to open first episode ↗</div>'
+    ttSel.classed('tooltip-hidden', false).html(html)
+    place(mx, my)
+  }
+  function hideTip(){
+    c.svg.selectAll('circle.tour').at({strokeWidth: 1, stroke: '#fff'})
+    ttSel.classed('tooltip-hidden', true)
+  }
+}
+</script>

@@ -1,0 +1,191 @@
+<!doctype html>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Guest corridors between podcast hosts</title>
+<style>
+body{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: #333; background: #fff; margin: 0; padding: 28px 16px 40px; }
+.wrap{ max-width: 940px; margin: 0 auto; }
+h1{ font-size: 24px; font-weight: 600; color: #1d3557; margin: 0 0 8px; }
+p.sub{ font-size: 14px; line-height: 1.5; color: #555; margin: 0 0 14px; max-width: 780px; }
+p.sub b{ color: #1d3557; } p.sub i.red{ color: #d1495b; font-style: normal; font-weight: 600; }
+.chart{ position: relative; }
+text{ font-size: 11px; fill: #333; }
+.host-label{ font-weight: 600; fill: #1d3557; }
+.host-n{ fill: #888; font-size: 10px; }
+.isolate .host-label, .isolate .host-n{ fill: #d1495b; }
+.apex{ font-size: 10px; font-weight: 600; fill: #1d3557; text-anchor: middle; }
+.tooltip{ position: absolute; z-index: 10; pointer-events: none; background: #fff; border: 1px solid #ddd; border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.09); padding: 8px 10px; font-size: 12px; line-height: 1.4; width: 300px; color: #333; }
+.tooltip-hidden{ opacity: 0; transition: opacity .2s; }
+.tt-head{ font-weight: 600; color: #1d3557; margin-bottom: 2px; }
+.tt-sub{ color: #888; font-size: 10.5px; text-transform: uppercase; letter-spacing: .4px; margin-bottom: 5px; }
+.tt-row{ display: flex; justify-content: space-between; gap: 8px; font-size: 11.5px; }
+.tt-row .d{ color: #888; white-space: nowrap; }
+.tt-more{ color: #aaa; font-size: 10.5px; margin-top: 4px; }
+</style>
+<div class='wrap'>
+  <h1>Who shares guests with whom</h1>
+  <p class='sub'>Each dot is a host; an arc joins two hosts every time the same guest appeared on both of their shows within 30 days of each other (a <b>press tour</b>), and its thickness is how often that happened, 2014&ndash;2026. The hosts are ordered so the busiest corridors sit side by side &mdash; the <b>Ezra Klein &harr; Terry Gross</b> and <b>Derek Thompson &harr; Terry Gross</b> lanes carry most of the traffic. Hosts labeled in <i class='red'>red</i> almost never share a guest with anyone; <i class='red'>Ira Glass</i> never does. Hover an arc for the guests and dates, or a host for their partners. <span class='counts'></span></p>
+  <div class='chart'></div>
+</div>
+<script src='https://roadtolarissa.com/slinks/static-rss/d3_.js'></script>
+<script>
+var C = {ink: '#1d3557', red: '#d1495b', gray: '#a9b2bd'}, WINDOW = 30
+var HOST = {
+  'ek-vox': 'Ezra Klein', 'impeachment': 'Ezra Klein', 'ek-nyt': 'Ezra Klein',
+  'crazy-genius': 'Derek Thompson', 'plain-english': 'Derek Thompson',
+  'odd-lots': 'Joe Weisenthal & Tracy Alloway', '538-politics': 'Nate Silver', 'risky-biz': 'Nate Silver',
+  'reply-all': 'PJ Vogt', 'crypto-island': 'PJ Vogt', 'search-engine': 'PJ Vogt',
+  'hard-fork': 'Kevin Roose & Casey Newton', 'decoder': 'Nilay Patel', 'tyler': 'Tyler Cowen',
+  'dwarkesh': 'Dwarkesh Patel', 'fresh-air': 'Terry Gross', 'tal': 'Ira Glass',
+}
+// hand-ordered: the five strongest corridors are all adjacent or one apart; isolates drift right
+var ORDER = [
+  {host: 'Tyler Cowen', lines: ['Tyler Cowen']},
+  {host: 'Ezra Klein', lines: ['Ezra Klein']},
+  {host: 'Terry Gross', lines: ['Terry Gross']},
+  {host: 'Derek Thompson', lines: ['Derek Thompson']},
+  {host: 'Joe Weisenthal & Tracy Alloway', lines: ['Joe Weisenthal', '& Tracy Alloway']},
+  {host: 'Nilay Patel', lines: ['Nilay Patel']},
+  {host: 'Kevin Roose & Casey Newton', lines: ['Kevin Roose', '& Casey Newton']},
+  {host: 'Dwarkesh Patel', lines: ['Dwarkesh Patel']},
+  {host: 'Nate Silver', lines: ['Nate Silver']},
+  {host: 'PJ Vogt', lines: ['PJ Vogt']},
+  {host: 'Ira Glass', lines: ['Ira Glass']},
+]
+
+fetch('../episodes.json').then(r => r.json()).then(draw)
+
+function draw(eps){
+  eps.forEach(d => d.date = new Date(d.d + 'T12:00:00Z'))
+  function guestKey(g){
+    var p = g.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\./g, '').toLowerCase().split(/\s+/)
+    return p[0] + '|' + p[p.length - 1]
+  }
+  // ---- tours: same guest, 2+ hosts, <= WINDOW days between consecutive stops ----
+  var byGuest = {}
+  eps.forEach(d => (d.g || []).forEach(g => { var k = guestKey(g); (byGuest[k] = byGuest[k] || []).push(d) }))
+  var tours = []
+  Object.keys(byGuest).forEach(k => {
+    var list = byGuest[k].sort((a, b) => a.date - b.date), cluster = [list[0]]
+    function flush(){
+      var hosts = d3.nestBy(cluster, d => HOST[d.s])
+      if (hosts.length < 2) return
+      var name = ''
+      cluster.forEach(d => d.g.forEach(g => { if (guestKey(g) == k && g.length > name.length) name = g }))
+      tours.push({key: k, name, eps: cluster, hosts: hosts.map(h => h.key), last: cluster[cluster.length - 1].date})
+    }
+    for (var i = 1; i < list.length; i++){
+      if ((list[i].date - list[i - 1].date)/864e5 <= WINDOW) cluster.push(list[i])
+      else { flush(); cluster = [list[i]] }
+    }
+    flush()
+  })
+
+  // ---- host-pair corridors ----
+  var idx = {}
+  ORDER.forEach((d, i) => { idx[d.host] = i; d.tours = [] })
+  var pairMap = {}
+  tours.forEach(t => {
+    t.hosts.forEach(h => ORDER[idx[h]].tours.push(t))
+    for (var i = 0; i < t.hosts.length; i++) for (var j = i + 1; j < t.hosts.length; j++){
+      var a = t.hosts[i], b = t.hosts[j]
+      if (idx[a] > idx[b]){ var tmp = a; a = b; b = tmp }
+      var pk = a + '|' + b
+      if (!pairMap[pk]) pairMap[pk] = {a, b, tours: []}
+      pairMap[pk].tours.push(t)
+    }
+  })
+  var pairs = Object.keys(pairMap).map(k => pairMap[k])
+  pairs.forEach(p => { p.n = p.tours.length; p.tours.sort((s, t) => t.last - s.last) })
+  pairs.sort((p, q) => p.n - q.n)   // thin arcs drawn first, thick on top
+  ORDER.forEach(d => d.isolate = d.tours.length <= 4)
+  d3.select('.counts').text(tours.length + ' tours connect ' + pairs.length + ' of ' + (ORDER.length*(ORDER.length - 1)/2) + ' possible host pairs.')
+
+  // ---- layout ----
+  var chartSel = d3.select('.chart')
+  var ttSel = chartSel.selectAppend('div.tooltip.tooltip-hidden')
+  var totalWidth = Math.min(940, chartSel.node().getBoundingClientRect().width || 940)
+  var c = d3.conventions({sel: chartSel, totalWidth: totalWidth, height: 360, margin: {top: 24, right: 16, bottom: 64, left: 16}})
+  var x = d3.scalePoint().domain(ORDER.map(d => d.host)).range([0, c.width]).padding(.45)
+  var baseY = c.height
+  var wScale = d3.scaleLinear().domain([1, d3.max(pairs, p => p.n)]).range([1.2, 16])
+  var rScale = d3.scaleSqrt().domain([0, d3.max(ORDER, d => d.tours.length)]).range([3, 13])
+  var arcRy = p => Math.min(c.height - 12, 30 + (x(p.b) - x(p.a))*.38)
+  var arcPath = p => 'M' + x(p.a) + ' ' + baseY + ' A' + (x(p.b) - x(p.a))/2 + ' ' + arcRy(p) + ' 0 0 1 ' + x(p.b) + ' ' + baseY
+  var baseOpacity = p => p.n >= 6 ? .85 : p.n >= 3 ? .5 : .22
+
+  c.svg.append('line').at({x1: -8, x2: c.width + 8, y1: baseY, y2: baseY, stroke: '#ddd'})
+  var arcSel = c.svg.appendMany('path.arc', pairs)
+    .at({d: arcPath, fill: 'none', stroke: C.ink, strokeWidth: p => wScale(p.n)})
+    .st({opacity: baseOpacity})
+  var apexSel = c.svg.appendMany('text.apex', pairs.filter(p => p.n >= 6))
+    .translate(p => [(x(p.a) + x(p.b))/2, baseY - arcRy(p) - wScale(p.n)/2 - 4])
+    .text(p => p.n)
+
+  var nodeSel = c.svg.appendMany('g.node', ORDER)
+    .translate(d => [x(d.host), baseY])
+    .classed('isolate', d => d.isolate)
+  nodeSel.append('circle')
+    .at({r: d => rScale(d.tours.length), fill: d => d.tours.length ? (d.isolate ? C.red : C.ink) : '#fff',
+         stroke: d => d.tours.length ? '#fff' : C.red, strokeWidth: 1.5})
+  nodeSel.append('text.host-label').at({y: 24, textAnchor: 'middle'})
+    .each(function(d){
+      d3.select(this).appendMany('tspan', d.lines).at({x: 0, dy: (l, i) => i ? 13 : 0}).text(l => l)
+    })
+  nodeSel.append('text.host-n').at({y: d => 24 + 13*d.lines.length, textAnchor: 'middle'})
+    .text(d => d.tours.length ? d.tours.length + (d.tours.length == 1 ? ' tour' : ' tours') : 'no shared guests')
+
+  // ---- hover: invisible fat strokes over the arcs, fat circles over the nodes ----
+  var fmt = d3.utcFormat('%b %-d, %Y'), fmtS = d3.utcFormat('%b %-d')
+  var esc = s => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  var first = h => h.split(' & ').map(n => n.split(' ')[0]).join(' & ')
+  function place(){
+    var m = d3.mouse(chartSel.node())
+    ttSel.classed('tooltip-hidden', false)
+      .st({left: Math.max(4, Math.min(m[0] + 14, totalWidth - 324)) + 'px', top: (m[1] + 16) + 'px'})
+  }
+  function showPair(p){
+    arcSel.st({stroke: q => q == p ? C.red : C.ink, opacity: q => q == p ? 1 : .08})
+    apexSel.st({opacity: q => q == p ? 1 : .15})
+    nodeSel.st({opacity: d => d.host == p.a || d.host == p.b ? 1 : .3})
+    var rows = p.tours.slice(0, 12).map(t => {
+      var ea = t.eps.filter(d => HOST[d.s] == p.a)[0], eb = t.eps.filter(d => HOST[d.s] == p.b)[0]
+      var lo = ea.date <= eb.date ? ea : eb, hi = lo == ea ? eb : ea
+      var gap = Math.round((hi.date - lo.date)/864e5)
+      return "<div class='tt-row'><span>" + esc(t.name) + (t.hosts.length > 2 ? " <span class='d'>+" + (t.hosts.length - 2) + ' more host' + (t.hosts.length > 3 ? 's' : '') + '</span>' : '')
+        + "</span><span class='d'>" + fmt(lo.date) + ' ' + esc(first(HOST[lo.s])) + ' &rarr; ' + esc(first(HOST[hi.s])) + (gap ? ' +' + gap + 'd' : ' same day') + '</span></div>'
+    })
+    ttSel.html("<div class='tt-head'>" + esc(p.a) + ' &harr; ' + esc(p.b) + '</div>'
+      + "<div class='tt-sub'>" + p.n + ' shared guest' + (p.n > 1 ? 's' : '') + ' within ' + WINDOW + ' days</div>'
+      + rows.join('') + (p.n > 12 ? "<div class='tt-more'>+" + (p.n - 12) + ' more</div>' : ''))
+    place()
+  }
+  function showHost(d){
+    arcSel.st({stroke: q => q.a == d.host || q.b == d.host ? C.red : C.ink, opacity: q => q.a == d.host || q.b == d.host ? .9 : .08})
+    apexSel.st({opacity: q => q.a == d.host || q.b == d.host ? 1 : .15})
+    nodeSel.st({opacity: 1})
+    var partners = pairs.filter(q => q.a == d.host || q.b == d.host).slice().reverse()
+    ttSel.html("<div class='tt-head'>" + esc(d.host) + '</div>'
+      + "<div class='tt-sub'>" + d.tours.length + ' tour' + (d.tours.length == 1 ? '' : 's') + ' · ' + partners.length + ' partner' + (partners.length == 1 ? '' : 's') + '</div>'
+      + (partners.length ? partners.map(q => "<div class='tt-row'><span>" + esc(q.a == d.host ? q.b : q.a) + "</span><span class='d'>" + q.n + '</span></div>').join('')
+        : "<div class='tt-more'>No guest went from here to another of these hosts' shows (or back) inside " + WINDOW + ' days.</div>'))
+    place()
+  }
+  function reset(){
+    arcSel.st({stroke: C.ink, opacity: baseOpacity})
+    apexSel.st({opacity: 1})
+    nodeSel.st({opacity: 1})
+    ttSel.classed('tooltip-hidden', true)
+  }
+  c.svg.appendMany('path.hit', pairs)
+    .at({d: arcPath, fill: 'none', stroke: 'transparent', strokeWidth: p => Math.max(12, wScale(p.n) + 8)})
+    .st({pointerEvents: 'stroke', cursor: 'pointer'})
+    .on('mouseenter', showPair).on('mousemove', place).on('mouseleave', reset)
+  c.svg.appendMany('circle.hit', ORDER)
+    .translate(d => [x(d.host), baseY])
+    .at({r: 20, fill: 'transparent'})
+    .st({cursor: 'pointer'})
+    .on('mouseenter', showHost).on('mousemove', place).on('mouseleave', reset)
+}
+</script>

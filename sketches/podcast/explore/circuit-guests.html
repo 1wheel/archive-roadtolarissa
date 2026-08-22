@@ -1,0 +1,207 @@
+<!doctype html>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>The Circuit · most-booked podcast guests</title>
+<style>
+html, body{ margin: 0; background: #fff; }
+body{ font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #2a2a2a; -webkit-font-smoothing: antialiased; }
+.wrap{ max-width: 940px; margin: 0 auto; padding: 28px 14px 60px; }
+h1{ font-size: 26px; margin: 0 0 10px; }
+.intro{ font-size: 14px; line-height: 1.5; color: #555; max-width: 720px; margin: 0 0 14px; }
+.controls{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: #666; margin-bottom: 6px; }
+.controls button{ font: inherit; font-size: 11.5px; color: #444; border: 1px solid #ddd; border-radius: 12px; background: #fff; padding: 2px 10px; cursor: pointer; }
+.controls button:hover{ border-color: #999; }
+.controls button.on{ background: #1d3557; border-color: #1d3557; color: #fff; }
+.legend{ font-size: 11.5px; color: #555; margin: 6px 0 10px; line-height: 1.9; }
+.legend span.h{ display: inline-block; margin-right: 12px; cursor: pointer; white-space: nowrap; }
+.legend span.h.dim{ opacity: .3; }
+.legend .k{ display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 4px; vertical-align: -1px; }
+.legend .tour{ display: inline-block; width: 18px; height: 0; border-top: 2.5px solid #d1495b; margin: 0 5px 0 6px; vertical-align: 3px; }
+.chart{ position: relative; }
+svg{ overflow: visible; display: block; }
+text{ font-size: 12px; fill: #555; }
+.x .tick line{ stroke: #ececec; }
+.x text{ fill: #8a8a8a; font-size: 11px; }
+.domain{ display: none; }
+.row-line{ stroke: #f3f3f3; shape-rendering: crispEdges; }
+.name{ font-size: 12px; fill: #333; }
+.name.host{ fill: #1d3557; font-style: italic; }
+.rank{ font-size: 10px; fill: #aaa; }
+.stat{ font-size: 11px; fill: #888; }
+.stat.on{ fill: #1d3557; font-weight: 600; }
+.stat-head{ font-size: 10px; fill: #aaa; text-transform: uppercase; letter-spacing: .4px; }
+.tooltip{ position: absolute; z-index: 10; pointer-events: none; background: #fff; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,.09); padding: 8px 10px; font-size: 12px; line-height: 1.4; max-width: 300px; color: #333; }
+.tooltip .tt-show{ color: #888; font-size: 10.5px; text-transform: uppercase; letter-spacing: .4px; }
+.tooltip .tt-title{ font-weight: 600; margin: 2px 0; }
+.tooltip .tt-desc{ color: #777; font-size: 11px; margin-top: 3px; }
+.tooltip .tt-tour{ margin-top: 5px; padding-top: 5px; border-top: 1px solid #eee; font-size: 11px; color: #d1495b; }
+.tooltip-hidden{ opacity: 0; transition: opacity .25s; }
+.sources{ font-size: 11px; color: #999; max-width: 720px; margin-top: 22px; line-height: 1.5; }
+</style>
+
+<div class='wrap'>
+  <h1>The Circuit</h1>
+  <p class='intro'>The 40 most-booked guests across the 17 shows, one row each, one dot per appearance placed by date and colored by host. A <span style='color:#d1495b;font-weight:600'>red bar</span> under a run of dots marks a press tour: the same guest hitting two or more different hosts' shows within 30 days. Long, many-colored rows are the perennials everyone books; a row that collapses into one red bar is a one-time tour. Re-sort to compare who is booked most, who ranges widest across hosts, and who is hot right now. Hover a dot for the episode, or a host in the legend to isolate their bookings.</p>
+  <div class='controls'><span>sort by</span></div>
+  <div class='legend'></div>
+  <div class='chart'></div>
+  <p class='sources'>Guest names are pulled from feed text by regex, so hosts appearing as guests on each other's shows (italic navy) are real, but a few rows may merge or split people with similar names. Feed-label artifacts like "Lots More" and "Model Talk" are filtered out by hand.</p>
+</div>
+
+<script src='https://roadtolarissa.com/slinks/static-rss/d3_.js'></script>
+<script>
+var HOSTS = [
+  {name: 'Ezra Klein',                     shows: ['ek-vox', 'impeachment', 'ek-nyt'],             color: '#1d3557'},
+  {name: 'Derek Thompson',                 shows: ['crazy-genius', 'plain-english'],               color: '#e08a2c'},
+  {name: 'Joe Weisenthal & Tracy Alloway', shows: ['odd-lots'],                                    color: '#2a9d8f'},
+  {name: 'Nate Silver',                    shows: ['538-politics', 'risky-biz'],                   color: '#7b5ea7'},
+  {name: 'PJ Vogt',                        shows: ['reply-all', 'crypto-island', 'search-engine'], color: '#c9a227'},
+  {name: 'Kevin Roose & Casey Newton',     shows: ['hard-fork'],                                   color: '#5fa8d3'},
+  {name: 'Nilay Patel',                    shows: ['decoder'],                                     color: '#b56576'},
+  {name: 'Tyler Cowen',                    shows: ['tyler'],                                       color: '#6c8e4a'},
+  {name: 'Dwarkesh Patel',                 shows: ['dwarkesh'],                                    color: '#a0522d'},
+  {name: 'Terry Gross',                    shows: ['fresh-air'],                                   color: '#8d99ae'},
+  {name: 'Ira Glass',                      shows: ['tal'],                                         color: '#d9a5a5'},
+]
+var SHOW = {}
+HOSTS.forEach(h => h.shows.forEach(s => SHOW[s] = h))
+var SHOWLABEL = {'ek-vox': 'EK Show · Vox', 'impeachment': 'Impeachment', 'ek-nyt': 'EK Show · NYT', 'crazy-genius': 'Crazy/Genius', 'plain-english': 'Plain English', 'odd-lots': 'Odd Lots', '538-politics': '538 Politics', 'risky-biz': 'Risky Business', 'reply-all': 'Reply All', 'crypto-island': 'Crypto Island', 'search-engine': 'Search Engine', 'hard-fork': 'Hard Fork', 'decoder': 'Decoder', 'tyler': 'Conversations w/ Tyler', 'dwarkesh': 'Dwarkesh Podcast', 'fresh-air': 'Fresh Air', 'tal': 'This American Life'}
+var JUNK = {'lots|more': 1, 'odd|lots': 1, 'model|talk': 1, 'film|icons': 1, 'coming|soon': 1, 'bloomberg|opinion': 1}
+var HOSTKEYS = {}
+HOSTS.forEach(h => h.name.split(' & ').forEach(n => HOSTKEYS[guestKey(n)] = 1))
+var TOUR_DAYS = 30, N = 40, RED = '#d1495b'
+
+function guestKey(g){
+  var p = g.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\./g, '').toLowerCase().trim().split(/\s+/)
+  return p[0] + '|' + p[p.length - 1]
+}
+var esc = s => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+var fmt = d3.utcFormat('%b %-d, %Y')
+
+fetch('../episodes.json').then(r => r.json()).then(draw)
+
+function draw(eps){
+  eps.forEach(d => { d.date = new Date(d.d + 'T12:00:00Z'); d.host = SHOW[d.s] })
+  eps = eps.filter(d => d.host)
+
+  // ---- guests: one row per normalized name, keep the longest spelling ----
+  var byKey = {}
+  eps.forEach(d => (d.g || []).forEach(g => {
+    var k = guestKey(g)
+    if (JUNK[k]) return
+    var o = byKey[k] = byKey[k] || {key: k, name: '', eps: []}
+    if (g.length > o.name.length) o.name = g
+    if (o.eps.indexOf(d) < 0) o.eps.push(d)
+  }))
+  var guests = Object.values(byKey)
+    .sort((a, b) => b.eps.length - a.eps.length || d3.max(b.eps, d => d.date) - d3.max(a.eps, d => d.date))
+    .slice(0, N)
+  guests.forEach(g => {
+    g.eps.sort((a, b) => a.date - b.date)
+    g.n = g.eps.length
+    g.nHosts = d3.nestBy(g.eps, d => d.host.name).length
+    g.last = g.eps[g.n - 1].date
+    g.first = g.eps[0].date
+    g.isHost = !!HOSTKEYS[g.key]
+    // press tours: runs of appearances <= TOUR_DAYS apart that span 2+ hosts
+    g.tours = []
+    var run = [g.eps[0]]
+    var flush = () => { if (d3.nestBy(run, d => d.host.name).length >= 2) g.tours.push({eps: run, guest: g}) }
+    for (var i = 1; i < g.n; i++){
+      if ((g.eps[i].date - g.eps[i - 1].date)/864e5 <= TOUR_DAYS) run.push(g.eps[i])
+      else { flush(); run = [g.eps[i]] }
+    }
+    flush()
+    g.eps.forEach(d => d.inTour = false)
+    g.tours.forEach(t => t.eps.forEach(d => d.inTour = true))
+  })
+
+  // ---- layout ----
+  var chartSel = d3.select('.chart').html('')
+  var ttSel = chartSel.selectAppend('div.tooltip.tooltip-hidden')
+  var avail = Math.min(chartSel.node().getBoundingClientRect().width || 940, 940)
+  var isMobile = avail < 640
+  var rowH = 18
+  var c = d3.conventions({
+    sel: chartSel, totalWidth: avail, height: rowH*guests.length,
+    margin: {top: 34, right: isMobile ? 46 : 96, bottom: 10, left: isMobile ? 118 : 168},
+  })
+  var maxDate = d3.max(eps, d => d.date)
+  c.x = d3.scaleUtc().domain([new Date('2014-06-01'), new Date(+maxDate + 864e5*60)]).range([0, c.width])
+  c.y = d3.scaleBand().domain(d3.range(guests.length)).range([0, c.height])
+  c.svg.append('g.x.axis').translate(-4, 1)
+    .call(d3.axisTop(c.x).ticks(isMobile ? 6 : 12).tickSize(-c.height - 4))
+
+  var colX = isMobile ? [c.width + 20, c.width + 40] : [c.width + 28, c.width + 60, c.width + 90]
+  var heads = isMobile ? ['eps', 'hosts'] : ['eps', 'hosts', 'last']
+  c.svg.appendMany('text.stat-head', heads).at({x: (d, i) => colX[i], y: -22, textAnchor: 'end'}).text(d => d)
+
+  var rowSel = c.svg.appendMany('g.row', guests)
+  rowSel.append('line.row-line').at({x1: -c.margin.left + 4, x2: colX[colX.length - 1] + 4, y1: rowH/2, y2: rowH/2})
+  rowSel.append('text.rank').at({x: -c.margin.left + 4, y: rowH/2 + 3})
+  rowSel.append('text.name').classed('host', d => d.isHost).at({x: -8, y: rowH/2 + 4, textAnchor: 'end'})
+    .text(d => isMobile && d.name.length > 17 ? d.name.slice(0, 16) + '…' : d.name)
+  rowSel.append('text.stat.s-n').at({x: colX[0], y: rowH/2 + 4, textAnchor: 'end'}).text(d => d.n)
+  rowSel.append('text.stat.s-h').at({x: colX[1], y: rowH/2 + 4, textAnchor: 'end'}).text(d => d.nHosts)
+  if (!isMobile) rowSel.append('text.stat.s-l').at({x: colX[2], y: rowH/2 + 4, textAnchor: 'end'}).text(d => d3.utcFormat("%b '%y")(d.last))
+
+  // tour bars under the dots, then the dots
+  rowSel.each(function(g){
+    d3.select(this).appendMany('line.tour', g.tours)
+      .at({x1: t => c.x(t.eps[0].date) - 3, x2: t => c.x(t.eps[t.eps.length - 1].date) + 3, y1: rowH/2 + 6.5, y2: rowH/2 + 6.5,
+           stroke: RED, strokeWidth: 2.5, strokeLinecap: 'round'})
+  })
+  var dotSel = rowSel.selectAll('circle.ep').data(g => g.eps).enter().append('circle.ep')
+    .at({cx: d => c.x(d.date), cy: rowH/2, r: 4.2, stroke: '#fff', strokeWidth: .8})
+    .st({fill: d => d.host.color})
+    .on('mouseover', function(d){
+      var g = d3.select(this.parentNode).datum()
+      var tour = g.tours.filter(t => t.eps.indexOf(d) > -1)[0]
+      var html = "<div class='tt-show'>" + esc(SHOWLABEL[d.s]) + ' · ' + esc(d.host.name) + '</div>'
+        + "<div class='tt-title'>" + esc(d.t) + '</div><div>' + fmt(d.date) + ' · ' + esc(g.name) + '</div>'
+        + (d.x ? "<div class='tt-desc'>" + esc(d.x) + '</div>' : '')
+        + (tour ? "<div class='tt-tour'>press tour: " + tour.eps.length + ' episodes on ' + d3.nestBy(tour.eps, e => e.host.name).length
+          + " hosts' shows in " + Math.max(1, Math.round((tour.eps[tour.eps.length - 1].date - tour.eps[0].date)/864e5)) + ' days</div>' : '')
+      var [mx, my] = d3.mouse(chartSel.node())
+      var left = Math.min(Math.max(4, mx + 14), chartSel.node().getBoundingClientRect().width - 310)
+      ttSel.classed('tooltip-hidden', false).html(html).st({left: left + 'px', top: (my + 16) + 'px'})
+    })
+    .on('mouseout', () => ttSel.classed('tooltip-hidden', true))
+    .on('click', d => { if (d.u) window.open(d.u, '_blank') })
+
+  // ---- sorting ----
+  var SORTS = [
+    {key: 'n',      label: 'appearances',    cmp: (a, b) => b.n - a.n || b.last - a.last},
+    {key: 'nHosts', label: 'host diversity', cmp: (a, b) => b.nHosts - a.nHosts || b.n - a.n},
+    {key: 'last',   label: 'most recent',    cmp: (a, b) => b.last - a.last},
+  ]
+  var btnSel = d3.select('.controls').appendMany('button', SORTS).text(d => d.label).on('click', setSort)
+  function setSort(s){
+    btnSel.classed('on', d => d == s)
+    c.svg.selectAll('.stat').classed('on', false)
+    c.svg.selectAll(s.key == 'n' ? '.s-n' : s.key == 'nHosts' ? '.s-h' : '.s-l').classed('on', true)
+    var order = guests.slice().sort(s.cmp)
+    order.forEach((g, i) => g.rank = i)
+    rowSel.transition().duration(700).delay(d => d.rank*6).attr('transform', d => 'translate(0,' + c.y(d.rank) + ')')
+    rowSel.select('.rank').text(d => d.rank + 1)
+  }
+  rowSel.attr('transform', (d, i) => 'translate(0,' + c.y(i) + ')')
+  setSort(SORTS[0])
+
+  // ---- legend doubles as a host filter on hover ----
+  var legSel = d3.select('.legend').html('')
+  var hostSel = legSel.appendMany('span.h', HOSTS)
+    .html(d => "<span class='k' style='background:" + d.color + "'></span>" + esc(isMobile ? d.name.split(' & ')[0] : d.name))
+    .on('mouseover', h => {
+      hostSel.classed('dim', d => d != h)
+      dotSel.st({opacity: d => d.host == h ? 1 : .12})
+      rowSel.selectAll('line.tour').st({opacity: .25})
+    })
+    .on('mouseout', () => {
+      hostSel.classed('dim', false)
+      dotSel.st({opacity: 1})
+      rowSel.selectAll('line.tour').st({opacity: 1})
+    })
+  legSel.append('span').html("<span class='tour'></span>press tour (2+ hosts within 30 days)")
+}
+</script>

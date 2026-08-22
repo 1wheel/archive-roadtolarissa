@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Tour seasons</title>
+<style>
+  html, body{ margin: 0; background: #fff; }
+  body{ font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #2a2a2a; -webkit-font-smoothing: antialiased; }
+  .wrap{ max-width: 940px; margin: 0 auto; padding: 28px 14px 60px; }
+  h1{ font-size: 26px; margin: 0 0 10px; letter-spacing: .2px; }
+  .intro{ font-size: 14px; line-height: 1.5; color: #555; max-width: 720px; margin: 0 0 14px; }
+  .intro b{ color: #1d3557; font-weight: 600; }
+  .intro .red{ color: #d1495b; font-weight: 600; }
+  .legend{ font-size: 12px; color: #555; margin: 0 0 6px; line-height: 1.9; }
+  .legend span{ display: inline-block; margin-right: 12px; cursor: default; }
+  .legend span.dim{ opacity: .3; }
+  .legend i{ display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+  .panel-title{ font-size: 12px; font-weight: 600; color: #333; margin: 16px 0 0; }
+  .chart{ position: relative; }
+  svg{ overflow: visible; display: block; }
+  svg *{ pointer-events: none; }
+  svg rect.overlay{ pointer-events: all; }
+  text{ font-size: 11px; fill: #8a8a8a; }
+  .domain{ display: none; }
+  .tick line{ stroke: #ececec; }
+  .yr-label{ font-size: 10.5px; fill: #666; text-anchor: middle; }
+  .yr-label.hot{ fill: #d1495b; font-weight: 600; }
+  .hover-rule{ stroke: #1d3557; stroke-width: 1; opacity: 0; pointer-events: none; }
+  .tooltip{ position: absolute; z-index: 10; pointer-events: none; background: #fff; border: 1px solid #ddd; border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.09); padding: 8px 10px; font-size: 12px; line-height: 1.4; width: 270px; color: #333; }
+  .tooltip .tt-month{ font-weight: 600; }
+  .tooltip .tt-sub{ color: #888; font-size: 11px; margin-bottom: 4px; }
+  .tooltip .tt-tour{ font-size: 11px; padding: 2px 0; border-top: 1px solid #f0f0f0; }
+  .tooltip .tt-tour b{ color: #1d3557; font-weight: 600; }
+  .tooltip .tt-tour .hosts{ color: #777; }
+  .tooltip-hidden{ opacity: 0; }
+  .note{ font-size: 11px; line-height: 1.5; color: #999; max-width: 720px; margin: 22px 0 0; }
+</style>
+<div class="wrap">
+  <h1>Tour seasons</h1>
+  <p class="intro">Every month since 2015, how many episodes across these shows were <b>press-tour stops</b> — a guest hitting two or more different hosts within 30 days — stacked by which host booked them. Bar height is tour episodes that month; the labels above each year count tours that <i>started</i> that year. The lower line is a <span class="red">12-month rolling share</span>: of all episodes with a named guest, what fraction were tour stops. A rising line means the circuit is synchronizing — the same people are being booked by the same hosts in the same weeks. Hover a month for the tours running; hover a host in the legend to isolate them.</p>
+  <div class="legend"></div>
+  <div class="panel-title">Tour episodes per month, by host</div>
+  <div class="chart chart-eps"></div>
+  <div class="panel-title">Share of guest episodes that were tour stops (12-month rolling)</div>
+  <div class="chart chart-share"></div>
+  <p class="note">A tour is the same guest (names folded for diacritics, periods, middle initials) on 2+ hosts' shows with ≤30 days between consecutive appearances. Guest names are regex-extracted from feed text, so counts are a lower bound. The number of hosts publishing grows over time (Hard Fork and Dwarkesh start in 2022), which inflates the raw bars; the share line partly corrects for volume but not for the extra pairing opportunities.</p>
+</div>
+<script src="https://roadtolarissa.com/slinks/static-rss/d3_.js"></script>
+<script>
+fetch('../episodes.json').then(r => r.json()).then(draw)
+
+function draw(eps){
+  var HOST = {'ek-vox': 'Ezra Klein', 'impeachment': 'Ezra Klein', 'ek-nyt': 'Ezra Klein',
+    'crazy-genius': 'Derek Thompson', 'plain-english': 'Derek Thompson', 'odd-lots': 'Joe Weisenthal & Tracy Alloway',
+    '538-politics': 'Nate Silver', 'risky-biz': 'Nate Silver', 'reply-all': 'PJ Vogt', 'crypto-island': 'PJ Vogt',
+    'search-engine': 'PJ Vogt', 'hard-fork': 'Kevin Roose & Casey Newton', 'decoder': 'Nilay Patel',
+    'tyler': 'Tyler Cowen', 'dwarkesh': 'Dwarkesh Patel', 'fresh-air': 'Terry Gross', 'tal': 'Ira Glass'}
+  var fmtMonth = d3.utcFormat('%Y-%m'), fmtLong = d3.utcFormat('%B %Y'), fmtDay = d3.utcFormat('%b %-d')
+  var esc = s => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+  eps.forEach(d => { d.date = new Date(d.d + 'T12:00:00Z'); d.host = HOST[d.s]; d.m = d.d.slice(0, 7) })
+
+  // ---- tours: same guest, 2+ hosts, <=30 days between consecutive appearances ----
+  function guestKey(g){
+    var p = g.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\./g, '').toLowerCase().split(/\s+/)
+    return p[0] + '|' + p[p.length - 1]
+  }
+  var byGuest = {}
+  eps.forEach(d => (d.g || []).forEach(g => { var k = guestKey(g); (byGuest[k] = byGuest[k] || []).push(d) }))
+  var tours = []
+  Object.keys(byGuest).forEach(k => {
+    var list = byGuest[k].sort((a, b) => a.date - b.date), cluster = [list[0]]
+    var flush = () => {
+      var hosts = d3.nestBy(cluster, d => d.host).map(h => h.key)
+      if (hosts.length < 2) return
+      var name = ''
+      cluster.forEach(d => d.g.forEach(g => { if (guestKey(g) == k && g.length > name.length) name = g }))
+      tours.push({key: k, name, eps: cluster.slice(), hosts, start: cluster[0].date, end: cluster[cluster.length - 1].date})
+    }
+    for (var i = 1; i < list.length; i++){
+      if ((list[i].date - list[i - 1].date)/864e5 <= 30) cluster.push(list[i])
+      else { flush(); cluster = [list[i]] }
+    }
+    flush()
+  })
+
+  // ---- monthly rows ----
+  var maxDate = d3.max(eps, d => d.date)
+  var months = d3.utcMonth.range(new Date('2015-01-01'), d3.utcMonth.offset(d3.utcMonth.floor(maxDate), 1))
+  var rowByKey = {}
+  var rows = months.map(m => rowByKey[fmtMonth(m)] = {date: m, key: fmtMonth(m), byHost: {}, total: 0, guestEps: 0, tours: [], hostsPub: {}})
+  eps.forEach(d => {
+    var r = rowByKey[d.m]
+    if (!r) return
+    r.hostsPub[d.host] = 1
+    if (d.g && d.g.length) r.guestEps++
+  })
+  tours.forEach(t => t.eps.forEach(d => {
+    var r = rowByKey[d.m]
+    if (!r) return
+    r.byHost[d.host] = (r.byHost[d.host] || 0) + 1
+    r.total++
+    if (r.tours.indexOf(t) < 0) r.tours.push(t)
+  }))
+  rows.forEach((r, i) => {   // 12-month rolling share of guest episodes that were tour stops
+    var win = rows.slice(Math.max(0, i - 11), i + 1)
+    var tour = d3.sum(win, d => d.total), all = d3.sum(win, d => d.guestEps)
+    r.share = all ? tour/all*100 : 0
+    r.nPub = Object.keys(r.hostsPub).length
+  })
+
+  var hostTotals = {}
+  tours.forEach(t => t.eps.forEach(d => hostTotals[d.host] = (hostTotals[d.host] || 0) + 1))
+  var hosts = Object.keys(hostTotals).sort((a, b) => hostTotals[b] - hostTotals[a])
+  var palette = ['#1d3557', '#3e6fa8', '#6b96c0', '#9dbbd6', '#c6d6e4', '#5b6770', '#858d97', '#adb3bb', '#d0d4d9', '#e4e6e9', '#eee']
+  var color = d3.scaleOrdinal().domain(hosts).range(palette)
+
+  var byYear = d3.nestBy(tours, t => t.start.getUTCFullYear()).sort((a, b) => a.key - b.key)
+
+  // ---- legend ----
+  var legendSel = d3.select('.legend').appendMany('span', hosts)
+    .on('mouseenter', h => setHost(h)).on('mouseleave', () => setHost(null))
+    .html(h => '<i style="background:' + color(h) + '"></i>' + esc(h) + ' <span style="color:#999">' + hostTotals[h] + '</span>')
+
+  // ---- shared scaffolding ----
+  var totalWidth = Math.min(940, (document.documentElement.clientWidth || 960) - 28)
+  var x = d3.scaleUtc().domain([months[0], d3.utcMonth.offset(months[months.length - 1], 1)])
+  var rules = [], tips = []
+  function panel(sel, height, margin){
+    var ti = tips.length
+    var c = d3.conventions({sel: d3.select(sel), totalWidth, height, margin})
+    x.range([0, c.width]); c.x = x
+    c.svg.append('g.x.axis').translate(c.height, 1)
+      .call(d3.axisBottom(x).ticks(d3.utcYear.every(1)).tickSize(-c.height).tickPadding(6))
+    c.svg.select('.x.axis').selectAll('text').at({textAnchor: 'start', dx: 4})
+    rules.push(c.svg.append('line.hover-rule').at({y1: 0, y2: c.height}))
+    tips.push(d3.select(sel).selectAppend('div.tooltip.tooltip-hidden'))
+    c.svg.append('rect.overlay').at({width: c.width, height: c.height, opacity: 0})
+      .on('mousemove', function(){
+        var mx = d3.mouse(this)[0], m = d3.utcMonth.floor(x.invert(mx))
+        var r = rowByKey[fmtMonth(m)]
+        if (r) showMonth(r, mx, ti, c)
+      })
+      .on('mouseleave', hideMonth)
+    return c
+  }
+
+  // ---- panel 1: stacked monthly bars ----
+  var c1 = panel('.chart-eps', 230, {top: 28, right: 12, bottom: 24, left: 30})
+  var y1 = d3.scaleLinear().domain([0, d3.max(rows, r => r.total)]).range([c1.height, 0]).nice()
+  c1.svg.append('g.y.axis').call(d3.axisLeft(y1).ticks(4).tickSize(-c1.width).tickPadding(6)).lower()
+  var bw = Math.max(1, x(d3.utcMonth.offset(months[0], 1)) - x(months[0]) - 1)
+  var series = d3.stack().keys(hosts).value((r, k) => r.byHost[k] || 0)(rows)
+  var segSel = c1.svg.appendMany('g.host', series).at({fill: s => color(s.key)})
+    .appendMany('rect', s => s.filter(d => d[1] > d[0]).map(d => ({host: s.key, row: d.data, y0: d[0], y1: d[1]})))
+    .at({x: d => x(d.row.date) + .5, width: bw, y: d => y1(d.y1), height: d => y1(d.y0) - y1(d.y1)})
+  // tours started per year, labelled above the bars
+  c1.svg.appendMany('text.yr-label', byYear.filter(yr => +yr.key >= 2015))
+    .classed('hot', yr => yr.length == d3.max(byYear, d => d.length))
+    .translate(yr => [(x(new Date(yr.key + '-01-01')) + x(new Date(yr.key + '-12-31')))/2, -12])
+    .text((yr, i) => yr.length + (i == 0 || i == byYear.length - 1 ? ' tour' + (yr.length == 1 ? '' : 's') + ' started' : ''))
+  c1.svg.append('text').at({x: -6, y: -12, textAnchor: 'end', fontSize: 10, fill: '#999'}).text('eps')
+
+  // ---- panel 2: rolling share line ----
+  var c2 = panel('.chart-share', 150, {top: 26, right: 12, bottom: 24, left: 30})
+  var y2 = d3.scaleLinear().domain([0, d3.max(rows, r => r.share)]).range([c2.height, 0]).nice()
+  c2.svg.append('g.y.axis').call(d3.axisLeft(y2).ticks(4).tickSize(-c2.width).tickPadding(6).tickFormat(d => d + '%')).lower()
+  var xm = d => x(d.date) + bw/2
+  c2.svg.append('path').datum(rows.filter(r => r.guestEps))
+    .at({d: d3.area().x(xm).y0(c2.height).y1(d => y2(d.share)).curve(d3.curveMonotoneX), fill: '#d1495b', opacity: .08})
+  c2.svg.append('path').datum(rows.filter(r => r.guestEps))
+    .at({d: d3.line().x(xm).y(d => y2(d.share)).curve(d3.curveMonotoneX), fill: 'none', stroke: '#d1495b', strokeWidth: 1.8})
+  var dot2 = c2.svg.append('circle').at({r: 3.5, fill: '#d1495b', stroke: '#fff', strokeWidth: 1.5, opacity: 0})
+
+  rules.forEach(l => l.raise())
+
+  // ---- interaction ----
+  function setHost(h){
+    legendSel.classed('dim', d => h && d != h)
+    segSel.st({opacity: d => !h || d.host == h ? 1 : .12})
+  }
+  function showMonth(r, mx, ti, c){
+    rules.forEach(l => l.at({x1: xm(r), x2: xm(r), opacity: .5}))
+    dot2.at({cx: xm(r), cy: y2(r.share), opacity: 1})
+    var html = "<div class='tt-month'>" + fmtLong(r.date) + '</div>'
+      + "<div class='tt-sub'>" + r.tours.length + ' tour' + (r.tours.length == 1 ? '' : 's') + ' running · ' + r.total + ' tour episode' + (r.total == 1 ? '' : 's')
+      + ' of ' + r.guestEps + ' with guests · ' + r.nPub + ' hosts publishing<br>12-mo rolling share: ' + r.share.toFixed(1) + '%</div>'
+      + r.tours.slice().sort((a, b) => b.hosts.length - a.hosts.length).map(t =>
+        "<div class='tt-tour'><b>" + esc(t.name) + '</b> · ' + fmtDay(t.start) + '–' + fmtDay(t.end)
+        + "<br><span class='hosts'>" + t.hosts.map(h => esc(h.split(' & ').map(n => n.split(' ').pop()).join(' & '))).join(', ') + '</span></div>').join('')
+    tips.forEach(t => t.classed('tooltip-hidden', true))
+    var tip = tips[ti].classed('tooltip-hidden', false).html(html)
+    var left = mx + c.margin.left + 14
+    if (left + 290 > totalWidth) left = mx + c.margin.left - 290
+    tip.st({left: left + 'px', top: (c.margin.top + 10) + 'px'})
+  }
+  function hideMonth(){
+    rules.forEach(l => l.at({opacity: 0}))
+    dot2.at({opacity: 0})
+    tips.forEach(t => t.classed('tooltip-hidden', true))
+  }
+}
+</script>

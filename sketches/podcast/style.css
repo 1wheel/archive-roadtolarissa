@@ -97,3 +97,14 @@ body{
 .c-tours .mult-card svg{ display: block; overflow: visible; cursor: pointer; }
 .c-tours .mult-show{ font-size: 10px; fill: #666; }
 .c-tours .mult-axis{ font-size: 9px; fill: #aaa; }
+
+/* custom typeahead */
+.c-tours .search-wrap{ position: relative; display: inline-block; }
+.c-tours .suggest{ display: none; position: absolute; top: 26px; left: 0; z-index: 20; min-width: 220px;
+  background: #fff; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 3px 12px rgba(0,0,0,.1); }
+.c-tours .suggest.open{ display: block; }
+.c-tours .suggest button{ display: block; width: 100%; text-align: left; font: inherit; font-size: 13px;
+  padding: 7px 10px; border: 0; background: #fff; cursor: pointer; color: #222; }
+.c-tours .suggest button:hover{ background: #f3f5f8; }
+.c-tours .suggest button .n{ color: #999; font-size: 11px; margin-left: 6px; }
+.c-tours .guest-search{ width: 170px; padding: 4px 8px; }

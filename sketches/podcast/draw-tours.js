@@ -1,4 +1,4 @@
-// One dot per episode across fifteen shows / nine host rows, 2014-2026.
+// One dot per episode across 18 shows / 11 host rows, 2014-2026.
 // A guest extracted from 2+ hosts' shows within `window.tourWindow` days is a
 // "press tour": dots go bold (blue = 2 hosts, red = 3+), tour episodes get
 // linked on hover/pin. Guest names come from feed-text regexes, so treat them
@@ -16,6 +16,7 @@ window.drawTours = function(eps){
     'odd-lots':     {label: 'Odd Lots',       short: 'Odd Lots',  host: 'Joe Weisenthal & Tracy Alloway'},
     '538-politics': {label: '538 Politics',   short: '538',       host: 'Nate Silver'},
     'risky-biz':    {label: 'Risky Business', short: 'Risky B.',  host: 'Nate Silver'},
+    'silver-bulletin':{label: 'Silver Bulletin · text', short: 'SB text', host: 'Nate Silver'},
     'reply-all':    {label: 'Reply All',      short: 'Reply All', host: 'PJ Vogt'},
     'crypto-island':{label: 'Crypto Island',  short: 'Crypto I.', host: 'PJ Vogt'},
     'search-engine':{label: 'Search Engine',  short: 'Search E.', host: 'PJ Vogt'},
@@ -30,7 +31,7 @@ window.drawTours = function(eps){
     {host: 'Ezra Klein',                       lanes: ['ek-vox', 'impeachment', 'ek-nyt']},
     {host: 'Derek Thompson',                   lanes: ['crazy-genius', 'plain-english']},
     {host: 'Joe Weisenthal & Tracy Alloway',   lanes: ['odd-lots']},
-    {host: 'Nate Silver',                      lanes: ['538-politics', 'risky-biz']},
+    {host: 'Nate Silver',                      lanes: ['538-politics', 'risky-biz', 'silver-bulletin']},
     {host: 'PJ Vogt',                          lanes: ['reply-all', 'crypto-island', 'search-engine']},
     {host: 'Kevin Roose & Casey Newton',       lanes: ['hard-fork']},
     {host: 'Nilay Patel',                      lanes: ['decoder']},
@@ -71,7 +72,7 @@ window.drawTours = function(eps){
   eps.forEach(d => d.date = d.date || new Date(d.d + 'T12:00:00Z'))
   var maxDate = d3.max(eps, d => d.date)
   c.x = d3.scaleUtc()
-    .domain([new Date('2014-10-01'), new Date(+maxDate + 1000*60*60*24*45)])
+    .domain([new Date(+d3.min(eps, d => d.date) - 1000*60*60*24*30), new Date(+maxDate + 1000*60*60*24*45)])
     .range([0, c.width])
   c.svg.append('g').attr('class', 'x axis')
     .translate(c.height + 4, 1)
@@ -105,12 +106,14 @@ window.drawTours = function(eps){
   // key folds diacritics + middle initials so Žižek == Zizek, Peter R. Orszag == Peter Orszag
   function guestKey(g){
     var p = g.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\./g, '').toLowerCase().split(/\s+/)
-    return p[0] + '|' + p[p.length - 1]
+      .filter(t => !/^(jr|sr|ii|iii|iv)$/.test(t))
+    return p[0] + '|' + p[p.length - 1].split('-')[0]
   }
   var byGuest = {}, guestMeta = {}
   eps.forEach(d => (d.g || []).forEach(g => {
-    var k = guestKey(g)
-    ;(byGuest[k] = byGuest[k] || []).push(d)
+    if (d.r) return                       // reruns ("Best Of", encores) are not appearances
+    var k = guestKey(g), list = byGuest[k] = byGuest[k] || []
+    if (list.indexOf(d) < 0) list.push(d) // two spellings of one guest in one episode = one appearance
   }))
   Object.keys(byGuest).forEach(k => {
     var list = byGuest[k].sort((a, b) => a.date - b.date)
@@ -141,7 +144,7 @@ window.drawTours = function(eps){
         }
       }
       for (var i = 1; i < list.length; i++){
-        if ((list[i].date - list[i-1].date)/864e5 <= W) cluster.push(list[i])
+        if ((list[i].date - list[i-1].date)/864e5 <= W && (list[i].date - cluster[0].date)/864e5 <= 2*W) cluster.push(list[i])
         else { flush(); cluster = [list[i]] }
       }
       flush()
@@ -150,7 +153,8 @@ window.drawTours = function(eps){
   }
 
   // ---- dots ----
-  var dotSel = c.svg.appendMany('circle.ep', eps)
+  var dotG = c.svg.append('g')
+  var dotSel = dotG.appendMany('circle.ep', eps)
     .translate(d => [d.px, d.py])
 
   var linkG = c.svg.append('g')       // always-on links for 3+ host tours
@@ -162,12 +166,12 @@ window.drawTours = function(eps){
 
   function restyle(){
     dotSel
-      .at({r: d => d.tier == 3 ? 4 : d.tier == 2 ? 3.4 : 2})
+      .at({r: d => d.p ? (d.tier ? 4 : 3) : d.tier == 3 ? 4 : d.tier == 2 ? 3.4 : 2})
       .st({
-        fill: d => d.tier == 3 ? C.three : d.tier == 2 ? C.two : C.base,
-        fillOpacity: d => d.tier ? .95 : .55,
-        stroke: d => d.tier ? '#fff' : 'none',
-        strokeWidth: .6,
+        fill: d => d.p ? '#fff' : d.tier == 3 ? C.three : d.tier == 2 ? C.two : C.base,
+        fillOpacity: d => d.tier || d.p ? .95 : .55,
+        stroke: d => d.p ? (d.tier == 3 ? C.three : d.tier == 2 ? C.two : '#8a94a0') : d.tier ? '#fff' : 'none',
+        strokeWidth: d => d.p ? 1.4 : .6,
       })
     dotSel.filter(d => d.tier).raise()
 
@@ -180,8 +184,12 @@ window.drawTours = function(eps){
   var pinned = null   // guest key
   function highlight(key){
     hiG.html('')
-    annG.st({opacity: key == 'jasmine|sun' ? 0 : 1})
-    var gm = key && guestMeta[key]
+    var keys = Array.isArray(key) ? key.filter(k => guestMeta[k]) : key && guestMeta[key] ? [key] : []
+    annG.st({opacity: keys.indexOf('jasmine|sun') > -1 ? 0 : 1})
+    keys.forEach((k, i) => highlightOne(k, i))
+  }
+  function highlightOne(key, idx){
+    var gm = guestMeta[key]
     if (!gm) return
     var gTours = tours.filter(t => t.key == key)
     var color = gTours.some(t => t.nHosts >= 3) ? C.three : gTours.length ? C.two : C.ink
@@ -195,7 +203,7 @@ window.drawTours = function(eps){
     var label = gm.name + ' · ' + gm.eps.length + ' appearance' + (gm.eps.length > 1 ? 's' : '')
       + (gm.nShows > 1 ? ' on ' + gm.nShows + ' shows' : '')
     hiG.append('text.hover-name')
-      .translate([Math.min(Math.max(top.px, 60), c.width - 10), top.py - 12])
+      .translate([Math.min(Math.max(top.px, 60), c.width - 10), top.py - 12 - idx*13])
       .at({textAnchor: top.px > c.width*.75 ? 'end' : 'middle'})
       .text(label)
   }
@@ -208,9 +216,8 @@ window.drawTours = function(eps){
     var top = tour.eps.slice().sort((a, b) => a.py - b.py)[0]
     var tx = top.px - 130, ty = top.py - 20
     var t = annG.append('text.annotation').at({textAnchor: 'end'})
-    t.append('tspan').at({x: tx, y: ty}).text('Jasmine Sun, ' + tour.eps.length + ' shows in ' +
-      Math.round((d3.max(tour.eps, d => d.date) - d3.min(tour.eps, d => d.date))/864e5) + ' days —')
-    t.append('tspan.light').at({x: tx, y: ty + 14}).text('Nate did his interview in print')
+    t.append('tspan').at({x: tx, y: ty + 8}).text('Jasmine Sun · ' + d3.nestBy(tour.eps, d => d.s).length + ' shows in ' +
+      Math.round((d3.max(tour.eps, d => d.date) - d3.min(tour.eps, d => d.date))/864e5) + ' days')
     annG.append('path').at({
       d: 'M ' + (tx + 4) + ' ' + (ty - 4) + ' Q ' + (top.px - 12) + ' ' + (ty - 10) + ' ' + (top.px - 5) + ' ' + (top.py - 5),
       fill: 'none', stroke: '#999', strokeWidth: 1,
@@ -221,7 +228,6 @@ window.drawTours = function(eps){
   var chipSel = d3.select('.c-tours .chips')
   function drawChips(){
     chipSel.html('')
-    chipSel.append('span').text('Biggest tours: ')
     var top = tours.filter(t => t.nHosts >= 3).slice(0, 12)
     if (top.length < 8) top = tours.slice(0, 12)
     chipSel.appendMany('button', top)
@@ -231,6 +237,7 @@ window.drawTours = function(eps){
         d3.select('.c-tours .guest-search').property('value', pinned ? guestMeta[pinned].name : '')
         highlight(pinned)
         drawChips()
+        drawMultiples()
       })
       .html('')
       .each(function(t){
@@ -251,7 +258,7 @@ window.drawTours = function(eps){
     multSel.html('')
     var big = tours.filter(t => t.nHosts >= 3).sort((a, b) => b.last - a.last)
     if (!big.length) return
-    multSel.append('div.mult-head').text('The blitzes — every guest hitting 3+ hosts inside the window')
+    multSel.append('div.mult-head').text('3+ hosts')
     // one shared x-span across all cards so tour pacing is comparable
     var SPAN = Math.max(20, d3.max(big, t =>
       (+d3.max(t.eps, d => d.date) - +d3.min(t.eps, d => d.date))/864e5) + 6)
@@ -268,11 +275,9 @@ window.drawTours = function(eps){
       var sel = d3.select(this)
       var stops = t.eps.slice().sort((a, b) => a.date - b.date)
       var days = Math.max(1, Math.round((+stops[stops.length-1].date - +stops[0].date)/864e5))
-      var prints = (PRINT_STOPS[t.key] || []).filter(p =>
-        Math.abs(+p.date - (+stops[0].date + +stops[stops.length-1].date)/2) < 45*864e5)
+      var prints = []
       sel.append('div.mult-name').text(t.name)
-      sel.append('div.mult-sub').text(t.nHosts + ' hosts' + (prints.length ? ' +' + prints.length + ' in print' : '')
-        + ' · ' + days + ' days · ' + fmtYr(t.last))
+      sel.append('div.mult-sub').text(t.nHosts + ' hosts · ' + days + ' days · ' + fmtYr(t.last))
       // rows = shows hit, ordered by first stop; centered on the tour in the shared span
       var rows = d3.nestBy(stops, d => d.s)
       prints.forEach((p, i) => {
@@ -318,7 +323,7 @@ window.drawTours = function(eps){
         fill: 'none', stroke: C.three, strokeWidth: 1.2, opacity: .45,
       })
       all.forEach(d => {
-        var print = isPrint(d.s)
+        var print = isPrint(d.s) || !!d.p
         svg.append('circle')
           .at({cx: x(d.date), cy: rowY[d.s], r: 4.5,
                fill: print ? '#fff' : C.three, stroke: print ? C.three : '#fff', strokeWidth: print ? 1.5 : 1})
@@ -344,7 +349,7 @@ window.drawTours = function(eps){
         if (dd < bestD){ bestD = dd; best = d }
       })
       if (!best){ hideTip(); return }
-      highlight(best.g && best.g.length ? guestKey(best.g[0]) : pinned)
+      highlight(best.g && best.g.length ? best.g.map(guestKey) : pinned)
       var html = "<div class='tt-show'>" + esc(SHOWS[best.s].label) + ' · ' + esc(SHOWS[best.s].host) + '</div>'
         + "<div class='tt-title'>" + esc(best.t) + '</div>'
         + '<div>' + fmt(best.date)
@@ -356,7 +361,7 @@ window.drawTours = function(eps){
         + (best.u ? "<div class='tt-open'>click to open episode ↗</div>" : '')
       window.ttSel.classed('tooltip-hidden', false).html(html)
       var node = chartSel.node().getBoundingClientRect()
-      var left = Math.min(Math.max(4, mx + margin.left + 14), node.width - 310)
+      var left = Math.max(0, Math.min(mx + margin.left + 14, node.width - 310))
       window.ttSel.st({left: left + 'px', top: (my + margin.top + 18) + 'px'})
     })
     .on('mouseleave', hideTip)
@@ -387,17 +392,31 @@ window.drawTours = function(eps){
   }
   // ---- guest search (find every appearance, ever) ----
   var names = Object.values(guestMeta).sort((a, b) => b.eps.length - a.eps.length)
-  d3.select('#guest-list').html('')
-    .appendMany('option', names.slice(0, 2500))
-    .at({value: d => d.name})
+  var sugSel = d3.select('.c-tours .suggest')
+  function showSuggest(q){
+    var hits = q.length > 1 ? names.filter(g => fold(g.name).indexOf(q) > -1).slice(0, 8) : []
+    sugSel.html('').classed('open', hits.length > 0)
+    sugSel.appendMany('button', hits)
+      .on('click', g => {
+        pinned = g.key
+        d3.select('.c-tours .guest-search').property('value', g.name)
+        sugSel.html('').classed('open', false)
+        highlight(pinned); drawChips(); drawMultiples()
+      })
+      .each(function(g){
+        var b = d3.select(this)
+        b.append('b').text(g.name)
+        b.append('span.n').text('· ' + g.eps.length + (g.nShows > 1 ? ' · ' + g.nShows + ' shows' : ''))
+      })
+  }
   function fold(s){ return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim() }
   d3.select('.c-tours .guest-search')
     .on('input change', function(){
       var q = fold(this.value)
-      if (!q){ pinned = null; highlight(null); drawChips(); return }
-      var hit = names.filter(g => fold(g.name) == q)[0] ||
-                (q.length > 2 ? names.filter(g => fold(g.name).includes(q))[0] : null)
-      if (hit){ pinned = hit.key; highlight(pinned); drawChips() }
+      showSuggest(q)
+      if (!q){ pinned = null; highlight(null); drawChips(); drawMultiples(); return }
+      var hit = names.filter(g => fold(g.name) == q)[0]
+      if (hit){ pinned = hit.key; highlight(pinned); drawChips(); drawMultiples() }
     })
 
   d3.select('.c-tours .win-slider')
