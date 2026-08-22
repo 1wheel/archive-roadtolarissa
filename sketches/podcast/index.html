@@ -6,19 +6,21 @@
 
 <div class='podtour'>
   <h1>The Podcast Tour Detector</h1>
-  <p class='intro'>Every episode of the shows hosted by Ezra Klein, Derek Thompson, Joe&nbsp;Weisenthal &amp; Tracy&nbsp;Alloway, and Nate Silver &mdash; one dot per episode, 2015&ndash;2026. A guest who turns up on two or more of these hosts' shows inside a short window is on a <b>press tour</b> and gets a bold dot: <span class='k k2'></span> two hosts, <span class='k k3'></span> three or more. Inspired by Jasmine Sun's August 2026 data-center blitz.</p>
+  <p class='intro'>Every episode of the shows hosted by Ezra Klein, Derek Thompson, Joe&nbsp;Weisenthal &amp; Tracy&nbsp;Alloway, Nate Silver, PJ&nbsp;Vogt, Kevin&nbsp;Roose &amp; Casey&nbsp;Newton, Nilay Patel, Tyler Cowen, and Dwarkesh Patel &mdash; one dot per episode, 2014&ndash;2026. A guest who turns up on two or more of these hosts' shows inside a short window is on a <b>press tour</b> and gets a bold dot: <span class='k k2'></span> two hosts, <span class='k k3'></span> three or more. Hover or search a guest to see every appearance they've ever made. Inspired by Jasmine Sun's August 2026 data-center blitz.</p>
 
   <section class='c-tours'>
     <div class='controls'>
       <span class='ctl-label'>tour window: <b class='win-days'>30</b> days</span>
       <input type='range' class='win-slider' min='7' max='90' value='30'>
+      <input type='text' class='guest-search' list='guest-list' placeholder='find a guest&hellip;'>
+      <datalist id='guest-list'></datalist>
       <span class='tour-count'></span>
     </div>
     <div class='chart'></div>
     <div class='chips'></div>
   </section>
 
-  <p class='sources'>Sources: public RSS feeds, Apple's podcast catalog for the paywalled <i>Ezra Klein Show</i> back&nbsp;catalog, and a union of Wayback Machine feed snapshots for <i>538&nbsp;Politics</i> (which only covers Nov&nbsp;2018 on). Guests are pulled out of episode titles and descriptions with regexes, so a few are missed or mangled. <i>Risky Business</i> ended Jan&nbsp;2026 &mdash; Nate did his Jasmine Sun interview <a href='https://www.natesilver.net/p/why-does-everyone-hate-data-centers'>in print</a>. Data: <a href='episodes.json'>episodes.json</a></p>
+  <p class='sources'>Sources: public RSS feeds, Apple's podcast catalog for the paywalled <i>Ezra Klein Show</i> back&nbsp;catalog, and a union of Wayback Machine feed snapshots for <i>538&nbsp;Politics</i> (which only covers Nov&nbsp;2018 on). Guests are pulled out of episode titles and descriptions with regexes plus a Claude&nbsp;Haiku sweep of the leftovers, so a few are still missed or mangled. Click a dot to open the episode. <i>Risky Business</i> ended Jan&nbsp;2026 &mdash; Nate did his Jasmine Sun interview <a href='https://www.natesilver.net/p/why-does-everyone-hate-data-centers'>in print</a>. Data: <a href='episodes.json'>episodes.json</a></p>
 </div>
 
 <script src='https://roadtolarissa.com/slinks/static-rss/d3_.js'></script>

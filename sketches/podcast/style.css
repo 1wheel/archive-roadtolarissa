@@ -67,9 +67,17 @@ body{
 .tooltip .tt-guest{ color: #1d3557; }
 .tooltip .tt-desc{ color: #777; font-size: 11px; margin-top: 3px; }
 .tooltip .tt-tour{ margin-top: 5px; padding-top: 5px; border-top: 1px solid #eee; font-size: 11px; }
+.tooltip .tt-open{ color: #aaa; font-size: 10px; margin-top: 4px; }
 .tooltip-hidden{ opacity: 0; transition: all .3s; transition-delay: .1s; }
 
 @media (max-width: 640px){
   .podtour h1{ font-size: 21px; }
   .c-tours text{ font-size: 11px; }
 }
+
+/* guest search */
+.c-tours .guest-search{
+  font: inherit; font-size: 12px; color: #333;
+  border: 1px solid #ddd; border-radius: 3px; padding: 2px 8px; width: 150px;
+}
+.c-tours .guest-search:focus{ outline: none; border-color: #1d3557; }
