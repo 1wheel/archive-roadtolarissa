@@ -219,6 +219,7 @@ window.drawTours = function(eps){
   // ---- chips ----
   var chipSel = d3.select('.c-tours .chips')
   function drawChips(){
+    if (!chipSel.node()) return
     chipSel.html('')
     var top = tours.slice().sort((a, b) => guestMeta[b.key].eps.length - guestMeta[a.key].eps.length).slice(0, 14)
     chipSel.appendMany('button', top)
@@ -254,7 +255,7 @@ window.drawTours = function(eps){
     // one shared x-span across all cards so tour pacing is comparable
     var SPAN = Math.max(20, d3.max(big, t =>
       (+d3.max(t.eps, d => d.date) - +d3.min(t.eps, d => d.date))/864e5) + 6)
-    var cards = multSel.appendMany('div.mult-card', big)
+    var cards = multSel.append('div.grid').appendMany('div.mult-card', big)
       .classed('on', t => pinned == t.key)
       .on('click', t => {
         pinned = pinned == t.key ? null : t.key
@@ -283,7 +284,7 @@ window.drawTours = function(eps){
       var t0 = mid - SPAN/2*864e5, t1 = mid + SPAN/2*864e5
       var W = 208, rowH = 18, padT = 6, padB = 20, tlL = 6, tlR = 88
       var H = padT + rows.length*rowH + padB
-      var svg = sel.append('svg').at({width: W, height: H})
+      var svg = sel.append('svg').at({viewBox: '0 0 ' + W + ' ' + H}).st({width: '100%', height: 'auto'})
       var x = d3.scaleUtc().domain([t0, t1]).range([tlL + 4, W - tlR - 6])
       var rowY = {}
       rows.forEach((r, i) => { rowY[r.key] = padT + i*rowH + rowH/2 })

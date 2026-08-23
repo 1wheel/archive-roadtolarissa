@@ -42,7 +42,7 @@ body{
 }
 
 /* tour chips */
-.c-tours .chips{ margin-top: 14px; font-size: 12px; color: #888; line-height: 2.1; }
+.c-tours .chips{ display: none; margin-top: 14px; font-size: 12px; color: #888; line-height: 2.1; }
 .c-tours .chips button{
   font: inherit; font-size: 11px; color: #444;
   border: 1px solid #ddd; border-radius: 12px; background: #fff;
@@ -85,10 +85,14 @@ body{
 /* small multiples: 3+ host blitzes */
 .c-tours .multiples{ margin-top: 22px; }
 .c-tours .mult-head{ font-size: 13px; font-weight: 600; color: #444; margin-bottom: 10px; }
+.c-tours .multiples .grid{ display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; align-items: start; }
 .c-tours .mult-card{
-  display: inline-block; vertical-align: top;
-  width: 208px; margin: 0 10px 12px 0; padding: 8px 8px 2px;
+  padding: 8px 8px 2px; min-width: 0;
   border: 1px solid #e8e8e8; border-radius: 4px; cursor: pointer;
+}
+@media (max-width: 640px){
+  .c-tours .multiples .grid{ grid-template-columns: 1fr 1fr; gap: 8px; }
+  .c-tours .mult-name{ font-size: 12px; }
 }
 .c-tours .mult-card:hover{ border-color: #bbb; }
 .c-tours .mult-card.on{ border-color: #1d3557; box-shadow: 0 0 0 1px #1d3557; }
