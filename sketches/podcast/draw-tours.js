@@ -69,8 +69,17 @@ window.drawTours = function(allEps){
   eps.forEach(d => d.date = d.date || new Date(d.d + 'T12:00:00Z'))
   var maxDate = d3.max(eps, d => d.date)
   c.x = d3.scaleUtc().domain([new Date('2016-01-01'), new Date(+maxDate + 1000*60*60*24*45)]).range([0, c.width])
-  c.svg.append('g').attr('class', 'x axis').translate(c.height + 4, 1)
-    .call(d3.axisBottom(c.x).ticks(isMobile ? 6 : 11).tickSize(-c.height - 4))
+  c.svg.append('g').attr('class', 'x axis').translate(c.height, 1)
+    .call(d3.axisBottom(c.x).ticks(isMobile ? 6 : 11))
+  // ggplot-style plot chrome, ported from util.ggPlot in anthropics/attribution-graphs-frontend:
+  // gray panel behind the plot, no domain line, white grid lines at the ticks, no tick marks
+  ;(function ggPlot(c){
+    c.svg.append('rect.bg-rect').at({width: c.width, height: c.height, fill: '#EAECED'}).lower()
+    c.svg.selectAll('.domain').remove()
+    c.svg.selectAll('.tick').selectAll('line').remove()
+    c.svg.selectAll('.x text').at({y: 6})
+    c.svg.selectAll('.x .tick').selectAppend('path').at({d: 'M 0 0 V -' + c.height, stroke: '#fff', strokeWidth: 1})
+  })(c)
 
   // deterministic jitter; seed mixes url+title+date so shared generic links don't line up
   function hash(s){
@@ -86,7 +95,7 @@ window.drawTours = function(allEps){
   // ---- lane chrome: show name big, other shows small ----
   ROWS.forEach(row => {
     var yy = laneY[row.host]
-    c.svg.append('line.lane-line').at({x1: 0, x2: c.width, y1: yy, y2: yy})
+    c.svg.append('line.lane-line').at({x1: 0, x2: c.width, y1: yy, y2: yy, stroke: '#fff'})
     var hasSub = !!row.sub
     c.svg.append('text.host-label').at({x: -10, y: yy + (hasSub ? -1 : 4), textAnchor: 'end'})
       .text(isMobile ? row.show.replace('The Ezra Klein Show', 'Ezra Klein Show').replace('Conversations with Tyler', 'Conv. w/ Tyler') : row.show)

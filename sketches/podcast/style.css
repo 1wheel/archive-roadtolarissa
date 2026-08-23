@@ -27,10 +27,10 @@ body{
 .c-tours text{ font-size: 12px; fill: #555; }
 .c-tours .host-label{ font-size: 12px; font-weight: 600; fill: #333; }
 .c-tours .lane-label{ font-size: 10px; fill: #979797; }
-.c-tours .x .tick line{ stroke: #ececec; }
+.c-tours .bg-rect{ shape-rendering: crispEdges; }
 .c-tours .x text{ fill: #8a8a8a; font-size: 11px; }
 .c-tours .domain{ display: none; }
-.c-tours .lane-line{ stroke: #f1f1f1; stroke-width: 1px; shape-rendering: crispEdges; }
+.c-tours .lane-line{ stroke: #fff; stroke-width: 1px; shape-rendering: crispEdges; }
 .c-tours .annotation{
   font-size: 12px; fill: #333;
   paint-order: stroke; stroke: #fff; stroke-width: 3.5px; stroke-linejoin: round;
