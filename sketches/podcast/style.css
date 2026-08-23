@@ -115,3 +115,37 @@ body{
 
 .c-tours .chips .sw{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:5px; vertical-align:0; }
 .c-tours .chips button.on .sw{ outline: 1.5px solid #fff; }
+
+/* lane labels: show big, other shows small */
+.c-tours .lane-sub{ font-size: 9.5px; fill: #9a9a9a; }
+
+/* chunky appearance panel: floating on desktop hover, stuck (bottom sheet) on tap/click */
+.c-tours .panel{
+  position: absolute; z-index: 30; width: 360px; max-height: 320px; overflow: hidden; pointer-events: none;
+  background: #fff; border: 1px solid #ddd; border-radius: 6px; box-shadow: 0 4px 18px rgba(0,0,0,.12);
+  padding: 10px 12px; font-size: 12px; line-height: 1.45; color: #333;
+}
+.c-tours .panel.stuck{ pointer-events: auto; overflow-y: auto; max-height: 60vh; }
+.c-tours .panel-hidden{ display: none; }
+.c-tours .panel .p-show{ color: #888; font-size: 10.5px; text-transform: uppercase; letter-spacing: .4px; }
+.c-tours .panel .p-title{ font-weight: 600; margin: 2px 0 2px; font-size: 13px; }
+.c-tours .panel .p-title a{ color: #1d3557; text-decoration: none; }
+.c-tours .panel .p-desc{ color: #777; font-size: 11px; }
+.c-tours .panel .p-guest{ margin-top: 10px; padding-top: 8px; border-top: 1px solid #eee; }
+.c-tours .panel .p-gname{ font-weight: 600; font-size: 13px; }
+.c-tours .panel .p-sw{ display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.c-tours .panel .p-n{ color: #888; font-weight: 400; font-size: 11px; margin-left: 4px; }
+.c-tours .panel .p-list{ list-style: none; padding: 0; margin: 5px 0 0; }
+.c-tours .panel .p-list li{ margin: 3px 0; font-size: 11.5px; }
+.c-tours .panel .p-list li.cur{ background: #f4f6f9; border-radius: 3px; margin-left: -4px; padding-left: 4px; }
+.c-tours .panel .p-d{ color: #999; font-variant-numeric: tabular-nums; }
+.c-tours .panel .p-s{ color: #666; font-size: 10.5px; }
+.c-tours .panel .p-list a{ color: #333; text-decoration: none; border-bottom: 1px solid #e3e3e3; }
+.c-tours .panel .p-none{ color: #999; }
+@media (pointer: coarse), (max-width: 640px){
+  .c-tours .panel{ position: fixed; left: 0 !important; right: 0; top: auto !important; bottom: 0; width: auto; max-height: 55vh;
+    border-radius: 12px 12px 0 0; box-shadow: 0 -6px 24px rgba(0,0,0,.18); pointer-events: auto; overflow-y: auto; padding-bottom: 18px; }
+}
+
+/* suggestion list: scrollable so the most-booked guests can be browsed */
+.c-tours .suggest{ max-height: 50vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
