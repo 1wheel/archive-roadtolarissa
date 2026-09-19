@@ -52,7 +52,7 @@ window.drawTours = function(allEps){
   var availWidth = Math.min(measured, document.documentElement.clientWidth - 10)
   var isMobile = availWidth < 640
   var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches
-  var margin = {top: 18, right: 14, bottom: 30, left: isMobile ? 104 : 170}
+  var margin = {top: 18, right: 14, bottom: 30, left: isMobile ? 126 : 170}
 
   var laneH = {}, laneY = {}, y = 0
   ROWS.forEach(row => {
@@ -106,7 +106,7 @@ window.drawTours = function(allEps){
   function guestKey(g){
     var p = g.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\./g, '').toLowerCase().split(/\s+/)
       .filter(t => !/^(jr|sr|ii|iii|iv)$/.test(t))
-    return p[0] + '|' + p[p.length - 1].split('-')[0]
+    return p[0] + '|' + p[p.length - 1]
   }
   var byGuest = {}, guestMeta = {}
   eps.forEach(d => (d.g || []).forEach(g => {
@@ -248,14 +248,15 @@ window.drawTours = function(allEps){
   }
 
   // ---- the chunky panel: hovered episode + every appearance of each of its guests ----
-  var esc = s => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
-  var panel = d3.select('.c-tours').selectAppend('div.panel.panel-hidden')
+  var esc = s => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+  var safeUrl = u => /^https?:\/\//.test(u || '') ? u : ''
+  var panel = chartSel.selectAppend('div.panel.panel-hidden').classed('stuck', false)
   var stuck = false   // true when tapped/clicked into place (scrollable, clickable); click elsewhere dismisses
   function panelHtml(d){
     var keys = guestKeysOf(d)
     var html = "<div class='p-ep'><span class='p-show'>" + esc(SHOWS[d.s].label) + '</span> · ' + fmt(d.date)
       + (d.r ? ' · rerun' : '') + (d.p ? ' · text' : '')
-      + "<div class='p-title'>" + (d.u ? "<a href='" + esc(d.u) + "' target='_blank' rel='noopener'>" + esc(d.t) + ' ↗</a>' : esc(d.t)) + '</div>'
+      + "<div class='p-title'>" + (safeUrl(d.u) ? "<a href='" + esc(d.u) + "' target='_blank' rel='noopener'>" + esc(d.t) + ' ↗</a>' : esc(d.t)) + '</div>'
       + (d.x ? "<div class='p-desc'>" + esc(d.x) + '</div>' : '') + '</div>'
     keys.forEach((k, i) => {
       var gm = guestMeta[k], color = SEL[i % SEL.length]
@@ -263,7 +264,7 @@ window.drawTours = function(allEps){
         + " <span class='p-n'>" + gm.eps.length + (gm.eps.length > 1 ? ' appearances' : ' appearance') + ' · ' + gm.nHosts + (gm.nHosts > 1 ? ' hosts' : ' host') + '</span></div><ol class="p-list">'
       gm.eps.slice().sort((a, b) => b.date - a.date).forEach(e => {
         html += "<li" + (e === d ? " class='cur'" : '') + "><span class='p-d'>" + fmt(e.date) + "</span> <span class='p-s'>" + esc(SHOWS[e.s].short) + '</span> '
-          + (e.u ? "<a href='" + esc(e.u) + "' target='_blank' rel='noopener'>" + esc(e.t) + '</a>' : esc(e.t)) + '</li>'
+          + (safeUrl(e.u) ? "<a href='" + esc(e.u) + "' target='_blank' rel='noopener'>" + esc(e.t) + '</a>' : esc(e.t)) + '</li>'
       })
       html += '</ol></div>'
     })

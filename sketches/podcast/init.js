@@ -3,12 +3,17 @@ window.init = function(){
   drawTours(window.episodes)
 }
 
-window.DATA_V = '20260919a'   // bump when episodes.json changes so browsers refetch
+window.DATA_V = '20260919b'   // bump when episodes.json changes so browsers refetch
 fetch('episodes.json?v=' + window.DATA_V)
   .then(r => r.json())
   .then(eps => {
     window.episodes = eps
     init()
   })
-var rT
-d3.select(window).on('resize.podtour', () => { clearTimeout(rT); rT = setTimeout(() => window.episodes && init(), 150) })
+  .catch(e => d3.select('.c-tours .chart').text('could not load episodes.json'))
+var rT, lastW = window.innerWidth
+d3.select(window).on('resize.podtour', () => {
+  if (window.innerWidth == lastW) return          // mobile scroll fires resize on height only
+  lastW = window.innerWidth
+  clearTimeout(rT); rT = setTimeout(() => window.episodes && init(), 150)
+})
