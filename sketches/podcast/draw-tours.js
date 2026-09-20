@@ -223,7 +223,7 @@ window.drawTours = function(allEps){
       var rows = d3.nestBy(stops, d => d.s)
       var mid = (+stops[0].date + +stops[stops.length-1].date)/2, t0 = mid - SPAN/2*864e5, t1 = mid + SPAN/2*864e5
       var W = 208, rowH = 18, padT = 6, padB = 20, tlL = 6, tlR = 88, H = padT + rows.length*rowH + padB
-      var svg = sel.append('svg').at({viewBox: '0 0 ' + W + ' ' + H}).st({width: '100%', height: 'auto'})
+      var svg = sel.append('svg').attr('viewBox', '0 0 ' + W + ' ' + H).st({width: '100%', height: 'auto'})
       var x = d3.scaleUtc().domain([t0, t1]).range([tlL + 4, W - tlR - 6]), rowY = {}
       rows.forEach((r, i) => { rowY[r.key] = padT + i*rowH + rowH/2 })
       rows.forEach(r => {
