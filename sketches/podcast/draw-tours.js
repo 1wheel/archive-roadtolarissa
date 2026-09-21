@@ -29,13 +29,14 @@ window.drawTours = function(allEps){
     'tyler':        {label: 'Conv. w/ Tyler', short: 'CwT',       host: 'Tyler Cowen'},
     'dwarkesh':     {label: 'Dwarkesh Pod',   short: 'Dwarkesh',  host: 'Dwarkesh Patel'},
     'interesting-times': {label: 'Interesting Times', short: 'Douthat', host: 'Ross Douthat'},
+    'the-argument': {label: 'The Argument',   short: 'Argument',  host: 'Ross Douthat'},
     'chinatalk':    {label: 'ChinaTalk',      short: 'ChinaTalk', host: 'Jordan Schneider'},
     'fresh-air':    {label: 'Fresh Air',      short: 'Fresh Air', host: 'Terry Gross'},
     'tal':          {label: 'This American Life', short: 'TAL',   host: 'Ira Glass'},
   }
   // big label = the show; small label = the host's other shows folded into the lane
   var ROWS = [
-    {host: 'Ezra Klein',                     show: 'The Ezra Klein Show',    sub: '+ Vox era, Impeachment',        lanes: ['ek-vox', 'impeachment', 'ek-nyt']},
+    {host: 'Ezra Klein',                     show: 'The Ezra Klein Show',    sub: '+ Vox, Impeachment',        lanes: ['ek-vox', 'impeachment', 'ek-nyt']},
     {host: 'Derek Thompson',                 show: 'Plain English',          sub: '+ Crazy/Genius',                lanes: ['crazy-genius', 'plain-english']},
     {host: 'Joe Weisenthal & Tracy Alloway', show: 'Odd Lots',               sub: '',                              lanes: ['odd-lots']},
     {host: 'Nate Silver',                    show: '538 Politics',           sub: '+ Risky Business, Silver Bulletin', lanes: ['538-politics', 'risky-biz', 'silver-bulletin']},
@@ -43,7 +44,7 @@ window.drawTours = function(allEps){
     {host: 'Kevin Roose & Casey Newton',     show: 'Hard Fork',              sub: '',                              lanes: ['hard-fork']},
     {host: 'Nilay Patel',                    show: 'Decoder',                sub: '',                              lanes: ['decoder']},
     {host: 'Tyler Cowen',                    show: 'Conversations with Tyler', sub: '',                            lanes: ['tyler']},
-    {host: 'Ross Douthat',                   show: 'Interesting Times',      sub: '',                              lanes: ['interesting-times']},
+    {host: 'Ross Douthat',                   show: 'Interesting Times',      sub: '+ The Argument',                lanes: ['the-argument', 'interesting-times']},
     {host: 'Jordan Schneider',               show: 'ChinaTalk',              sub: '',                              lanes: ['chinatalk']},
     {host: 'Dwarkesh Patel',                 show: 'Dwarkesh Podcast',       sub: '',                              lanes: ['dwarkesh']},
     {host: 'Terry Gross',                    show: 'Fresh Air',              sub: '',                              lanes: ['fresh-air']},
