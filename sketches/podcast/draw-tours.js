@@ -29,6 +29,7 @@ window.drawTours = function(allEps){
     'tyler':        {label: 'Conv. w/ Tyler', short: 'CwT',       host: 'Tyler Cowen'},
     'dwarkesh':     {label: 'Dwarkesh Pod',   short: 'Dwarkesh',  host: 'Dwarkesh Patel'},
     'interesting-times': {label: 'Interesting Times', short: 'Douthat', host: 'Ross Douthat'},
+    'chinatalk':    {label: 'ChinaTalk',      short: 'ChinaTalk', host: 'Jordan Schneider'},
     'fresh-air':    {label: 'Fresh Air',      short: 'Fresh Air', host: 'Terry Gross'},
     'tal':          {label: 'This American Life', short: 'TAL',   host: 'Ira Glass'},
   }
@@ -43,6 +44,7 @@ window.drawTours = function(allEps){
     {host: 'Nilay Patel',                    show: 'Decoder',                sub: '',                              lanes: ['decoder']},
     {host: 'Tyler Cowen',                    show: 'Conversations with Tyler', sub: '',                            lanes: ['tyler']},
     {host: 'Ross Douthat',                   show: 'Interesting Times',      sub: '',                              lanes: ['interesting-times']},
+    {host: 'Jordan Schneider',               show: 'ChinaTalk',              sub: '',                              lanes: ['chinatalk']},
     {host: 'Dwarkesh Patel',                 show: 'Dwarkesh Podcast',       sub: '',                              lanes: ['dwarkesh']},
     {host: 'Terry Gross',                    show: 'Fresh Air',              sub: '',                              lanes: ['fresh-air']},
     {host: 'Ira Glass',                      show: 'This American Life',     sub: '',                              lanes: ['tal']},
